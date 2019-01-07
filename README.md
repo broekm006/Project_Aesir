@@ -43,4 +43,4 @@ __Solution:__
 Create an application that gives insight into his/her daily or weekly routine, show results and do it in a clean and simple fashion.
 
 
-![Alt text](https://github.com/broekm006/Final_Project/blob/master/doc/fitness_app.png)
+![Alt text](https://github.com/broekm006/Project_Aesir/blob/master/doc/fitness_app.png)
