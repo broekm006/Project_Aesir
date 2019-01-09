@@ -18,3 +18,6 @@ Resources to be used:
   
 Below is an overview of the classes that will be used within the application:  
 <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/class-diagram-V2.jpg" height="100%" width="100%"/>
+
+Database tables to be used:
+ID(int), Name(Char), Description(char), Categorie(Char) and Muscles(Char)
