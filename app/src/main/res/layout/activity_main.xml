@@ -18,7 +18,21 @@
         android:orientation="horizontal">
 
 
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="25dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:onClick="OnButtonClick"
+            tools:srcCompat="@tools:sample/avatars" />
 
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="25dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            tools:onClick="OnButtonClick"
+            tools:srcCompat="@tools:sample/avatars" />
     </LinearLayout>
 
     <LinearLayout
@@ -28,6 +42,21 @@
         android:orientation="horizontal">
 
 
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="25dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            tools:onClick="onButtonClickPresets"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="25dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            tools:onClick="onButtonClickResults"
+            tools:srcCompat="@tools:sample/avatars" />
     </LinearLayout>
 
 </LinearLayout>
