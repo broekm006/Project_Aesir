@@ -4,30 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="center"
+    tools:context=".ResultsActivity"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    >
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="1"
-        android:gravity="bottom"
-        android:orientation="horizontal">
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
 
-
-
-    </LinearLayout>
-
-    <LinearLayout
+    <ImageView
+        android:id="@+id/imageView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-
-    </LinearLayout>
-
+        tools:srcCompat="@tools:sample/backgrounds/scenic[7]"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"/>
 </LinearLayout>
