@@ -4,19 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExerciseActivity"
+    tools:context=".Preset_detail"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
+        android:id="@+id/detail_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <ListView
-        android:id="@+id/exercises_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-    </ListView>
+        android:text="TextView"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="262dp" />
 </LinearLayout>

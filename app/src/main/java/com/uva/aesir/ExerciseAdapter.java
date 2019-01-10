@@ -11,11 +11,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ExericiseAdapter extends ArrayAdapter<Exercise> {
+public class ExerciseAdapter extends ArrayAdapter<Exercise> {
     private ArrayList<Exercise> exercise;
 
-    public ExericiseAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Exercise> objects) {
+    public ExerciseAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Exercise> objects) {
         super(context, resource, objects);
+        this.exercise = objects;
     }
 
     @NonNull
@@ -32,6 +33,7 @@ public class ExericiseAdapter extends ArrayAdapter<Exercise> {
 
         Exercise exercises = exercise.get(position);
 
+        System.out.println(exercises.getDescription() + "sss");
         name.setText(exercises.getName());
         description.setText(exercises.getDescription());
         categorie.setText(exercises.getCategorie());
