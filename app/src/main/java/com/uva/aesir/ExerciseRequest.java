@@ -1,6 +1,7 @@
 package com.uva.aesir;
 
 import android.content.Context;
+import android.text.Html;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -16,13 +17,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ExerciseRequest implements Response.Listener<JSONObject>, Response.ErrorListener {
     private Context context;
-    private ArrayList<Exercise> exercises;
+    private ArrayList<Exercise> exercises = new ArrayList<Exercise>();
     private Callback callback;
 
 
@@ -36,18 +38,20 @@ public class ExerciseRequest implements Response.Listener<JSONObject>, Response.
         try{
 
             JSONArray array = response.getJSONArray("results");
-            exercises = new ArrayList<Exercise>();
             for(int i = 0; i < array.length(); i++){
                 JSONObject specific = array.getJSONObject(i);
 
-                String name = specific.getString("name");
-                String description = specific.getString("description");
-                String categorie= specific.getString("category");
-                String muscles = specific.getString("muscles");
-                exercises.add(new Exercise(name, description, categorie, muscles));
-
+                String name = Html.fromHtml(specific.getString("name")).toString();
+                String description = Html.fromHtml(specific.getString("description")).toString();
+                String categorie= Html.fromHtml(specific.getString("category")).toString();
+                exercises.add(new Exercise(name, description, categorie));
+            }
+            String nextPage = response.getString("next");
+            if(nextPage != "null"){
+                newPage(nextPage);
             }
         }
+
 
         catch (JSONException e){
             System.out.println(e.getMessage());
@@ -67,9 +71,15 @@ public class ExerciseRequest implements Response.Listener<JSONObject>, Response.
         this.context = c;
     }
 
+    void newPage(String url){
+        RequestQueue queue = Volley.newRequestQueue(context);
+        JsonObjectRequest jsonObjectRequests = new JsonObjectRequest(url, null, this,this);
+        queue.add(jsonObjectRequests);
+    }
     void getExercise(Callback activity) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://wger.de/api/v2/exercise/?format=json&?language=2", null, this,this);
+        String url = "https://wger.de/api/v2/exercise/?format=json&?language=2";
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(url, null, this,this);
         queue.add(jsonObjectRequest);
 
         callback = activity;
