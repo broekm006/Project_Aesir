@@ -27,10 +27,11 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseReque
 
     @Override
     public void gotExercise(ArrayList<Exercise> exercise) {
-        ExerciseAdapter adapter = new ExerciseAdapter(this, R.layout.exercise_entry, exercise);
+        ExerciseAdapter adapter = new ExerciseAdapter(this, R.layout.exercise_entry, exercise); // creating new adapter makes the list jump to the top > can hopefully be fixed by seperating creating and adding. (notifyDataSetChanged())
         ListView listView = (ListView) findViewById(R.id.exercises_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
+        adapter.notifyDataSetChanged();
     }
 
     @Override

@@ -55,5 +55,6 @@
             android:fontFamily="@font/aclonica"
             android:onClick="onButtonClickResults"
             android:text="results" />
+
     </LinearLayout>
 </LinearLayout>

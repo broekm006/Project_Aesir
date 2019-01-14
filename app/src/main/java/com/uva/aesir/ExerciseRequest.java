@@ -38,15 +38,19 @@ public class ExerciseRequest implements Response.Listener<JSONObject>, Response.
         try{
 
             JSONArray array = response.getJSONArray("results");
+
             for(int i = 0; i < array.length(); i++){
                 JSONObject specific = array.getJSONObject(i);
 
+                String idex = specific.getString("id");
                 String name = Html.fromHtml(specific.getString("name")).toString();
                 String description = Html.fromHtml(specific.getString("description")).toString();
                 String categorie= Html.fromHtml(specific.getString("category")).toString();
-                exercises.add(new Exercise(name, description, categorie));
+                exercises.add(new Exercise(idex, name, description, categorie));
             }
+
             String nextPage = response.getString("next");
+
             if(nextPage != "null"){
                 newPage(nextPage);
             }

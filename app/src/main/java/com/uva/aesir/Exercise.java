@@ -1,12 +1,16 @@
 package com.uva.aesir;
 
 public class Exercise {
-    private String name, description, categorie;
+    private String idex, name, description, categorie;
 
-    public Exercise(String name, String description, String categorie){
+    public Exercise(String idex, String name, String description, String categorie){
         this.name = name;
         this.description = description;
         this.categorie = categorie;
+    }
+
+    public String getIdex() {
+        return idex;
     }
 
     public String getName() {
@@ -19,6 +23,10 @@ public class Exercise {
 
     public String getCategorie() {
         return categorie;
+    }
+
+    public void setIdex(String idex) {
+        this.idex = idex;
     }
 
     public void setName(String name) {
