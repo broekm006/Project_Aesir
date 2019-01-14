@@ -2,6 +2,7 @@ package com.uva.aesir;
 
 public class Preset {
     //private int idExercise;
+    private int id;
     private String title, numberOfTimes, exercise_name;
 
     public Preset(String title, String numberOfTimes, String exercise_name){
@@ -14,6 +15,10 @@ public class Preset {
     //public void setIdExercise(int idExercise) {
     //    this.idExercise = idExercise;
     //}
+
+    public int getId(){
+        return id;
+    }
 
     public void setExercise_name(String exercise_name) {
         this.exercise_name = exercise_name;

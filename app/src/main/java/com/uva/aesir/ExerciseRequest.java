@@ -89,7 +89,6 @@ public class ExerciseRequest implements Response.Listener<JSONObject>, Response.
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // TODO Auto-generated method stub
                         Log.d("ERROR", "error => " + error.toString());
                     }
                 }

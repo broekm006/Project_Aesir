@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class PresetActivity extends AppCompatActivity {
-
     PresetDatabase db;
     PresetAdapter adapter;
 
@@ -51,7 +50,7 @@ public class PresetActivity extends AppCompatActivity {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
             Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
-            long position = cursor.getLong(cursor.getColumnIndex("id"));
+            long position = cursor.getLong(cursor.getColumnIndex("_id"));
 
             db.delete(position);
 

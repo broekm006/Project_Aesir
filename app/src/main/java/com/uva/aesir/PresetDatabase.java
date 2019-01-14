@@ -39,12 +39,12 @@ public class PresetDatabase extends SQLiteOpenHelper {
 
     public void delete(long id){
         sqLiteDatabase = getWritableDatabase();
-        sqLiteDatabase.execSQL("delete from presets where _id='"+id+"'");
+        sqLiteDatabase.execSQL("delete from presets where _id='" + id + "'");
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table presets (_id INTEER PRIMARY KEY, Exercise_name TEXT, title TEXT, numberOfTimes TEXT)");
+        sqLiteDatabase.execSQL("create table presets (_id INTEGER PRIMARY KEY, Exercise_name TEXT, title TEXT, numberOfTimes TEXT)");
     }
 
     @Override

@@ -55,6 +55,7 @@ public class TimerActivity extends AppCompatActivity {
                 StartTime = SystemClock.uptimeMillis();
                 handler.postDelayed(runnable, 0);
 
+                start.setEnabled(false);
                 reset.setEnabled(false);
             }
         });
@@ -65,6 +66,7 @@ public class TimerActivity extends AppCompatActivity {
                 TimeBuffer += MillisecondTime;
                 handler.removeCallbacks(runnable);
                 reset.setEnabled(true);
+                start.setEnabled(true);
             }
         });
 
