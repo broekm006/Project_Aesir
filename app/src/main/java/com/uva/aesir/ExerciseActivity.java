@@ -31,8 +31,6 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseReque
         ListView listView = (ListView) findViewById(R.id.exercises_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
-        Toast.makeText(this, "success", Toast.LENGTH_LONG).show();
-
     }
 
     @Override

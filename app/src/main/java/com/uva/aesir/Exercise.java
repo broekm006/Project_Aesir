@@ -1,13 +1,12 @@
 package com.uva.aesir;
 
 public class Exercise {
-    private String name, description, categorie, muscle;
+    private String name, description, categorie;
 
-    public Exercise(String name, String description, String categorie, String muscle){
+    public Exercise(String name, String description, String categorie){
         this.name = name;
         this.description = description;
         this.categorie = categorie;
-        this.muscle = muscle;
     }
 
     public String getName() {
@@ -22,10 +21,6 @@ public class Exercise {
         return categorie;
     }
 
-    public String getMuscle() {
-        return muscle;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -38,7 +33,4 @@ public class Exercise {
         this.categorie = categorie;
     }
 
-    public void setMuscle(String muscle) {
-        this.muscle = muscle;
-    }
 }

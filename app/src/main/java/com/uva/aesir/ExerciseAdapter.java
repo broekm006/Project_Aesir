@@ -26,18 +26,15 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.exercise_entry, parent, false);
         }
 
-        TextView name = convertView.findViewById(R.id.textView);
-        TextView description = convertView.findViewById(R.id.textView2);
-        TextView categorie = convertView.findViewById(R.id.textView3);
-        TextView muscle = convertView.findViewById(R.id.textView4);
+        TextView name = convertView.findViewById(R.id.name);
+        //TextView description = convertView.findViewById(R.id.description);
+        //TextView categorie = convertView.findViewById(R.id.categorie);
 
         Exercise exercises = exercise.get(position);
 
-        System.out.println(exercises.getDescription() + "sss");
         name.setText(exercises.getName());
-        description.setText(exercises.getDescription());
-        categorie.setText(exercises.getCategorie());
-        muscle.setText(exercises.getMuscle());
+        //description.setText(exercises.getDescription());
+        //categorie.setText(exercises.getCategorie());
 
         return convertView;
     }
