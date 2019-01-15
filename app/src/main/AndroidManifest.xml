@@ -29,7 +29,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".NewListActivity" />
-        <activity android:name=".Preset_detail"></activity>
+        <activity android:name=".Preset_detail" />
+        <activity android:name=".GetJSONActivity"></activity>
     </application>
 
 </manifest>

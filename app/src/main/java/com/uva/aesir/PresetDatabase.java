@@ -45,6 +45,7 @@ public class PresetDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table presets (_id INTEGER PRIMARY KEY, Exercise_name TEXT, title TEXT, numberOfTimes TEXT)");
+        sqLiteDatabase.execSQL("create table exercises (_id INTEGER PRIMARY KEY, idex TEXT, title TEXT, description TEXT, category TEXT)");
     }
 
     @Override

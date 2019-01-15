@@ -29,7 +29,8 @@ public class PresetActivity extends AppCompatActivity {
     }
 
     public void OnButtonClick(View view){
-        startActivity(new Intent(this, NewListActivity.class));
+        startActivity(new Intent(this,
+                                NewListActivity.class));
     }
 
     private class ListViewClickListener implements AdapterView.OnItemClickListener{

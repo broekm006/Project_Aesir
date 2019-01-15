@@ -24,4 +24,8 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonClickPresets(View view) {
         startActivity(new Intent(MainActivity.this, PresetActivity.class));
     }
+
+    public void OnButtonClickJSON(View view){
+        startActivity(new Intent(MainActivity.this, GetJSONActivity.class));
+    }
 }

@@ -45,7 +45,7 @@ public class ExerciseRequest implements Response.Listener<JSONObject>, Response.
                 String idex = specific.getString("id");
                 String name = Html.fromHtml(specific.getString("name")).toString();
                 String description = Html.fromHtml(specific.getString("description")).toString();
-                String categorie= Html.fromHtml(specific.getString("category")).toString();
+                String categorie = Html.fromHtml(specific.getString("category")).toString();
                 exercises.add(new Exercise(idex, name, description, categorie));
             }
 
