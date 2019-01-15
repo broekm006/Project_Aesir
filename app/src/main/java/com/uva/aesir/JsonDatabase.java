@@ -29,6 +29,7 @@ public class JsonDatabase extends SQLiteOpenHelper {
         return getWritableDatabase().rawQuery(("SELECT * FROM exercises"), null);
     }
 
+
     public void insert(Exercise insertion){
         ContentValues value = new ContentValues();
         value.put("idex", insertion.getIdex());

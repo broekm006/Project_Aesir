@@ -27,9 +27,9 @@ public class GetJSONActivity extends AppCompatActivity implements ExerciseReques
             }
 
     public void OnButtonClick(View view){
-            //startActivity(new Intent(this, SpecificActivity.class));
+        //startActivity(new Intent(this, SpecificActivity.class));
         System.out.println(db.selectAll());
-            }
+    }
 
 
     @Override
