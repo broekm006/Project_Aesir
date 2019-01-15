@@ -6,13 +6,13 @@
     android:gravity="center">
 
     <Spinner
-        android:id="@+id/new_entry"
+        android:id="@+id/newlist_exercise2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="5" />
 
     <Spinner
-        android:id="@+id/spinner6"
+        android:id="@+id/newlist_numberOfSets2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2" />

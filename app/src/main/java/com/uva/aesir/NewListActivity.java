@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,13 +16,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class NewListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener { //implements AdapterView.OnItemSelectedListener
     Button btn;
     private LinearLayout parentLinearLayout;
 
+    String[] sets ={"1", "2", "3", "4"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,29 +37,26 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         btn = (Button) findViewById(R.id.Submit_newlist);
         //btn.setEnabled(false);
 
-        // create working spinners
-        // 1 for number of sets (1 - 4)
-        // 1 for list of all exercises > + be able to add more than 1 exercise
+        // 1 for list of all exercises >
 
-        Spinner choose_sets = (Spinner) findViewById(R.id.spinner);
+
+        Spinner choose_exercise = (Spinner) findViewById(R.id.newlist_exercise);
+        ArrayAdapter<String> adapterE = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sets);
+        choose_exercise.setAdapter(adapterE);
+        choose_exercise.setOnItemSelectedListener(this);
+
+
+        Spinner choose_sets = (Spinner) findViewById(R.id.newlist_numberOfSets);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, sets);
+        choose_sets.setAdapter(adapter);
         choose_sets.setOnItemSelectedListener(this);
 
-        List<String> sets = new ArrayList<String>();
-        sets.add("1");
-        sets.add("2");
-        sets.add("3");
-        sets.add("4");
-        sets.add("5");
-
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sets);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        choose_sets.setAdapter(dataAdapter);
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String item = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(adapterView.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        String txt = adapterView.getItemAtPosition(i).toString();
+        //Toast.makeText(adapterView.getContext(), txt, Toast.LENGTH_LONG).show();
     }
 
     @Override

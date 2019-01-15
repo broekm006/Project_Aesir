@@ -22,13 +22,13 @@
         android:orientation="horizontal">
 
         <Spinner
-            android:id="@+id/newlist_numberOfSets"
+            android:id="@+id/newlist_exercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="5" />
 
         <Spinner
-            android:id="@+id/newlist_exercise"
+            android:id="@+id/newlist_numberOfSets"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2" />
