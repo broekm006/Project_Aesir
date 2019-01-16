@@ -23,6 +23,7 @@ import java.util.List;
 
 public class NewListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener { //implements AdapterView.OnItemSelectedListener
     Button btn;
+    Spinner exercise;
     private LinearLayout parentLinearLayout;
     JsonDatabase exercise_listy;
 
@@ -43,10 +44,10 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         // 1 for list of all exercises >
 
 
-        Spinner choose_exercise = (Spinner) findViewById(R.id.newlist_exercise);
-        ArrayAdapter<String> adapterE = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sets);
-        choose_exercise.setAdapter(adapterE);
-        choose_exercise.setOnItemSelectedListener(this);
+//        Spinner choose_exercise = (Spinner) findViewById(R.id.newlist_exercise);
+//        ArrayAdapter<String> adapterE = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sets);
+//        choose_exercise.setAdapter(adapterE);
+//        choose_exercise.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
     public void addEntry(View view){
         TextView title = findViewById(R.id.newlist_title);
         //Spinner numberOfSets = findViewById(R.id.newlist_numberOfSets);
-        Spinner exercise = findViewById(R.id.newlist_exercise);
+        //Spinner exercise = findViewById(R.id.newlist_exercise);
 
         Preset new_preset = new Preset(title.getText().toString(), exercise.toString());
         PresetDatabase db = PresetDatabase.getInstance(this);
@@ -97,7 +98,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View rowView = inflater.inflate(R.layout.new_list_entry, null);
 
-        Spinner exercise = (Spinner) rowView.findViewById(R.id.newlist_exercise2);
+        exercise = (Spinner) rowView.findViewById(R.id.newlist_exercise2);
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, getNameExercise());
         exercise.setAdapter(adapter);
         exercise.setOnItemSelectedListener(this);
