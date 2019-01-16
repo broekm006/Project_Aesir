@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
         TextView name = findViewById(R.id.specific_name);
         TextView description = findViewById(R.id.specific_description);
 
-        name.setText(intent.getStringExtra("name"));
+        name.setText(intent.getStringExtra("title"));
         description.setText(intent.getStringExtra("description"));
 
         Spinner one = (Spinner) findViewById(R.id.set_1);
@@ -63,6 +64,10 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(SpecificActivity.this, ExerciseActivity.class));
+    }
 
     // voor spinner inhoud zie:
     // https://developer.android.com/guide/topics/ui/controls/spinner#java

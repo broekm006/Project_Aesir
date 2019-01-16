@@ -31,12 +31,25 @@ public class JsonDatabase extends SQLiteOpenHelper {
 
 
     public void insert(Exercise insertion){
+
         ContentValues value = new ContentValues();
         value.put("idex", insertion.getIdex());
         value.put("title", insertion.getName());
         value.put("description", insertion.getDescription());
         value.put("category", insertion.getCategorie());
-        getWritableDatabase().insert("exercises", null, value);
+
+        Cursor cursor = null;
+        cursor = getWritableDatabase().rawQuery(("SELECT idex FROM exercises WHERE idex =" + insertion.getIdex()), null);
+
+        if (cursor.getCount() > 0){
+
+        }
+        else{
+            getWritableDatabase().insert("exercises", null, value);
+        }
+
+        cursor.close();
+
     }
 
     public void delete(long id){

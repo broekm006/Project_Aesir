@@ -88,4 +88,9 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         parentLinearLayout.removeView((View) v.getParent());
         System.out.println(v.getParent());
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(NewListActivity.this, PresetActivity.class));
+    }
 }

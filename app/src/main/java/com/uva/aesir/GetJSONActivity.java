@@ -1,15 +1,9 @@
 package com.uva.aesir;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
-import android.database.Cursor;
-
-
 import java.util.ArrayList;
 
 public class GetJSONActivity extends AppCompatActivity implements ExerciseRequest.Callback {
@@ -23,7 +17,6 @@ public class GetJSONActivity extends AppCompatActivity implements ExerciseReques
             x.getExercise(this);
 
             db = JsonDatabase.getInstance(getApplicationContext());
-
             }
 
     public void OnButtonClick(View view){

@@ -68,4 +68,9 @@ public class PresetActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(PresetActivity.this, MainActivity.class));
+    }
 }

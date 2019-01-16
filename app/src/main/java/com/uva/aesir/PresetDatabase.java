@@ -11,7 +11,8 @@ public class PresetDatabase extends SQLiteOpenHelper {
     private static PresetDatabase instance;
     SQLiteDatabase sqLiteDatabase;
 
-    public PresetDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public PresetDatabase(@Nullable Context context, @Nullable String name,
+                          @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
@@ -44,8 +45,11 @@ public class PresetDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table presets (_id INTEGER PRIMARY KEY, Exercise_name TEXT, title TEXT, numberOfTimes TEXT)");
-        sqLiteDatabase.execSQL("create table exercises (_id INTEGER PRIMARY KEY, idex TEXT, title TEXT, description TEXT, category TEXT)");
+        sqLiteDatabase.execSQL("create table presets (_id INTEGER PRIMARY KEY, " +
+                "Exercise_name TEXT, title TEXT, numberOfTimes TEXT)");
+
+        sqLiteDatabase.execSQL("create table exercises (_id INTEGER PRIMARY KEY, " +
+                "idex TEXT, title TEXT, description TEXT, category TEXT)");
     }
 
     @Override
