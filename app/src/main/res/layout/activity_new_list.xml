@@ -27,20 +27,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="5" />
 
-        <Spinner
-            android:id="@+id/newlist_numberOfSets"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="2" />
-
         <Button
             android:id="@+id/new_list_del"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="onDeleteclik"
+            android:onClick="onDeleteclick"
             android:text="DELETE"
-            tools:onClick="onDeleteclik" />
+            tools:onClick="onDeleteclick" />
     </LinearLayout>
 
     <LinearLayout

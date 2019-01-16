@@ -2,6 +2,7 @@ package com.uva.aesir;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,12 +24,14 @@ import java.util.List;
 public class NewListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener { //implements AdapterView.OnItemSelectedListener
     Button btn;
     private LinearLayout parentLinearLayout;
+    JsonDatabase exercise_listy;
 
     String[] sets ={"1", "2", "3", "4"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_list);
+        exercise_listy = JsonDatabase.getInstance(getApplicationContext());
 
         // add dynamic
         parentLinearLayout = (LinearLayout) findViewById(R.id.new_list_linear);
@@ -44,13 +47,6 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         ArrayAdapter<String> adapterE = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sets);
         choose_exercise.setAdapter(adapterE);
         choose_exercise.setOnItemSelectedListener(this);
-
-
-        Spinner choose_sets = (Spinner) findViewById(R.id.newlist_numberOfSets);
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, sets);
-        choose_sets.setAdapter(adapter);
-        choose_sets.setOnItemSelectedListener(this);
-
     }
 
     @Override
@@ -66,10 +62,10 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     public void addEntry(View view){
         TextView title = findViewById(R.id.newlist_title);
-        Spinner numberOfSets = findViewById(R.id.newlist_numberOfSets);
+        //Spinner numberOfSets = findViewById(R.id.newlist_numberOfSets);
         Spinner exercise = findViewById(R.id.newlist_exercise);
 
-        Preset new_preset = new Preset(title.getText().toString(), numberOfSets.toString(), exercise.toString());
+        Preset new_preset = new Preset(title.getText().toString(), exercise.toString());
         PresetDatabase db = PresetDatabase.getInstance(this);
         db.insert(new_preset);
 
@@ -77,14 +73,42 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     }
 
+    public List<String> getNameExercise(){
+        List<String> nameExercise = new ArrayList<String>();
+
+        String query = "SELECT title FROM exercises";
+
+        exercise_listy.getReadableDatabase();
+        Cursor cursor = exercise_listy.selectName();
+
+        if (cursor.moveToFirst()){
+            do{
+                nameExercise.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        exercise_listy.close();
+
+        return nameExercise;
+    }
+
     public void addNewField(View v) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View rowView = inflater.inflate(R.layout.new_list_entry, null);
 
+        Spinner exercise = (Spinner) rowView.findViewById(R.id.newlist_exercise2);
+        ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, getNameExercise());
+        exercise.setAdapter(adapter);
+        exercise.setOnItemSelectedListener(this);
+
+
+
         parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount() - 1);
+
     }
 
-    public void onDeleteclik(View v){
+    public void onDeleteclick(View v){
         parentLinearLayout.removeView((View) v.getParent());
         System.out.println(v.getParent());
     }

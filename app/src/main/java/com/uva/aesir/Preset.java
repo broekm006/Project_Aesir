@@ -3,11 +3,11 @@ package com.uva.aesir;
 public class Preset {
     //private int idExercise;
     private int id;
-    private String title, numberOfTimes, exercise_name;
+    private String title, exercise_name;
 
-    public Preset(String title, String numberOfTimes, String exercise_name){
+    public Preset(String title, String exercise_name){
         this.title = title;
-        this.numberOfTimes = numberOfTimes;
+        //this.numberOfTimes = numberOfTimes;
         //this.idExercise = idExercise;
         this.exercise_name = exercise_name;
     }
@@ -28,10 +28,6 @@ public class Preset {
         this.title = title;
     }
 
-    public void setNumberOfTimes(String numberOfTimes) {
-        this.numberOfTimes = numberOfTimes;
-    }
-
     //    public int getIdExercise() {
 //        return idExercise;
 //    }
@@ -44,7 +40,4 @@ public class Preset {
         return title;
     }
 
-    public String getNumberOfTimes() {
-        return numberOfTimes;
-    }
 }

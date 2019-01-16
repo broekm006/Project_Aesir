@@ -29,6 +29,9 @@ public class JsonDatabase extends SQLiteOpenHelper {
         return getWritableDatabase().rawQuery(("SELECT * FROM exercises"), null);
     }
 
+    public Cursor selectName(){
+        return getWritableDatabase().rawQuery(("SELECT title FROM exercises"), null);
+    }
 
     public void insert(Exercise insertion){
 

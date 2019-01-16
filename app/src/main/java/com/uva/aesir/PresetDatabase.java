@@ -34,7 +34,7 @@ public class PresetDatabase extends SQLiteOpenHelper {
         ContentValues value = new ContentValues();
         value.put("Exercise_name", insertion.getExercise_name());
         value.put("title", insertion.getTitle());
-        value.put("numberOfTimes", insertion.getNumberOfTimes());
+        //value.put("numberOfTimes", insertion.getNumberOfTimes());
         getWritableDatabase().insert("presets", null, value);
     }
 
