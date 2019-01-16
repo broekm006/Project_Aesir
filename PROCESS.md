@@ -20,5 +20,5 @@ Fixed issue with primary key & created the spinner data for the presets. removed
 Transforming JSON data to database. Reloading every exercise with json works, but creates a form of lag. The user has to wait untill the full list is retreived from the api. Chaning to the db will make this all local and avoid the loading problem. Instead an update button will be added to ensure new data can always be gathered. Created style guide with "team A"
 
 # day 8  
-In progress...
+Finished reform from JSON to database. Data is now shown corretly through the listview interface and only stored 1 time instead of multiple times. Memory leak problems sovled by closing certain cursors after use. 
 
