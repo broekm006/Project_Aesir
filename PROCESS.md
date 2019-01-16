@@ -1,14 +1,24 @@
 # day 1  
-Made proposal document.  
+Made proposal document and created the new android application (connected to git for version control).
 
 # day 2  
-Made design document with class diagram, feature overview and data connections.  
+Made design document with class diagram, feature overview and data connections. Started to look deeper into the structure(s) of the application and planned out the basic methods.
 
 # day 3  
-Work on initial prototype for the application.
+Work on initial prototype for the application. Anroid had a small issue with accepting input & gradle syncing. Fixed by reconfiguring android. Created most activities that the app requires. Started with creating the api call to get the main data.
 
 # day 4  
-Work on implementiation of the database + listview for presets.
+Work on implementiation of the database + listview for presets. > database for presets contains the name and will have room for the new exercises that will be added to the database. img was broken > fixed by changing some android settings.
 
 # day 5  
-Struggle with my dynamic fields (presets) and long click list remove doesnt work (id always seems to be 1).
+To allow presets to add new exercises multiple fields will be needed. To achieve this dynamic fiels will be added to the new list creation. > Struggle with my dynamic fields (presets), but seems to work. Only need to retreive data and connected correct spinner data to the new fieds. && Long click list remove doesnt work (id always seems to be 1) Primary key does not get assigned properly.
+
+# day 6  
+Fixed issue with primary key & created the spinner data for the presets. removed data entry and added id fields to JSON data to ensure exercise always has a unique id known in the api.
+
+# day 7  
+Transforming JSON data to database. Reloading every exercise with json works, but creates a form of lag. The user has to wait untill the full list is retreived from the api. Chaning to the db will make this all local and avoid the loading problem. Instead an update button will be added to ensure new data can always be gathered. Created style guide with "team A"
+
+# day 8  
+Finished reform from JSON to database. Data is now shown corretly through the listview interface and only stored 1 time instead of multiple times. Memory leak problems sovled by closing certain cursors after use. 
+
