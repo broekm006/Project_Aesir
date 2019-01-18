@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NewListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener { //implements AdapterView.OnItemSelectedListener
+    String txt;
     Button btn;
     Spinner exercise;
     private LinearLayout parentLinearLayout;
@@ -52,8 +53,11 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String txt = adapterView.getItemAtPosition(i).toString();
+        txt = adapterView.getItemAtPosition(i).toString();
         //Toast.makeText(adapterView.getContext(), txt, Toast.LENGTH_LONG).show();
+        System.out.println(txt);
+
+
     }
 
     @Override
@@ -63,10 +67,10 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     public void addEntry(View view){
         TextView title = findViewById(R.id.newlist_title);
-        //Spinner numberOfSets = findViewById(R.id.newlist_numberOfSets);
-        //Spinner exercise = findViewById(R.id.newlist_exercise);
+        Spinner exercise = findViewById(R.id.newlist_exercise2);
+        System.out.println(exercise.toString());
 
-        Preset new_preset = new Preset(title.getText().toString(), exercise.toString());
+        Preset new_preset = new Preset(title.getText().toString(), txt);
         PresetDatabase db = PresetDatabase.getInstance(this);
         db.insert(new_preset);
 
@@ -96,7 +100,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     public void addNewField(View v) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View rowView = inflater.inflate(R.layout.new_list_entry, null);
+        final View rowView = inflater.inflate(R.layout.new_list_entry, null, false);
 
         exercise = (Spinner) rowView.findViewById(R.id.newlist_exercise2);
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, getNameExercise());
@@ -108,6 +112,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount() - 1);
 
     }
+    // add to db on selected / remove on delete click ish
 
     public void onDeleteclick(View v){
         parentLinearLayout.removeView((View) v.getParent());

@@ -2,7 +2,6 @@ package com.uva.aesir;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.sip.SipSession;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,12 +36,13 @@ public class PresetActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Cursor anotherOne = (Cursor) adapterView.getItemAtPosition(i);
+            anotherOne.moveToPosition(i);
 
             Intent intent = new Intent(PresetActivity.this, Preset_detail.class);
             intent.putExtra("title", anotherOne.getString(anotherOne.getColumnIndex("title")));
-            //intent.putExtra("exercise", anotherOne.getString(anotherOne.getColumnIndex("exercise")));
-            //intent.putExtra("numberOfSets", anotherOne.getString(anotherOne.getColumnIndex("numberOfSets")));
+            intent.putExtra("exercise", anotherOne.getString(anotherOne.getColumnIndex("exercise_name")));
 
+            anotherOne.close();
             startActivity(intent);
         }
     }
@@ -63,6 +63,7 @@ public class PresetActivity extends AppCompatActivity {
     public void updateData(){
         Cursor second_cursor = db.selectAll();
         adapter.swapCursor(second_cursor);
+        second_cursor.close();
     }
 
     public void onResume(){

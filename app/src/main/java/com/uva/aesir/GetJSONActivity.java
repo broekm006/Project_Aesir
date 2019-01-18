@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Toast;
 import java.util.ArrayList;
 
-public class GetJSONActivity extends AppCompatActivity implements ExerciseRequest.Callback {
+public class GetJSONActivity extends AppCompatActivity implements ExerciseRequest.Callback, ExerciseImgRequest.Callback {
     JsonDatabase db;
 
     @Override
@@ -15,6 +15,9 @@ public class GetJSONActivity extends AppCompatActivity implements ExerciseReques
             setContentView(R.layout.activity_get_json);
             ExerciseRequest x = new ExerciseRequest(this);
             x.getExercise(this);
+
+            ExerciseImgRequest y = new ExerciseImgRequest(this);
+            y.getExerciseImg(this);
 
             db = JsonDatabase.getInstance(getApplicationContext());
             }
@@ -35,5 +38,17 @@ public class GetJSONActivity extends AppCompatActivity implements ExerciseReques
     @Override
     public void gotExerciseError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void gotExerciseImg(ArrayList<ExerciseImg> exerciseImgs) {
+        for(int i = 0; i < exerciseImgs.size(); i++){
+            db.insertImg(exerciseImgs.get(i));
+        }
+    }
+
+    @Override
+    public void gotExerciseImgError(String message) {
+
     }
 }

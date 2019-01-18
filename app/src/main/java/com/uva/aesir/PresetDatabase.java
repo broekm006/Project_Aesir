@@ -16,21 +16,19 @@ public class PresetDatabase extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
-    public static PresetDatabase getInstance(Context context){
-        if (instance == null){
+    public static PresetDatabase getInstance(Context context) {
+        if (instance == null) {
             return instance = new PresetDatabase(context, "com.uva.aesir", null, 1);
-        }
-
-        else{
+        } else {
             return instance;
         }
     }
 
-    public Cursor selectAll(){
+    public Cursor selectAll() {
         return getWritableDatabase().rawQuery(("SELECT * FROM presets"), null);
     }
 
-    public void insert(Preset insertion){
+    public void insert(Preset insertion) {
         ContentValues value = new ContentValues();
         value.put("Exercise_name", insertion.getExercise_name());
         value.put("title", insertion.getTitle());
@@ -38,18 +36,16 @@ public class PresetDatabase extends SQLiteOpenHelper {
         getWritableDatabase().insert("presets", null, value);
     }
 
-    public void delete(long id){
+    public void delete(long id) {
         sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.execSQL("delete from presets where _id='" + id + "'");
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table presets (_id INTEGER PRIMARY KEY, " +
-                "Exercise_name TEXT, title TEXT, numberOfTimes TEXT)");
-
-        sqLiteDatabase.execSQL("create table exercises (_id INTEGER PRIMARY KEY, " +
-                "idex TEXT, title TEXT, description TEXT, category TEXT)");
+        sqLiteDatabase.execSQL("create table presets (_id INTEGER PRIMARY KEY, Exercise_name TEXT, title TEXT, numberOfTimes TEXT)");
+        sqLiteDatabase.execSQL("create table exercises (_id INTEGER PRIMARY KEY, idex TEXT, title TEXT, description TEXT, category TEXT)");
+        sqLiteDatabase.execSQL("create table exerciseImgs (_id INTEGER PRIMARY KEY, idex TEXT, imgUrl TEXT)");
     }
 
     @Override

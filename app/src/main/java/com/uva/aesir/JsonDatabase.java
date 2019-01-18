@@ -55,7 +55,24 @@ public class JsonDatabase extends SQLiteOpenHelper {
 
     }
 
-    public void delete(long id){
+    public void insertImg (ExerciseImg insertion){
+        ContentValues value = new ContentValues();
+        value.put("idex", insertion.getIdex());
+        value.put("imgUrl", insertion.getImgUrl());
+
+        Cursor cursor = null;
+        cursor = getWritableDatabase().rawQuery("SELECT * FROM exerciseImgs WHERE idex='" + insertion.getIdex() + "'", null);
+
+        if (cursor.getCount() > 0){
+
+        }
+        else{
+            getWritableDatabase().insert("exerciseImgs", null, value);
+        }
+
+        cursor.close();
+    }
+    public void deleteExercise(long id){
         sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.execSQL("delete from exercises where _id ='" + id + "'");
     }
@@ -63,7 +80,8 @@ public class JsonDatabase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table exercises (_id INTEGER PRIMARY KEY, idex TEXT, title TEXT, description TEXT, category TEXT)");
-        sqLiteDatabase.execSQL("create table presets (_id INTEGER PRIMARY KEY, Exercise_name TEXT, title TEXT, numberOfTimes TEXT)");
+        sqLiteDatabase.execSQL("create table presets (_id INTEGER PRIMARY KEY, exercise_name TEXT, title TEXT)");
+        sqLiteDatabase.execSQL("create table exerciseImgs (_id INTEGER PRIMARY KEY, idex TEXT, imgUrl TEXT)");
     }
 
     @Override
