@@ -38,8 +38,9 @@ public class ExerciseActivity extends AppCompatActivity {
             Intent intent = new Intent(ExerciseActivity.this, SpecificActivity.class);
             intent.putExtra("title", one.getString(one.getColumnIndex("title")));
             intent.putExtra("description", one.getString(one.getColumnIndex("description")));
+            intent.putExtra("image", one.getString(one.getColumnIndex("imgUrl")));
 
-
+            one.close();
             startActivity(intent);
         }
     }

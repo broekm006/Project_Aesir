@@ -26,11 +26,15 @@ public class JsonDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor selectAll(){
-        return getWritableDatabase().rawQuery(("SELECT * FROM exercises"), null);
+        return getWritableDatabase().rawQuery(("SELECT * FROM exercises LEFT JOIN exerciseImgs ON exercises.idex = exerciseImgs.idex"), null);
     }
 
     public Cursor selectName(){
         return getWritableDatabase().rawQuery(("SELECT title FROM exercises"), null);
+    }
+
+    public Cursor selectImg(String id){
+        return getWritableDatabase().rawQuery(("SELECT imgUrl FROM exerciseImgs WHERE idex = '" + id + "'"), null);
     }
 
     public void insert(Exercise insertion){

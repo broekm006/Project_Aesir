@@ -7,10 +7,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import com.squareup.picasso.Picasso;
+
 
 public class SpecificActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     ArrayList<String> weights = new ArrayList<String>();
@@ -23,9 +26,15 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
 
         TextView name = findViewById(R.id.specific_name);
         TextView description = findViewById(R.id.specific_description);
+        ImageView image = findViewById(R.id.specific_image);
 
         name.setText(intent.getStringExtra("title"));
         description.setText(intent.getStringExtra("description"));
+                Picasso.get().load(intent.getStringExtra("image"))
+                .resize(1000,1000)
+                .placeholder(R.drawable.no_image)
+                .error(R.drawable.no_image)
+                .into(image);
 
         Spinner one = (Spinner) findViewById(R.id.set_1);
         Spinner two = (Spinner) findViewById(R.id.set_2);

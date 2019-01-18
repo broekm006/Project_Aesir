@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fillViewport="true">
@@ -31,7 +33,7 @@
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/specific_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:adjustViewBounds="true"
