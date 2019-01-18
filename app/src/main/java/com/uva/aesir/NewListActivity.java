@@ -28,7 +28,8 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
     private LinearLayout parentLinearLayout;
     JsonDatabase exercise_listy;
 
-    String[] sets ={"1", "2", "3", "4"};
+    String[] sets = {"1", "2", "3", "4"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +57,6 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         txt = adapterView.getItemAtPosition(i).toString();
         //Toast.makeText(adapterView.getContext(), txt, Toast.LENGTH_LONG).show();
         System.out.println(txt);
-
-
     }
 
     @Override
@@ -65,7 +64,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     }
 
-    public void addEntry(View view){
+    public void addEntry(View view) {
         TextView title = findViewById(R.id.newlist_title);
         Spinner exercise = findViewById(R.id.newlist_exercise2);
         System.out.println(exercise.toString());
@@ -78,7 +77,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     }
 
-    public List<String> getNameExercise(){
+    public List<String> getNameExercise() {
         List<String> nameExercise = new ArrayList<String>();
 
         String query = "SELECT title FROM exercises";
@@ -86,8 +85,8 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         exercise_listy.getReadableDatabase();
         Cursor cursor = exercise_listy.selectName();
 
-        if (cursor.moveToFirst()){
-            do{
+        if (cursor.moveToFirst()) {
+            do {
                 nameExercise.add(cursor.getString(0));
             } while (cursor.moveToNext());
         }
@@ -108,13 +107,12 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         exercise.setOnItemSelectedListener(this);
 
 
-
         parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount() - 1);
 
     }
     // add to db on selected / remove on delete click ish
 
-    public void onDeleteclick(View v){
+    public void onDeleteclick(View v) {
         parentLinearLayout.removeView((View) v.getParent());
         System.out.println(v.getParent());
     }
