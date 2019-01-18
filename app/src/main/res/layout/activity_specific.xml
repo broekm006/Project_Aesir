@@ -29,13 +29,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/aclonica"
+            android:gravity="center"
             android:text="name"
             android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/specific_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
             android:scaleType="fitXY"
@@ -45,7 +49,10 @@
             android:id="@+id/specific_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:fontFamily="@font/aclonica"
+            android:gravity="center"
             android:text="Description" />
 
         <android.support.design.widget.FloatingActionButton

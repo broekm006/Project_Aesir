@@ -31,7 +31,7 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
         name.setText(intent.getStringExtra("title"));
         description.setText(intent.getStringExtra("description"));
                 Picasso.get().load(intent.getStringExtra("image"))
-                .resize(1000,1000)
+                .resize(400,600)
                 .placeholder(R.drawable.no_image)
                 .error(R.drawable.no_image)
                 .into(image);
