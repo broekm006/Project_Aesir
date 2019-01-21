@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class GetJSONActivity extends AppCompatActivity implements ExerciseRequest.Callback, ExerciseImgRequest.Callback {
@@ -11,26 +12,20 @@ public class GetJSONActivity extends AppCompatActivity implements ExerciseReques
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_get_json);
-            ExerciseRequest x = new ExerciseRequest(this);
-            x.getExercise(this);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_get_json);
+        ExerciseRequest x = new ExerciseRequest(this);
+        x.getExercise(this);
 
-            ExerciseImgRequest y = new ExerciseImgRequest(this);
-            y.getExerciseImg(this);
+        ExerciseImgRequest y = new ExerciseImgRequest(this);
+        y.getExerciseImg(this);
 
-            db = JsonDatabase.getInstance(getApplicationContext());
-            }
-
-    public void OnButtonClick(View view){
-        //startActivity(new Intent(this, SpecificActivity.class));
-        System.out.println(db.selectAll());
+        db = JsonDatabase.getInstance(getApplicationContext());
     }
-
 
     @Override
     public void gotExercise(ArrayList<Exercise> exercise) {
-        for(int i = 0; i < exercise.size(); i++){
+        for (int i = 0; i < exercise.size(); i++) {
             db.insert(exercise.get(i));
         }
     }
@@ -42,13 +37,13 @@ public class GetJSONActivity extends AppCompatActivity implements ExerciseReques
 
     @Override
     public void gotExerciseImg(ArrayList<ExerciseImg> exerciseImgs) {
-        for(int i = 0; i < exerciseImgs.size(); i++){
+        for (int i = 0; i < exerciseImgs.size(); i++) {
             db.insertImg(exerciseImgs.get(i));
         }
     }
 
     @Override
     public void gotExerciseImgError(String message) {
-
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,24 +29,23 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
     Spinner exercise;
     private LinearLayout parentLinearLayout;
     JsonDatabase exercise_listy;
-
-    String[] sets = {"1", "2", "3", "4"};
+    PresetDatabase db;
+    ArrayList attempt400 = new ArrayList();
+    //String[] sets = {"1", "2", "3", "4"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_list);
         exercise_listy = JsonDatabase.getInstance(getApplicationContext());
+        db = PresetDatabase.getInstance(getApplicationContext());
 
         // add dynamic
         parentLinearLayout = (LinearLayout) findViewById(R.id.new_list_linear);
 
-        // grey out submit button untill atleast ONE exercise is chosen
+        // grey out submit button untill name is given
         btn = (Button) findViewById(R.id.Submit_newlist);
         //btn.setEnabled(false);
-
-        // 1 for list of all exercises >
-
 
 //        Spinner choose_exercise = (Spinner) findViewById(R.id.newlist_exercise);
 //        ArrayAdapter<String> adapterE = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sets);
@@ -55,8 +56,12 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         txt = adapterView.getItemAtPosition(i).toString();
-        //Toast.makeText(adapterView.getContext(), txt, Toast.LENGTH_LONG).show();
-        System.out.println(txt);
+        if (txt.isEmpty() || txt == null || txt.equals("")) {
+        } else {
+            attempt400.add(txt);
+        }
+//        PresetListItem presetListItem = new PresetListItem(txt);
+//        db.insertListItem(presetListItem);
     }
 
     @Override
@@ -66,18 +71,23 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     public void addEntry(View view) {
         TextView title = findViewById(R.id.newlist_title);
-        Spinner exercise = findViewById(R.id.newlist_exercise2);
-        System.out.println(exercise.toString());
 
-        Preset new_preset = new Preset(title.getText().toString(), txt);
-        PresetDatabase db = PresetDatabase.getInstance(this);
-        db.insert(new_preset);
+        for (int i = 0; i < attempt400.size(); i++) {
+            Preset new_preset = new Preset(title.getText().toString(), attempt400.get(i).toString());
+            PresetDatabase db = PresetDatabase.getInstance(this);
+            db.insert(new_preset);
+        }
+
+        ListName newName = new ListName(title.getText().toString());
+        db.insertTitle(newName);
 
         startActivity(new Intent(this, PresetActivity.class));
-
     }
 
     public List<String> getNameExercise() {
+//        EditText title = findViewById(R.id.newlist_title);
+//        String titled = title.getText().toString().trim();
+
         List<String> nameExercise = new ArrayList<String>();
 
         String query = "SELECT title FROM exercises";
@@ -114,7 +124,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     public void onDeleteclick(View v) {
         parentLinearLayout.removeView((View) v.getParent());
-        System.out.println(v.getParent());
+        System.out.println("test" + v.getParent());
     }
 
     @Override

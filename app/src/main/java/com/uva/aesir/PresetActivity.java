@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class PresetActivity extends AppCompatActivity {
-    PresetDatabase db;
+    ListNameDatabase db;
     PresetAdapter adapter;
 
     @Override
@@ -17,22 +17,23 @@ public class PresetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preset);
 
-        db = PresetDatabase.getInstance(getApplicationContext());
+        db = ListNameDatabase.getInstance(getApplicationContext());
         adapter = new PresetAdapter(this, db.selectAll());
 
         ListView listView = (ListView) findViewById(R.id.preset_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
         listView.setOnItemLongClickListener(new ListViewLongClickListener());
+        System.out.println("werkt dit???");
 
     }
 
-    public void OnButtonClick(View view){
+    public void OnButtonClick(View view) {
         startActivity(new Intent(this,
-                                NewListActivity.class));
+                NewListActivity.class));
     }
 
-    private class ListViewClickListener implements AdapterView.OnItemClickListener{
+    private class ListViewClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Cursor anotherOne = (Cursor) adapterView.getItemAtPosition(i);
@@ -40,14 +41,13 @@ public class PresetActivity extends AppCompatActivity {
 
             Intent intent = new Intent(PresetActivity.this, Preset_detail.class);
             intent.putExtra("title", anotherOne.getString(anotherOne.getColumnIndex("title")));
-            intent.putExtra("exercise", anotherOne.getString(anotherOne.getColumnIndex("exercise_name")));
 
             anotherOne.close();
             startActivity(intent);
         }
     }
 
-    private class ListViewLongClickListener implements AdapterView.OnItemLongClickListener{
+    private class ListViewLongClickListener implements AdapterView.OnItemLongClickListener {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
             Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
@@ -56,18 +56,32 @@ public class PresetActivity extends AppCompatActivity {
             db.delete(position);
 
             updateData();
+
+            cursor.close();
             return true;
         }
     }
 
-    public void updateData(){
-        Cursor second_cursor = db.selectAll();
-        adapter.swapCursor(second_cursor);
-        second_cursor.close();
+    // swap cursor does not work as intented so work around is recreating the data
+    public void updateData() {
+        db = ListNameDatabase.getInstance(getApplicationContext());
+        adapter = new PresetAdapter(this, db.selectAll());
+
+        ListView listView = (ListView) findViewById(R.id.preset_list);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new ListViewClickListener());
+        listView.setOnItemLongClickListener(new ListViewLongClickListener());
     }
 
-    public void onResume(){
+    public void onResume() {
         super.onResume();
+        db = ListNameDatabase.getInstance(getApplicationContext());
+        adapter = new PresetAdapter(this, db.selectAll());
+
+        ListView listView = (ListView) findViewById(R.id.preset_list);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new ListViewClickListener());
+        listView.setOnItemLongClickListener(new ListViewLongClickListener());
     }
 
     @Override

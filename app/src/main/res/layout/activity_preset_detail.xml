@@ -22,4 +22,9 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="73dp"
         tools:layout_editor_absoluteY="262dp" />
+
+    <ListView
+        android:id="@+id/detail_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
