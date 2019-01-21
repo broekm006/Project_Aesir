@@ -22,3 +22,12 @@ Transforming JSON data to database. Reloading every exercise with json works, bu
 # day 8  
 Finished reform from JSON to database. Data is now shown corretly through the listview interface and only stored 1 time instead of multiple times. Memory leak problems sovled by closing certain cursors after use. 
 
+# day 9
+INTERSHIP STUFF
+
+# day 10
+Database did not work as initially thought about. So i remoddeld the entire database sturcture and changed the code accordingly. Now it hold room for the exercises, lists and exercises within the lists.
+
+# day 11
+Issue with listview (Presets) when data is clicked the list dissapears. Normal cursor swap does not work. Talked with Renske about a workaround. Now it recreates the data on onResume / onUpdate.
+
