@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity implements ExerciseRequest.C
         startActivity(new Intent(MainActivity.this, ExerciseActivity.class));
     }
 
+    public void OnButtonClickCardio(View view) {
+        startActivity(new Intent(MainActivity.this, CardioActivity.class));
+    }
+
     public void onButtonClickResults(View view) {
         startActivity(new Intent(MainActivity.this, ResultsActivity.class));
     }
