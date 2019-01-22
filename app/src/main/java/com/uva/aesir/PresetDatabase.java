@@ -7,8 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
-import java.util.List;
-
 public class PresetDatabase extends SQLiteOpenHelper {
     private static PresetDatabase instance;
     SQLiteDatabase sqLiteDatabase;
@@ -32,6 +30,10 @@ public class PresetDatabase extends SQLiteOpenHelper {
 
     public Cursor selectDiscinctExercises(String name) {
         return getWritableDatabase().rawQuery(("SELECT * FROM presets WHERE title = '" + name + "' ORDER BY exercise_name ASC "), null);
+    }
+
+    public Cursor selectExercises(String exerciseName) {
+        return getWritableDatabase().rawQuery(("SELECT * FROM exercises LEFT JOIN exerciseImgs ON exercises.idex = exerciseImgs.idex WHERE title = '" + exerciseName + "'"), null);
     }
 
     public void insert(Preset insertion) {

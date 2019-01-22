@@ -31,7 +31,8 @@
         <activity android:name=".NewListActivity" />
         <activity android:name=".Preset_detail" />
         <activity android:name=".GetJSONActivity" />
-        <activity android:name=".CardioActivity"></activity>
+        <activity android:name=".CardioActivity" />
+        <activity android:name=".PresetExercise"></activity>
     </application>
 
 </manifest>
