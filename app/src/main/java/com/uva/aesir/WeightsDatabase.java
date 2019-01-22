@@ -7,17 +7,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
-public class CardioDatabase extends SQLiteOpenHelper {
-    private static CardioDatabase instance;
+public class WeightsDatabase extends SQLiteOpenHelper {
+    private static WeightsDatabase instance;
     SQLiteDatabase sqLiteDatabase;
 
-    public CardioDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public WeightsDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-    public static CardioDatabase getInstance(Context context){
+    public static WeightsDatabase getInstance(Context context){
         if (instance == null){
-            return instance = new CardioDatabase(context, "com.uva.aesir", null, 1);
+            return instance = new WeightsDatabase(context, "com.uva.aesir", null, 1);
         }
 
         else{
@@ -26,22 +26,23 @@ public class CardioDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor selectAll(){
-        return getWritableDatabase().rawQuery(("SELECT * FROM cardio"), null);
+        return getWritableDatabase().rawQuery(("SELECT * FROM weights"), null);
     }
 
-    public void insert(Cardio insertion){
+    public void insert(Weights insertion){
         ContentValues value = new ContentValues();
-        value.put("km", insertion.getKm());
-        value.put("speed", insertion.getSpeed());
-        value.put("time", insertion.getTime());
-        value.put("activity", insertion.getActivity());
+        value.put("exercise", insertion.getExercise());
+        value.put("setA", insertion.getSetA());
+        value.put("setB", insertion.getSetB());
+        value.put("setC", insertion.getSetC());
+        value.put("setD", insertion.getSetD());
 
-        getWritableDatabase().insert("cardio", null, value);
+        getWritableDatabase().insert("weights", null, value);
     }
 
     public void deleteCardio(long id){
         sqLiteDatabase = getWritableDatabase();
-        sqLiteDatabase.execSQL("delete from cardio where _id ='" + id + "'");
+        sqLiteDatabase.execSQL("delete from weights where _id ='" + id + "'");
     }
 
     @Override
@@ -52,11 +53,12 @@ public class CardioDatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table listName (_id INTEGER PRIMARY KEY, title TEXT)");
         sqLiteDatabase.execSQL("create table cardio (_id INTEGER PRIMARY KEY, km INT, speed INT, time INT, activity TEXT)");
         sqLiteDatabase.execSQL("create table weights (_id INTEGER PRIMARY KEY, exercise TEXT, setA TEXT, setB TEXT, setC TEXT, setD TEXT)");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("drop table cardio");
+        sqLiteDatabase.execSQL("drop table weights");
         onCreate(sqLiteDatabase);
     }
 }
