@@ -12,7 +12,22 @@ public class CardioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cardio);
     }
 
-    public void onClick(View view){
-
+    public void onSubmit(View view) {
+        // insert data to database (new table cardio)
     }
+
+    public void onButtonSelect(View view){
+        switch (view.getId()){ // check statement getID is correct
+            case R.id.Cardio_walking:
+                // do something
+            case R.id.Cardio_running:
+                // do something
+            case R.id.Cardio_cycling:
+                // do something
+            default:
+                // null > please enter activity
+        }
+    }
+
+
 }

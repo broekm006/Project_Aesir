@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements ExerciseRequest.C
         }
         count += 1;
 
-        if (count > 17){
+        if (count > 17) {
             progressBar.setVisibility(View.GONE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         }

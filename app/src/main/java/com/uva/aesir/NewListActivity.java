@@ -43,7 +43,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         // add dynamic
         parentLinearLayout = (LinearLayout) findViewById(R.id.new_list_linear);
 
-        // grey out submit button untill name is given
+        // grey out submit button untill name is given > HOW?!?!?
         btn = (Button) findViewById(R.id.Submit_newlist);
         //btn.setEnabled(false);
 
@@ -58,7 +58,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         txt = adapterView.getItemAtPosition(i).toString();
         if (txt.isEmpty() || txt == null || txt.equals("")) {
         } else {
-            attempt400.add(txt);
+            attempt400.add(txt); // i know this is not a perfect way, but will be improved in a later stage (if time)
         }
 //        PresetListItem presetListItem = new PresetListItem(txt);
 //        db.insertListItem(presetListItem);
@@ -116,11 +116,8 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         exercise.setAdapter(adapter);
         exercise.setOnItemSelectedListener(this);
 
-
         parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount() - 1);
-
     }
-    // add to db on selected / remove on delete click ish
 
     public void onDeleteclick(View v) {
         parentLinearLayout.removeView((View) v.getParent());

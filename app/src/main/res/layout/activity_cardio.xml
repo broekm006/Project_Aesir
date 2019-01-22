@@ -27,18 +27,21 @@
             android:id="@+id/Cardio_walking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onButtonSelect"
             android:text="Walking" />
 
         <Button
             android:id="@+id/Cardio_running"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onButtonSelect"
             android:text="Running" />
 
         <Button
             android:id="@+id/Cardio_cycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onButtonSelect"
             android:text="Cycling" />
     </LinearLayout>
 
@@ -46,6 +49,8 @@
         android:id="@+id/cardio_km_whole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -69,6 +74,8 @@
         android:id="@+id/cardio_time_whole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -92,6 +99,9 @@
         android:id="@+id/cardio_speed_whole"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -110,5 +120,12 @@
             android:inputType="number" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/Cardio_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSubmit"
+        android:text="Submit" />
 
 </LinearLayout>
