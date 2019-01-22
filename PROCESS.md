@@ -31,3 +31,6 @@ Database did not work as initially thought about. So i remoddeld the entire data
 # day 11
 Issue with listview (Presets) when data is clicked the list dissapears. Normal cursor swap does not work. Talked with Renske about a workaround. Now it recreates the data on onResume / onUpdate.
 
+# day 12
+Created cardio as a activity + data storage of weights and cardio are now possible through the correct locations. Data is stored in the database. Only need to check if date/time storage need to be added to the data entries. Further fixed issues with dissapearing listviews through the onResume function.
+
