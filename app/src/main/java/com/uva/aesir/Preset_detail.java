@@ -41,6 +41,7 @@ public class Preset_detail extends AppCompatActivity {
 
             Intent intent = new Intent(Preset_detail.this, PresetExercise.class);
             intent.putExtra("exercise_name", one.getString(one.getColumnIndex("exercise_name")));
+            intent.putExtra("title", one.getString(one.getColumnIndex("title")));
 
             one.close();
             startActivity(intent);
@@ -49,6 +50,9 @@ public class Preset_detail extends AppCompatActivity {
 
     public void onResume() {
         super.onResume();
+        Intent intent = getIntent();
+        titleRetrieved = (String) intent.getSerializableExtra("title");
+
         db = PresetDatabase.getInstance(getApplicationContext());
         adapter = new PresetAdapterExercises(this, db.selectDiscinctExercises(titleRetrieved));
 

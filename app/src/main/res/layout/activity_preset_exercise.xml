@@ -127,6 +127,7 @@
             android:id="@+id/entry_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onClickSubmit"
             android:text="Submit Data" />
 
     </LinearLayout>
