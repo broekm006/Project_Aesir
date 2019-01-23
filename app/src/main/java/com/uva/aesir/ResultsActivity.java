@@ -3,10 +3,15 @@ package com.uva.aesir;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.shapes.Shape;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Size;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.github.jinatonic.confetti.CommonConfetti;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
@@ -15,10 +20,14 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 public class ResultsActivity extends AppCompatActivity {
     WeightsDatabase db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+        Intent intent = getIntent();
+
+        intent.getStringExtra("exerciseName");
 
         db = WeightsDatabase.getInstance(getApplicationContext());
     }
@@ -60,8 +69,10 @@ public class ResultsActivity extends AppCompatActivity {
         graphView.addSeries(series);
 
 
-        Cursor cs1 = db.selectResults("Bike Ride");
+        Cursor cs1 = db.selectResults("Arnold Press");
         cs1.moveToFirst();
+        cs1.moveToNext();
+
         String a1 = cs1.getString(cs1.getColumnIndex("setA"));
         String b1 = cs1.getString(cs1.getColumnIndex("setB"));
         String c1 = cs1.getString(cs1.getColumnIndex("setC"));
@@ -78,5 +89,8 @@ public class ResultsActivity extends AppCompatActivity {
         series.setThickness(8);
         graphView.addSeries(series2);
 
+        ViewGroup viewGroup = (ViewGroup) findViewById(R.id.yesman);
+        CommonConfetti.rainingConfetti(viewGroup, new int[] { Color.BLUE })
+                .infinite();
     }
 }

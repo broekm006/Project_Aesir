@@ -32,7 +32,10 @@
         <activity android:name=".Preset_detail" />
         <activity android:name=".GetJSONActivity" />
         <activity android:name=".CardioActivity" />
-        <activity android:name=".PresetExercise"></activity>
+        <activity android:name=".PresetExercise" />
+        <activity android:name=".ResultsListActivity" />
+        <activity android:name=".ResultsCardioActivity" />
+        <activity android:name=".ResultsWeightsActivity"></activity>
     </application>
 
 </manifest>

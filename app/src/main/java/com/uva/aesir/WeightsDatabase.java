@@ -30,7 +30,7 @@ public class WeightsDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor selectResults(String exercise){
-        return getWritableDatabase().rawQuery(("SELECT * FROM weights WHERE exercise = '" + exercise + "'"), null);
+        return getWritableDatabase().rawQuery(("SELECT * FROM weights WHERE exercise = '" + exercise + "' ORDER BY _id DESC"), null);
     }
 
     public void insert(Weights insertion){

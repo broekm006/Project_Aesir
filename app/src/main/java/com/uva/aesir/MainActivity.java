@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements ExerciseRequest.C
     }
 
     public void onButtonClickResults(View view) {
-        startActivity(new Intent(MainActivity.this, ResultsActivity.class));
+        startActivity(new Intent(MainActivity.this, ResultsListActivity.class));
     }
 
     public void onButtonClickPresets(View view) {
