@@ -21,7 +21,7 @@ public class ResultsListActivity extends AppCompatActivity {
     public void onClick(View view){
           switch(view.getId()){
             case R.id.Results_weights:
-                startActivity(new Intent(this, ResultsActivity.class));
+                startActivity(new Intent(this, ResultsWeightsActivity.class));
                 break;
             case R.id.Results_cardio:
                 startActivity(new Intent(this, ResultsCardioActivity.class));

@@ -19,7 +19,8 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class ResultsActivity extends AppCompatActivity {
     WeightsDatabase db;
-
+    String exerciseName;
+    String a,b,c,d,a1,b1,c1,d1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class ResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_results);
         Intent intent = getIntent();
 
-        intent.getStringExtra("exerciseName");
+        exerciseName = intent.getStringExtra("exerciseName");
 
         db = WeightsDatabase.getInstance(getApplicationContext());
     }
@@ -37,20 +38,27 @@ public class ResultsActivity extends AppCompatActivity {
         startActivity(new Intent(ResultsActivity.this, MainActivity.class));
     }
 
-    public void onAttempt(View view){
-        Cursor cs = db.selectResults("Arnold Press");
+    public void onAttempt(View view) {
+        Cursor cs = db.selectResults(exerciseName);
         cs.moveToFirst();
-        String a = cs.getString(cs.getColumnIndex("setA"));
-        String b = cs.getString(cs.getColumnIndex("setB"));
-        String c = cs.getString(cs.getColumnIndex("setC"));
-        String d = cs.getString(cs.getColumnIndex("setD"));
-
+        if (!cs.moveToFirst()){
+            a = "0";
+            b = "0";
+            c = "0";
+            d = "0";
+        }
+        else {
+            a = cs.getString(cs.getColumnIndex("setA"));
+            b = cs.getString(cs.getColumnIndex("setB"));
+            c = cs.getString(cs.getColumnIndex("setC"));
+            d = cs.getString(cs.getColumnIndex("setD"));
+        }
         GraphView graphView = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
-            new DataPoint(0, Integer.parseInt(a)),
-            new DataPoint(1, Integer.parseInt(b)),
-            new DataPoint(2, Integer.parseInt(c)),
-            new DataPoint(3, Integer.parseInt(d))
+                new DataPoint(0, Integer.parseInt(a)),
+                new DataPoint(1, Integer.parseInt(b)),
+                new DataPoint(2, Integer.parseInt(c)),
+                new DataPoint(3, Integer.parseInt(d))
         });
 
         series.setColor(Color.parseColor("#FF0000"));
@@ -69,16 +77,23 @@ public class ResultsActivity extends AppCompatActivity {
         graphView.addSeries(series);
 
 
-        Cursor cs1 = db.selectResults("Arnold Press");
+        Cursor cs1 = db.selectResults(exerciseName);
         cs1.moveToFirst();
-        cs1.moveToNext();
+        if (!cs1.moveToNext()){
+            a1 = "0";
+            b1 = "0";
+            c1 = "0";
+            d1 = "0";
+        }
+        else {
+            //cs1.moveToNext();
+            a1 = cs1.getString(cs1.getColumnIndex("setA"));
+            b1 = cs1.getString(cs1.getColumnIndex("setB"));
+            c1 = cs1.getString(cs1.getColumnIndex("setC"));
+            d1 = cs1.getString(cs1.getColumnIndex("setD"));
+        }
 
-        String a1 = cs1.getString(cs1.getColumnIndex("setA"));
-        String b1 = cs1.getString(cs1.getColumnIndex("setB"));
-        String c1 = cs1.getString(cs1.getColumnIndex("setC"));
-        String d1 = cs1.getString(cs1.getColumnIndex("setD"));
-
-        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<>(new DataPoint[] {
+        LineGraphSeries<DataPoint> series2 = new LineGraphSeries<>(new DataPoint[]{
                 new DataPoint(0, Integer.parseInt(a1)),
                 new DataPoint(1, Integer.parseInt(b1)),
                 new DataPoint(2, Integer.parseInt(c1)),
@@ -90,7 +105,7 @@ public class ResultsActivity extends AppCompatActivity {
         graphView.addSeries(series2);
 
         ViewGroup viewGroup = (ViewGroup) findViewById(R.id.yesman);
-        CommonConfetti.rainingConfetti(viewGroup, new int[] { Color.BLUE })
+        CommonConfetti.rainingConfetti(viewGroup, new int[]{Color.BLUE})
                 .infinite();
     }
 }
