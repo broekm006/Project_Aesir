@@ -26,7 +26,7 @@ public class WeightsDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor selectAll(){
-        return getWritableDatabase().rawQuery(("SELECT * FROM weights"), null);
+        return getWritableDatabase().rawQuery(("SELECT * FROM weights GROUP BY exercise"), null);
     }
 
     public Cursor selectResults(String exercise){
