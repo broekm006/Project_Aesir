@@ -91,8 +91,9 @@ public class TimerActivity extends AppCompatActivity {
         lap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ListElementsArrayList.add(timer.getText().toString());
+                ListElementsArrayList.add(0, timer.getText().toString());
                 adapter.notifyDataSetChanged();
+                listview.smoothScrollToPosition(0);
             }
         });
     }

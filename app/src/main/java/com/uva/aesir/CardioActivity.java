@@ -45,11 +45,17 @@ public class CardioActivity extends AppCompatActivity {
             String speed_text = speed.getText().toString().trim();
             String time_text = time.getText().toString().trim();
             if (TextUtils.isEmpty(km_text) || km_text.length() == 0 || km_text.equals("") || km_text == null) {
-                System.out.println("no km input");
-            } else if (TextUtils.isEmpty(speed_text) || speed_text.length() == 0 || speed_text.equals("") || speed_text == null) {
-                System.out.println("no speed input");
+                String warning = "Please enter your traveled distance in whole km";
+                Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
+                toast.show();
             } else if (TextUtils.isEmpty(time_text) || time_text.length() == 0 || time_text.equals("") || time_text == null) {
-                System.out.println("no time input");
+                String warning = "Please enter the time you spend on the activity in minutes";
+                Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
+                toast.show();
+            } else if (TextUtils.isEmpty(speed_text) || speed_text.length() == 0 || speed_text.equals("") || speed_text == null) {
+                String warning = "Please enter your average speed in whole km";
+                Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
+                toast.show();
             } else {
                 Cardio cardio = new Cardio(Integer.parseInt(km.getText().toString()), Integer.parseInt(speed.getText().toString()), Integer.parseInt(time.getText().toString()), activity);
                 db.insert(cardio);
