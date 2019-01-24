@@ -23,26 +23,45 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/Cardio_walking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="#00000000"
+            android:cropToPadding="false"
             android:onClick="onButtonSelect"
-            android:text="Walking" />
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/walkin"
+            tools:onClick="onButtonSelect" />
 
-        <Button
+        <ImageButton
             android:id="@+id/Cardio_running"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="#00000000"
+            android:cropToPadding="false"
             android:onClick="onButtonSelect"
-            android:text="Running" />
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/runnin"
+            tools:onClick="onButtonSelect" />
 
-        <Button
+        <ImageButton
             android:id="@+id/Cardio_cycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="#00000000"
+            android:cropToPadding="false"
             android:onClick="onButtonSelect"
-            android:text="Cycling" />
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/cycling"
+            tools:onClick="onButtonSelect" />
+
     </LinearLayout>
 
     <LinearLayout

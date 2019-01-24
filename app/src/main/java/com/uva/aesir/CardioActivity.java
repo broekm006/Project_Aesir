@@ -4,13 +4,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class CardioActivity extends AppCompatActivity {
-    Button walk, run, cycle;
+    ImageButton walk, run, cycle;
     Boolean check = false;
     CardioDatabase db;
     String activity;
@@ -39,35 +41,46 @@ public class CardioActivity extends AppCompatActivity {
             EditText speed = findViewById(R.id.Cardio_edit_speed);
             EditText time = findViewById(R.id.Cardio_edit_time);
 
-            Cardio cardio = new Cardio(Integer.parseInt(km.getText().toString()),Integer.parseInt(speed.getText().toString()),Integer.parseInt(time.getText().toString()), activity);
-            db.insert(cardio);
+            String km_text = km.getText().toString().trim();
+            String speed_text = speed.getText().toString().trim();
+            String time_text = time.getText().toString().trim();
+            if (TextUtils.isEmpty(km_text) || km_text.length() == 0 || km_text.equals("") || km_text == null) {
+                System.out.println("no km input");
+            } else if (TextUtils.isEmpty(speed_text) || speed_text.length() == 0 || speed_text.equals("") || speed_text == null) {
+                System.out.println("no speed input");
+            } else if (TextUtils.isEmpty(time_text) || time_text.length() == 0 || time_text.equals("") || time_text == null) {
+                System.out.println("no time input");
+            } else {
+                Cardio cardio = new Cardio(Integer.parseInt(km.getText().toString()), Integer.parseInt(speed.getText().toString()), Integer.parseInt(time.getText().toString()), activity);
+                db.insert(cardio);
 
-            startActivity(new Intent(CardioActivity.this, MainActivity.class));
+                startActivity(new Intent(CardioActivity.this, MainActivity.class));
+            }
         }
     }
 
     public void onButtonSelect(View view) {
         switch (view.getId()) { // check statement getID is correct
             case R.id.Cardio_walking:
-                walk.setBackgroundColor(Color.parseColor("#9dada0"));
-                run.setBackgroundColor(Color.parseColor("#00000000"));
-                cycle.setBackgroundColor(Color.parseColor("#00000000"));
+                walk.setImageResource(R.drawable.walkin_selected);
+                run.setImageResource(R.drawable.runnin);
+                cycle.setImageResource(R.drawable.cycling);
                 check = true;
                 activity = "Walking";
                 break;
 
             case R.id.Cardio_running:
-                walk.setBackgroundColor(Color.parseColor("#00000000"));
-                run.setBackgroundColor(Color.parseColor("#9dada0"));
-                cycle.setBackgroundColor(Color.parseColor("#00000000"));
+                walk.setImageResource(R.drawable.walkin);
+                run.setImageResource(R.drawable.runnin_selected);
+                cycle.setImageResource(R.drawable.cycling);
                 check = true;
                 activity = "Running";
                 break;
 
             case R.id.Cardio_cycling:
-                walk.setBackgroundColor(Color.parseColor("#00000000"));
-                run.setBackgroundColor(Color.parseColor("#00000000"));
-                cycle.setBackgroundColor(Color.parseColor("#9dada0"));
+                walk.setImageResource(R.drawable.walkin);
+                run.setImageResource(R.drawable.runnin);
+                cycle.setImageResource(R.drawable.cycling_selected);
                 check = true;
                 activity = "Cycling";
                 break;

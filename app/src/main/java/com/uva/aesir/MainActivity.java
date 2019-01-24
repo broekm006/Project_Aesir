@@ -94,4 +94,8 @@ public class MainActivity extends AppCompatActivity implements ExerciseRequest.C
     public void gotExerciseImgError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
+
+    public void onBackPressed(){
+        finish();
+    }
 }

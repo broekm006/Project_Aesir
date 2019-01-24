@@ -27,6 +27,11 @@
         android:text="Weekly stats"
         android:textAlignment="center" />
 
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/bargraph"
+        android:layout_width="match_parent"
+        android:layout_height="200dip" />
+
     <Button
         android:id="@+id/button5"
         android:layout_width="match_parent"
