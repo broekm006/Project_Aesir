@@ -8,18 +8,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +27,6 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
     JsonDatabase exercise_listy;
     PresetDatabase db;
     ArrayList attempt400 = new ArrayList();
-    //String[] sets = {"1", "2", "3", "4"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +38,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         // add dynamic
         parentLinearLayout = (LinearLayout) findViewById(R.id.new_list_linear);
 
-        // grey out submit button untill name is given > HOW?!?!?
         btn = (Button) findViewById(R.id.Submit_newlist);
-        //btn.setEnabled(false);
-
-//        Spinner choose_exercise = (Spinner) findViewById(R.id.newlist_exercise);
-//        ArrayAdapter<String> adapterE = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sets);
-//        choose_exercise.setAdapter(adapterE);
-//        choose_exercise.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -70,18 +58,31 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
     }
 
     public void addEntry(View view) {
-        TextView title = findViewById(R.id.newlist_title);
+        EditText title = findViewById(R.id.newlist_title);
 
-        for (int i = 0; i < attempt400.size(); i++) {
-            Preset new_preset = new Preset(title.getText().toString(), attempt400.get(i).toString());
-            PresetDatabase db = PresetDatabase.getInstance(this);
-            db.insert(new_preset);
+        String title_txt = title.getText().toString().trim();
+        if (TextUtils.isEmpty(title_txt) || title_txt == null || title_txt.equals("") || title_txt.length() == 0) {
+            String warning = "Please give your workout list a name :)";
+            Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
+            toast.show();
+        } else {
+            if (attempt400.size() == 0) {
+                String warning = "Please add at least one exercise to the list:)";
+                Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
+                toast.show();
+            } else {
+                for (int i = 0; i < attempt400.size(); i++) {
+                    Preset new_preset = new Preset(title.getText().toString(), attempt400.get(i).toString());
+                    PresetDatabase db = PresetDatabase.getInstance(this);
+                    db.insert(new_preset);
+                }
+
+                ListName newName = new ListName(title.getText().toString());
+                db.insertTitle(newName);
+
+                startActivity(new Intent(this, PresetActivity.class));
+            }
         }
-
-        ListName newName = new ListName(title.getText().toString());
-        db.insertTitle(newName);
-
-        startActivity(new Intent(this, PresetActivity.class));
     }
 
     public List<String> getNameExercise() {

@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements ExerciseRequest.C
         if (count > 17) {
             progressBar.setVisibility(View.GONE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            db.deleteEmptyExercises();
         }
 
     }
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements ExerciseRequest.C
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
-    public void onBackPressed(){
+    public void onBackPressed() {
         finish();
     }
 }

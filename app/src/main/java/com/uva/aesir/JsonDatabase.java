@@ -81,6 +81,11 @@ public class JsonDatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("delete from exercises where _id ='" + id + "'");
     }
 
+    public void deleteEmptyExercises(){
+        sqLiteDatabase = getWritableDatabase();
+        sqLiteDatabase.execSQL("delete from exercises where title = ''");
+    }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table exercises (_id INTEGER PRIMARY KEY, idex TEXT, title TEXT, description TEXT, category TEXT)");
