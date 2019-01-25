@@ -1,10 +1,13 @@
 package com.uva.aesir;
 
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.eazegraph.lib.charts.PieChart;
+import org.eazegraph.lib.models.PieModel;
 import org.w3c.dom.Text;
 
 public class ResultsCardioActivity extends AppCompatActivity {
@@ -34,7 +37,14 @@ public class ResultsCardioActivity extends AppCompatActivity {
         maxDistance.setText(String.valueOf(speed.getInt(speed.getColumnIndex("km"))));
 
 
+
+
+        PieChart mPieChart = (PieChart) findViewById(R.id.piechart);
+        mPieChart.addPieSlice(new PieModel("Calories Burned", calcCalories(speed.getInt(speed.getColumnIndex("speed")), speed.getString(speed.getColumnIndex("activity")), speed.getInt(speed.getColumnIndex("time"))), Color.parseColor("#CDA67F")));
+        mPieChart.startAnimation();
+
         speed.close();
+
     }
 
     public int calcCalories(int speed, String activity, int time) {
