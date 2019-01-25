@@ -34,3 +34,12 @@ Issue with listview (Presets) when data is clicked the list dissapears. Normal c
 # day 12
 Created cardio as a activity + data storage of weights and cardio are now possible through the correct locations. Data is stored in the database. Only need to check if date/time storage need to be added to the data entries. Further fixed issues with dissapearing listviews through the onResume function.
 
+# day 13
+Removed empty lines from database after json request. > need new way to get data from parent layout inflater. Current way creates double entries. When trying to cast inflated object errors occur.
+
+# day 14 "h4ck"aton
+Added notification screens when input is required but not entered, made requirements for adding data (there actually needs to be data, no empty entries). testing with end-users > gather input and application bugs. And attempt to rework application to user feedback. Participated in the "hack"aton.
+
+# day 15
+
+
