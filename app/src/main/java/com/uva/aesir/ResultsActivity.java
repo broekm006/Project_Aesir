@@ -23,6 +23,7 @@ public class ResultsActivity extends AppCompatActivity {
     WeightsDatabase db;
     String exerciseName;
     String a, b, c, d, a1, b1, c1, d1;
+    String getSetA, getSetB, getSetC, getSetD, getSetA1, getSetB1, getSetC1, getSetD1, getSetA2, getSetB2, getSetC2, getSetD2, getSetA3, getSetB3, getSetC3, getSetD3, getSetA4, getSetB4, getSetC4, getSetD4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class ResultsActivity extends AppCompatActivity {
         exerciseName = intent.getStringExtra("exerciseName");
 
         db = WeightsDatabase.getInstance(getApplicationContext());
+        generateGraph();
     }
 
     @Override
@@ -41,6 +43,13 @@ public class ResultsActivity extends AppCompatActivity {
     }
 
     public void onAttempt(View view) {
+        // confetti
+        ViewGroup viewGroup = (ViewGroup) findViewById(R.id.confetti);
+        CommonConfetti.rainingConfetti(viewGroup, new int[]{Color.BLUE})
+                .infinite();
+    }
+
+    public void generateGraph() {
         Cursor cs = db.selectResults(exerciseName);
         cs.moveToFirst();
         if (!cs.moveToFirst()) {
@@ -104,21 +113,99 @@ public class ResultsActivity extends AppCompatActivity {
         series.setThickness(8);
         graphView.addSeries(series2);
 
-
-        // confetti
-        ViewGroup viewGroup = (ViewGroup) findViewById(R.id.yesman);
-        CommonConfetti.rainingConfetti(viewGroup, new int[]{Color.BLUE})
-                .infinite();
+        cs.close();
+        cs1.close();
 
 
         // barchart
+        Cursor bar = db.selectResults(exerciseName);
+        bar.moveToFirst();
+
+        if (!bar.moveToFirst()) {
+            getSetA = "0";
+            getSetB = "0";
+            getSetC = "0";
+            getSetD = "0";
+        } else {
+            getSetA = bar.getString(bar.getColumnIndex("setA"));
+            getSetB = bar.getString(bar.getColumnIndex("setB"));
+            getSetC = bar.getString(bar.getColumnIndex("setC"));
+            getSetD = bar.getString(bar.getColumnIndex("setD"));
+        }
+
+        int totalWeights = Integer.parseInt(getSetA) + Integer.parseInt(getSetB) + Integer.parseInt(getSetC) + Integer.parseInt(getSetD);
+        System.out.println(totalWeights);
+
+        if (!bar.moveToNext()) {
+            getSetA1 = "0";
+            getSetB1 = "0";
+            getSetC1 = "0";
+            getSetD1 = "0";
+        } else {
+            getSetA1 = bar.getString(bar.getColumnIndex("setA"));
+            getSetB1 = bar.getString(bar.getColumnIndex("setB"));
+            getSetC1 = bar.getString(bar.getColumnIndex("setC"));
+            getSetD1 = bar.getString(bar.getColumnIndex("setD"));
+        }
+
+        int totalWeightsMin1 = Integer.parseInt(getSetA1) + Integer.parseInt(getSetB1) + Integer.parseInt(getSetC1) + Integer.parseInt(getSetD1);
+        System.out.println(totalWeightsMin1);
+
+        if (!bar.moveToNext()) {
+            getSetA2 = "0";
+            getSetB2 = "0";
+            getSetC2 = "0";
+            getSetD2 = "0";
+        } else {
+            getSetA2 = bar.getString(bar.getColumnIndex("setA"));
+            getSetB2 = bar.getString(bar.getColumnIndex("setB"));
+            getSetC2 = bar.getString(bar.getColumnIndex("setC"));
+            getSetD2 = bar.getString(bar.getColumnIndex("setD"));
+        }
+
+        int totalWeightsMin2 = Integer.parseInt(getSetA2) + Integer.parseInt(getSetB2) + Integer.parseInt(getSetC2) + Integer.parseInt(getSetD2);
+
+        System.out.println(totalWeightsMin2);
+
+        if (!bar.moveToNext()) {
+            getSetA3 = "0";
+            getSetB3 = "0";
+            getSetC3 = "0";
+            getSetD3 = "0";
+        } else {
+            getSetA3 = bar.getString(bar.getColumnIndex("setA"));
+            getSetB3 = bar.getString(bar.getColumnIndex("setB"));
+            getSetC3 = bar.getString(bar.getColumnIndex("setC"));
+            getSetD3 = bar.getString(bar.getColumnIndex("setD"));
+        }
+
+        int totalWeightsMin3 = Integer.parseInt(getSetA3) + Integer.parseInt(getSetB3) + Integer.parseInt(getSetC3) + Integer.parseInt(getSetD3);
+
+        System.out.println(totalWeightsMin3);
+
+        if (!bar.moveToNext()) {
+            getSetA4 = "0";
+            getSetB4 = "0";
+            getSetC4 = "0";
+            getSetD4 = "0";
+        } else {
+            getSetA4 = bar.getString(bar.getColumnIndex("setA"));
+            getSetB4 = bar.getString(bar.getColumnIndex("setB"));
+            getSetC4 = bar.getString(bar.getColumnIndex("setC"));
+            getSetD4 = bar.getString(bar.getColumnIndex("setD"));
+        }
+
+        int totalWeightsMin4 = Integer.parseInt(getSetA4) + Integer.parseInt(getSetB4) + Integer.parseInt(getSetC4) + Integer.parseInt(getSetD4);
+
+        System.out.println(totalWeightsMin4);
+
         GraphView graph = (GraphView) findViewById(R.id.bargraph);
         BarGraphSeries<DataPoint> series1 = new BarGraphSeries<>(new DataPoint[]{
-                new DataPoint(0,-2),
-                new DataPoint(1, 3),
-                new DataPoint(2,5),
-                new DataPoint(3,1),
-                new DataPoint(4,2)
+                new DataPoint(0, totalWeightsMin4),
+                new DataPoint(1, totalWeightsMin3),
+                new DataPoint(2, totalWeightsMin2),
+                new DataPoint(3, totalWeightsMin1),
+                new DataPoint(4, totalWeights)
         });
         graph.addSeries(series1);
 
@@ -126,7 +213,7 @@ public class ResultsActivity extends AppCompatActivity {
         series1.setValueDependentColor(new ValueDependentColor<DataPoint>() {
             @Override
             public int get(DataPoint data) {
-                return Color.rgb((int) data.getX()*255/4, (int) Math.abs(data.getY()*255/6), 100);
+                return Color.rgb((int) data.getX() * 255 / 4, (int) Math.abs(data.getY() * 255 / 6), 100);
             }
         });
 
@@ -134,5 +221,7 @@ public class ResultsActivity extends AppCompatActivity {
 
         series1.setDrawValuesOnTop(true);
         series1.setValuesOnTopColor(Color.RED);
+
+        bar.close();
     }
 }

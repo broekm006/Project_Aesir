@@ -26,7 +26,7 @@ public class CardioDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor selectAll(){
-        return getWritableDatabase().rawQuery(("SELECT * FROM cardio"), null);
+        return getWritableDatabase().rawQuery(("SELECT * FROM cardio ORDER BY _id DESC"), null);
     }
 
     public void insert(Cardio insertion){
