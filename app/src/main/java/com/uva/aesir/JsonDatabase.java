@@ -15,29 +15,27 @@ public class JsonDatabase extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
-    public static JsonDatabase getInstance(Context context){
-        if (instance == null){
+    public static JsonDatabase getInstance(Context context) {
+        if (instance == null) {
             return instance = new JsonDatabase(context, "com.uva.aesir", null, 1);
-        }
-
-        else{
+        } else {
             return instance;
         }
     }
 
-    public Cursor selectAll(){
+    public Cursor selectAll() {
         return getWritableDatabase().rawQuery(("SELECT * FROM exercises LEFT JOIN exerciseImgs ON exercises.idex = exerciseImgs.idex"), null);
     }
 
-    public Cursor selectName(){
+    public Cursor selectName() {
         return getWritableDatabase().rawQuery(("SELECT title FROM exercises"), null);
     }
 
-    public Cursor selectImg(String id){
+    public Cursor selectImg(String id) {
         return getWritableDatabase().rawQuery(("SELECT imgUrl FROM exerciseImgs WHERE idex = '" + id + "'"), null);
     }
 
-    public void insert(Exercise insertion){
+    public void insert(Exercise insertion) {
 
         ContentValues value = new ContentValues();
         value.put("idex", insertion.getIdex());
@@ -48,18 +46,16 @@ public class JsonDatabase extends SQLiteOpenHelper {
         Cursor cursor = null;
         cursor = getWritableDatabase().rawQuery(("SELECT idex FROM exercises WHERE idex =" + insertion.getIdex()), null);
 
-        if (cursor.getCount() > 0){
+        if (cursor.getCount() > 0) {
 
-        }
-        else{
+        } else {
             getWritableDatabase().insert("exercises", null, value);
         }
 
         cursor.close();
-
     }
 
-    public void insertImg (ExerciseImg insertion){
+    public void insertImg(ExerciseImg insertion) {
         ContentValues value = new ContentValues();
         value.put("idex", insertion.getIdex());
         value.put("imgUrl", insertion.getImgUrl());
@@ -67,21 +63,21 @@ public class JsonDatabase extends SQLiteOpenHelper {
         Cursor cursor = null;
         cursor = getWritableDatabase().rawQuery("SELECT * FROM exerciseImgs WHERE idex='" + insertion.getIdex() + "'", null);
 
-        if (cursor.getCount() > 0){
+        if (cursor.getCount() > 0) {
 
-        }
-        else{
+        } else {
             getWritableDatabase().insert("exerciseImgs", null, value);
         }
 
         cursor.close();
     }
-    public void deleteExercise(long id){
+
+    public void deleteExercise(long id) {
         sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.execSQL("delete from exercises where _id ='" + id + "'");
     }
 
-    public void deleteEmptyExercises(){
+    public void deleteEmptyExercises() {
         sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.execSQL("delete from exercises where title = ''");
     }
