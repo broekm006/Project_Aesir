@@ -3,14 +3,11 @@ package com.uva.aesir;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.graphics.drawable.shapes.Shape;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Size;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.github.jinatonic.confetti.CommonConfetti;
 import com.jjoe64.graphview.GraphView;
@@ -77,8 +74,9 @@ public class ResultsActivity extends AppCompatActivity {
                 new DataPoint(4, Integer.parseInt(d))
         });
 
-        series.setColor(Color.parseColor("#FF0000"));
+        series.setColor(Color.parseColor("#00FF00"));
         series.setThickness(8);
+        series.setTitle("Current");
 
         graphView.getViewport().setYAxisBoundsManual(true);
         graphView.getViewport().setMinY(0);
@@ -115,9 +113,12 @@ public class ResultsActivity extends AppCompatActivity {
                 new DataPoint(4, Integer.parseInt(d1))
         });
 
-        series2.setColor(Color.parseColor("#0000FF"));
-        series.setThickness(8);
+        series2.setColor(Color.parseColor("#FF0000"));
+        series2.setThickness(8);
+        series2.setTitle("Last");
         graphView.addSeries(series2);
+        graphView.getLegendRenderer().setVisible(true);
+        graphView.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.BOTTOM);
 
         cs.close();
         cs1.close();

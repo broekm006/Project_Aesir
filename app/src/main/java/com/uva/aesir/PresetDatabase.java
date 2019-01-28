@@ -25,7 +25,7 @@ public class PresetDatabase extends SQLiteOpenHelper {
     }
 
     public Cursor selectAll() {
-        return getWritableDatabase().rawQuery(("SELECT * FROM presets"), null);
+        return getWritableDatabase().rawQuery(("SELECT DISTINCT title FROM presets"), null);
     }
 
     public Cursor selectDiscinctExercises(String name) {

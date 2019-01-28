@@ -28,6 +28,10 @@ public class ListNameDatabase extends SQLiteOpenHelper {
         return getWritableDatabase().rawQuery(("SELECT * FROM listName"), null);
     }
 
+    public Cursor selectDistinctNames() {
+        return getWritableDatabase().rawQuery(("SELECT DISTINCT title FROM listName"), null);
+    }
+
     public void insert(ListName insertion) {
         ContentValues value = new ContentValues();
         value.put("title", insertion.getListName());

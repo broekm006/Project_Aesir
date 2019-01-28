@@ -66,8 +66,8 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
             toast.show();
         } else {
             for (int w = 0; w < parentLinearLayout.getChildCount(); ++w) {
-                Spinner spiderman = findViewById(w);
-                attempt400.add(spiderman.getSelectedItem());
+                Spinner victory = findViewById(w);
+                attempt400.add(victory.getSelectedItem());
             }
 
             if (attempt400.size() == 0) {
@@ -92,7 +92,6 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     public List<String> getNameExercise() {
         List<String> nameExercise = new ArrayList<String>();
-        String query = "SELECT title FROM exercises";
 
         exercise_listy.getReadableDatabase();
         Cursor cursor = exercise_listy.selectName();

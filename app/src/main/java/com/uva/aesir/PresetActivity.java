@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -26,10 +29,19 @@ public class PresetActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new ListViewLongClickListener());
     }
 
-    public void OnButtonClick(View view) {
-        startActivity(new Intent(this,
-                NewListActivity.class));
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.add_new_list, menu);
+        return true;
     }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.new_list:
+                startActivity(new Intent(this, NewListActivity.class));
+        }
+        return (super.onOptionsItemSelected(item));
+    }
+
 
     private class ListViewClickListener implements AdapterView.OnItemClickListener {
         @Override
