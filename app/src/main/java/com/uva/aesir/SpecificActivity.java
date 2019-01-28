@@ -37,10 +37,6 @@ public class SpecificActivity extends AppCompatActivity {
                 .into(image);
     }
 
-    public void OnButtonClick(View view) {
-        startActivity(new Intent(this, TimerActivity.class));
-    }
-
     @Override
     public void onBackPressed() {
         startActivity(new Intent(SpecificActivity.this, ExerciseActivity.class));

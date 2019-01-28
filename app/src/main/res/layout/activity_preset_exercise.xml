@@ -20,30 +20,41 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="5dp"
+            android:max="4" />
 
         <TextView
             android:id="@+id/entry_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_margin="5dp"
+            android:fontFamily="@font/aclonica"
+            android:text="title"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/entry_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             app:srcCompat="@drawable/no_image" />
 
         <TextView
             android:id="@+id/entry_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="description"
+            android:textAlignment="center" />
 
         <android.support.v7.widget.GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_margin="5dp"
             app:columnCount="5">
 
             <TextView
@@ -127,6 +138,7 @@
             android:id="@+id/entry_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:onClick="onClickSubmit"
             android:text="Submit Data" />
 

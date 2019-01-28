@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -21,6 +25,12 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
     WeightsDatabase database;
     Spinner one, two, three, four;
     String exerciseName, title;
+    ProgressBar progressBar;
+    private int progressStatus = 0;
+    int check = 0;
+    int check2 = 0;
+    int check3 = 0;
+    int check4 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,8 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
         TextView txt = findViewById(R.id.entry_title);
         TextView description = findViewById(R.id.entry_description);
         ImageView image = findViewById(R.id.entry_image);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setProgress(progressStatus);
 
         txt.setText(cursor.getString(cursor.getColumnIndex("title")));
         description.setText(cursor.getString(cursor.getColumnIndex("description")));
@@ -73,9 +85,47 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
         cursor.close();
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.timer, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.timer:
+                startActivity(new Intent(this, TimerActivity.class));
+        }
+
+        return (super.onOptionsItemSelected(item));
+    }
+
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String txt = adapterView.getItemAtPosition(i).toString();
+
+        // update process bar
+        if (!txt.equals("0")){
+            progressStatus += 1;
+            progressBar.setProgress(progressStatus);
+        }
+
+        // check 0 counts > amount of 0 == progress
+//        if (!txt.equals("0") && one.getSelectedItem() == "0" && check == 0) {
+//            check += 1;
+//            progressStatus += 1;
+//        } else if (!txt.equals("0") && two.getSelectedItem() != "0" && check2 == 0) {
+//            check2 += 1;
+//            progressStatus += 1;
+//        } else if (!txt.equals("0") && three.getSelectedItem() != "0" && check3 == 0) {
+//            check3 += 1;
+//            progressStatus += 1;
+//        } else if (!txt.equals("0") && four.getSelectedItem() != "0" && check4 == 0) {
+//            check4 += 1;
+//            progressStatus += 1;
+//        }
+        progressBar.setProgress(progressStatus);
+
     }
 
     @Override
@@ -92,3 +142,4 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
         startActivity(intent);
     }
 }
+

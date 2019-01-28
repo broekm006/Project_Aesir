@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Enter time:" />
+            android:text="Enter time: (minutes)" />
 
         <EditText
             android:id="@+id/Cardio_edit_time"
@@ -129,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Enter speed:" />
+            android:text="Enter speed: (km/h)" />
 
         <EditText
             android:id="@+id/Cardio_edit_speed"

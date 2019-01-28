@@ -46,14 +46,5 @@
             android:gravity="center"
             android:text="Description" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:clickable="true"
-            android:onClick="OnButtonClick"
-            app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
-
     </LinearLayout>
 </ScrollView>
