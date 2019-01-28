@@ -1,3 +1,10 @@
+/*
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to create a new database + tables and have all the major db methods.
+ **/
+
 package com.uva.aesir;
 
 import android.content.ContentValues;
@@ -15,21 +22,19 @@ public class CardioDatabase extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
-    public static CardioDatabase getInstance(Context context){
-        if (instance == null){
+    public static CardioDatabase getInstance(Context context) {
+        if (instance == null) {
             return instance = new CardioDatabase(context, "com.uva.aesir", null, 1);
-        }
-
-        else{
+        } else {
             return instance;
         }
     }
 
-    public Cursor selectAll(){
+    public Cursor selectAll() {
         return getWritableDatabase().rawQuery(("SELECT * FROM cardio ORDER BY _id DESC"), null);
     }
 
-    public void insert(Cardio insertion){
+    public void insert(Cardio insertion) {
         ContentValues value = new ContentValues();
         value.put("km", insertion.getKm());
         value.put("speed", insertion.getSpeed());
@@ -39,7 +44,7 @@ public class CardioDatabase extends SQLiteOpenHelper {
         getWritableDatabase().insert("cardio", null, value);
     }
 
-    public void deleteCardio(long id){
+    public void deleteCardio(long id) {
         sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.execSQL("delete from cardio where _id ='" + id + "'");
     }

@@ -18,8 +18,8 @@ public class ResultsListActivity extends AppCompatActivity {
         startActivity(new Intent(ResultsListActivity.this, MainActivity.class));
     }
 
-    public void onClick(View view){
-          switch(view.getId()){
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.Results_weights:
                 startActivity(new Intent(this, ResultsWeightsActivity.class));
                 break;

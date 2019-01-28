@@ -34,12 +34,12 @@ public class TimerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
-        timer = (TextView)findViewById(R.id.Timer);
-        start = (Button)findViewById(R.id.Start);
-        pause = (Button)findViewById(R.id.Pause);
-        reset = (Button)findViewById(R.id.Reset);
-        lap = (Button)findViewById(R.id.Lap);
-        listview = (ListView)findViewById(R.id.lap_list);
+        timer = (TextView) findViewById(R.id.Timer);
+        start = (Button) findViewById(R.id.Start);
+        pause = (Button) findViewById(R.id.Pause);
+        reset = (Button) findViewById(R.id.Reset);
+        lap = (Button) findViewById(R.id.Lap);
+        listview = (ListView) findViewById(R.id.lap_list);
 
         handler = new Handler();
 
@@ -49,9 +49,9 @@ public class TimerActivity extends AppCompatActivity {
 
         listview.setAdapter(adapter);
 
-        start.setOnClickListener(new View.OnClickListener(){
+        start.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 StartTime = SystemClock.uptimeMillis();
                 handler.postDelayed(runnable, 0);
 
@@ -75,7 +75,7 @@ public class TimerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 MillisecondTime = 0L;
                 StartTime = 0L;
-                TimeBuffer  = 0L;
+                TimeBuffer = 0L;
                 UpdateTime = 0L;
                 Seconds = 0;
                 Minutes = 0;
@@ -103,13 +103,13 @@ public class TimerActivity extends AppCompatActivity {
         public void run() {
             MillisecondTime = SystemClock.uptimeMillis() - StartTime;
             UpdateTime = TimeBuffer + MillisecondTime;
-            Seconds = (int) (UpdateTime /1000);
+            Seconds = (int) (UpdateTime / 1000);
             Minutes = Seconds / 60;
             Seconds = Seconds % 60;
             Milliseconds = (int) (UpdateTime % 1000);
             timer.setText("" + Minutes + ":" + String.format("%02d", Seconds) + ":" + String.format("%03d", Milliseconds));
 
-            handler.postDelayed(this,0);
+            handler.postDelayed(this, 0);
         }
     };
 }

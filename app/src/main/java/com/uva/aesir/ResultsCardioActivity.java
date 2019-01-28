@@ -29,30 +29,21 @@ public class ResultsCardioActivity extends AppCompatActivity {
         TextView distance = findViewById(R.id.Distance_result);
         TextView maxDistance = findViewById(R.id.textView8);
 
-
         activity.setText(String.valueOf(speed.getString(speed.getColumnIndex("activity"))));
         calories.setText(String.valueOf(calcCalories(speed.getInt(speed.getColumnIndex("speed")), speed.getString(speed.getColumnIndex("activity")), speed.getInt(speed.getColumnIndex("time")))));
         caloriesMinutes.setText(String.valueOf(CaloriesPerMinute));
         distance.setText(String.valueOf(speed.getInt(speed.getColumnIndex("km"))));
         maxDistance.setText(String.valueOf(speed.getInt(speed.getColumnIndex("km"))));
 
-
-
-
+        // create pie chart
         PieChart mPieChart = (PieChart) findViewById(R.id.piechart);
         mPieChart.addPieSlice(new PieModel("Calories Burned", calcCalories(speed.getInt(speed.getColumnIndex("speed")), speed.getString(speed.getColumnIndex("activity")), speed.getInt(speed.getColumnIndex("time"))), Color.parseColor("#CDA67F")));
         mPieChart.startAnimation();
 
         speed.close();
-
     }
 
     public int calcCalories(int speed, String activity, int time) {
-        System.out.println(speed);
-        System.out.println(activity);
-        System.out.println(time);
-        int distance = 0;
-
         if (activity.equals("Walking")) {
             if (speed <= 3) {
                 METS = 2;
@@ -98,11 +89,8 @@ public class ResultsCardioActivity extends AppCompatActivity {
         }
 
         int CaloriesPerHour = METS * 70;
-        System.out.println(CaloriesPerHour);
         CaloriesPerMinute = CaloriesPerHour / 60;
-        System.out.println(CaloriesPerMinute);
         int TotalCaloriesBurned = CaloriesPerMinute * time;
-        System.out.println(TotalCaloriesBurned);
 
         return TotalCaloriesBurned;
     }

@@ -12,7 +12,7 @@ public class ListNameDatabase extends SQLiteOpenHelper {
     SQLiteDatabase sqLiteDatabase;
 
     public ListNameDatabase(@Nullable Context context, @Nullable String name,
-                          @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+                            @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
@@ -27,7 +27,6 @@ public class ListNameDatabase extends SQLiteOpenHelper {
     public Cursor selectAll() {
         return getWritableDatabase().rawQuery(("SELECT * FROM listName"), null);
     }
-
 
     public void insert(ListName insertion) {
         ContentValues value = new ContentValues();

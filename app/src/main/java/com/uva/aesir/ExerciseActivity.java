@@ -18,9 +18,11 @@ public class ExerciseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
+        // setup database + adapter for listview
         db = JsonDatabase.getInstance(getApplicationContext());
         adapter = new ExerciseAdapterdb(this, db.selectAll());
 
+        // setup listview to get database information through the adapter
         ListView listView = (ListView) findViewById(R.id.exercises_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
@@ -32,6 +34,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
     private class ListViewClickListener implements AdapterView.OnItemClickListener {
         @Override
+        // on click send the title, description and image information to the next activity
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Cursor one = (Cursor) adapterView.getItemAtPosition(i);
 

@@ -15,25 +15,23 @@ public class WeightsDatabase extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
-    public static WeightsDatabase getInstance(Context context){
-        if (instance == null){
+    public static WeightsDatabase getInstance(Context context) {
+        if (instance == null) {
             return instance = new WeightsDatabase(context, "com.uva.aesir", null, 1);
-        }
-
-        else{
+        } else {
             return instance;
         }
     }
 
-    public Cursor selectAll(){
+    public Cursor selectAll() {
         return getWritableDatabase().rawQuery(("SELECT * FROM weights GROUP BY exercise"), null);
     }
 
-    public Cursor selectResults(String exercise){
+    public Cursor selectResults(String exercise) {
         return getWritableDatabase().rawQuery(("SELECT * FROM weights WHERE exercise = '" + exercise + "' ORDER BY _id DESC"), null);
     }
 
-    public void insert(Weights insertion){
+    public void insert(Weights insertion) {
         ContentValues value = new ContentValues();
         value.put("exercise", insertion.getExercise());
         value.put("setA", insertion.getSetA());
@@ -44,7 +42,7 @@ public class WeightsDatabase extends SQLiteOpenHelper {
         getWritableDatabase().insert("weights", null, value);
     }
 
-    public void deleteCardio(long id){
+    public void deleteCardio(long id) {
         sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.execSQL("delete from weights where _id ='" + id + "'");
     }

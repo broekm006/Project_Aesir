@@ -19,11 +19,7 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
     ArrayList<String> weights = new ArrayList<String>();
     PresetDatabase db;
     WeightsDatabase database;
-    Spinner one;
-    Spinner two;
-    Spinner three;
-    Spinner four;
-
+    Spinner one, two, three, four;
     String exerciseName, title;
 
     @Override
@@ -87,8 +83,8 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
 
     }
 
-    public void onClickSubmit(View view){
-        Weights weights = new Weights(Integer.parseInt(one.getSelectedItem().toString()),Integer.parseInt(two.getSelectedItem().toString()),Integer.parseInt(three.getSelectedItem().toString()),Integer.parseInt(four.getSelectedItem().toString()), exerciseName);
+    public void onClickSubmit(View view) {
+        Weights weights = new Weights(Integer.parseInt(one.getSelectedItem().toString()), Integer.parseInt(two.getSelectedItem().toString()), Integer.parseInt(three.getSelectedItem().toString()), Integer.parseInt(four.getSelectedItem().toString()), exerciseName);
         database.insert(weights);
 
         Intent intent = new Intent(this, Preset_detail.class);
@@ -96,11 +92,3 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
         startActivity(intent);
     }
 }
-
-
-// voor spinner inhoud zie:
-// https://developer.android.com/guide/topics/ui/controls/spinner#java
-// heeft eigen adapter nodig
-
-// voeg plus button toe zodat deze gelijk aan een lijst kan worden toegevoegd
-

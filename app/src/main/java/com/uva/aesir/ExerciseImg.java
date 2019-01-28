@@ -1,26 +1,26 @@
 package com.uva.aesir;
 
-public class ExerciseImg{
+public class ExerciseImg {
     private String idex, imgUrl;
 
-    public ExerciseImg(String idex, String imgUrl){
+    public ExerciseImg(String idex, String imgUrl) {
         this.idex = idex;
         this.imgUrl = imgUrl;
     }
 
-        public String getIdex() {
-            return idex;
-        }
+    public String getIdex() {
+        return idex;
+    }
 
-        public String getImgUrl() {
-            return imgUrl;
-        }
+    public String getImgUrl() {
+        return imgUrl;
+    }
 
-        public void setIdex(String idex) {
-            this.idex = idex;
-        }
+    public void setIdex(String idex) {
+        this.idex = idex;
+    }
 
-        public void setImgUrl(String imgUrl) {
-            this.imgUrl = imgUrl;
-        }
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 }

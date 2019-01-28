@@ -24,7 +24,6 @@ public class PresetActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
         listView.setOnItemLongClickListener(new ListViewLongClickListener());
-
     }
 
     public void OnButtonClick(View view) {

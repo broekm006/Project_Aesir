@@ -26,9 +26,8 @@ public class ExerciseImgRequest implements Response.Listener<JSONObject>, Respon
 
     @Override
     public void onResponse(JSONObject response) {
+        // get JSON data from API "exercise name and image url"
         try {
-
-
             JSONArray array = response.getJSONArray("results");
 
             for (int i = 0; i < array.length(); i++) {
@@ -37,15 +36,15 @@ public class ExerciseImgRequest implements Response.Listener<JSONObject>, Respon
                 String imgUrl = specific.getString("image");
 
                 imgUrls.add(new ExerciseImg(exercise, imgUrl));
-
             }
 
+            // see if there is more information to be gathered or everything is collected
             String nextPage = response.getString("next");
 
+            // if more information is available rerun JSON call with new url
             if (nextPage != "null") {
                 newPage(nextPage);
             }
-
         } catch (JSONException e) {
             System.out.println(e.getMessage());
         }
@@ -63,12 +62,14 @@ public class ExerciseImgRequest implements Response.Listener<JSONObject>, Respon
         this.context = c;
     }
 
-    void newPage(String url){
+    // insert new url when more information is available and add request to the queue
+    void newPage(String url) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        JsonObjectRequest jsonObjectRequests = new JsonObjectRequest(url, null, this,this);
+        JsonObjectRequest jsonObjectRequests = new JsonObjectRequest(url, null, this, this);
         queue.add(jsonObjectRequests);
     }
 
+    // initial url with JSON volley request
     void getExerciseImg(Callback activity) {
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = "https://wger.de/api/v2/exerciseimage/";

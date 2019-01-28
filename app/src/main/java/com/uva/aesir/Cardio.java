@@ -4,7 +4,7 @@ public class Cardio {
     int km, speed, time;
     String activity;
 
-    public Cardio(int km, int speed, int time, String activity){
+    public Cardio(int km, int speed, int time, String activity) {
         this.km = km;
         this.speed = speed;
         this.time = time;

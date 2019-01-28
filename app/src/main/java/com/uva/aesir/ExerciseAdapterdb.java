@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class ExerciseAdapterdb extends ResourceCursorAdapter {
 
-    public ExerciseAdapterdb(Context context, Cursor cursor){
+    public ExerciseAdapterdb(Context context, Cursor cursor) {
         super(context, R.layout.json_db_entry, cursor);
     }
 

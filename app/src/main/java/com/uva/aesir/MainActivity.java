@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements ExerciseRequest.C
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.update:
+                // on click show progress bar && lock the screen until download is complete
                 progressBar.setVisibility(View.VISIBLE);
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

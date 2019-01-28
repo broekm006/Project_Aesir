@@ -3,7 +3,7 @@ package com.uva.aesir;
 public class PresetListItem {
     private String exerciseName;
 
-    public PresetListItem(String exerciseName){
+    public PresetListItem(String exerciseName) {
         this.exerciseName = exerciseName;
     }
 

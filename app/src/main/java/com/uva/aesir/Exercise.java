@@ -3,7 +3,7 @@ package com.uva.aesir;
 public class Exercise {
     private String idex, name, description, categorie;
 
-    public Exercise(String idex, String name, String description, String categorie){
+    public Exercise(String idex, String name, String description, String categorie) {
         this.idex = idex;
         this.name = name;
         this.description = description;

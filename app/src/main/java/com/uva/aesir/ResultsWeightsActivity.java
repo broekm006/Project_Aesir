@@ -30,8 +30,6 @@ public class ResultsWeightsActivity extends AppCompatActivity {
         startActivity(new Intent(this, ResultsListActivity.class));
     }
 
-    // onclick > startActivity(new Intent(this, ResultsActivity.class));
-
     private class ListViewClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

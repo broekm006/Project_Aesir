@@ -1,3 +1,11 @@
+/*
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used for the Cardio screen. Here it is possible to select an activity, enter
+ ** the data (km, speed and time) and store this in the database for later use.
+ **/
+
 package com.uva.aesir;
 
 import android.content.Intent;
@@ -36,7 +44,7 @@ public class CardioActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
             toast.show();
         } else {
-            // insert data to database (new table Cardio)
+            // get field + string information
             EditText km = findViewById(R.id.Cardio_edit_km);
             EditText speed = findViewById(R.id.Cardio_edit_speed);
             EditText time = findViewById(R.id.Cardio_edit_time);
@@ -44,6 +52,8 @@ public class CardioActivity extends AppCompatActivity {
             String km_text = km.getText().toString().trim();
             String speed_text = speed.getText().toString().trim();
             String time_text = time.getText().toString().trim();
+
+            // check if some data is actually entered
             if (TextUtils.isEmpty(km_text) || km_text.length() == 0 || km_text.equals("") || km_text == null) {
                 String warning = "Please enter your traveled distance in whole km";
                 Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
@@ -57,6 +67,7 @@ public class CardioActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
                 toast.show();
             } else {
+                // insert data to database (new table Cardio)
                 Cardio cardio = new Cardio(Integer.parseInt(km.getText().toString()), Integer.parseInt(speed.getText().toString()), Integer.parseInt(time.getText().toString()), activity);
                 db.insert(cardio);
 
@@ -66,7 +77,8 @@ public class CardioActivity extends AppCompatActivity {
     }
 
     public void onButtonSelect(View view) {
-        switch (view.getId()) { // check statement getID is correct
+        // when button is clicked highlight specific button
+        switch (view.getId()) {
             case R.id.Cardio_walking:
                 walk.setImageResource(R.drawable.walkin_selected);
                 run.setImageResource(R.drawable.runnin);

@@ -49,17 +49,11 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         txt = adapterView.getItemAtPosition(i).toString();
-//        if (txt.isEmpty() || txt == null || txt.equals("")) {
-//        } else {
-//            attempt400.add(txt); // i know this is not a perfect way, but will be improved in a later stage (if time)
-//        }
-//        PresetListItem presetListItem = new PresetListItem(txt);
-//        db.insertListItem(presetListItem);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+        // do nothing
     }
 
     public void addEntry(View view) {
@@ -71,31 +65,6 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
             Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
             toast.show();
         } else {
-
-//            for(int i = 0; i<((ViewGroup)view).getChildCount(); ++i){
-//                View nextChild = ((ViewGroup)view).getChildAt(i);
-//                if(nextChild.getId() == R.id.newlist_exercise2){
-//                    String txt = ((TextView)nextChild).getText().toString();
-//                    attempt400.add(txt);
-//                }
-//            }
-
-//            for (int i = 0; i < parentLinearLayout.getChildCount(); i++) {
-//                View element = parentLinearLayout.getChildAt(i);
-//
-//                System.out.println("element id:" + i);
-//                LinearLayout lines = (LinearLayout) findViewById(R.id.needs_an_id);
-//                for(int q = 0; q < lines.getChildCount(); q++){
-//                    View elements = lines.getChildAt(q);
-//                    System.out.println("elements id2:" + q);
-//                    if (elements instanceof Spinner) {
-//                        Spinner spinny = (Spinner) elements;
-//                        System.out.println("ELEMENTS spinny getId=>" + spinny.getId() + " getTag=>" + elements.getTag() +
-//                                " getText=>" + spinny.getSelectedItem());
-//                    }
-//                }
-//            }
-
             for (int w = 0; w < parentLinearLayout.getChildCount(); ++w) {
                 Spinner spiderman = findViewById(w);
                 attempt400.add(spiderman.getSelectedItem());
@@ -114,7 +83,6 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
                 ListName newName = new ListName(title.getText().toString());
                 db.insertTitle(newName);
-
 
                 startActivity(new Intent(this, PresetActivity.class));
             }

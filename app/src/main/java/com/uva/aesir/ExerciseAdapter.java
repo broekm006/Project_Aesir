@@ -22,19 +22,13 @@ public class ExerciseAdapter extends ArrayAdapter<Exercise> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        if (convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.exercise_entry, parent, false);
         }
-
-        TextView name = convertView.findViewById(R.id.name);
-        //TextView description = convertView.findViewById(R.id.description);
-        //TextView categorie = convertView.findViewById(R.id.categorie);
-
         Exercise exercises = exercise.get(position);
 
+        TextView name = convertView.findViewById(R.id.name);
         name.setText(exercises.getName());
-        //description.setText(exercises.getDescription());
-        //categorie.setText(exercises.getCategorie());
 
         return convertView;
     }

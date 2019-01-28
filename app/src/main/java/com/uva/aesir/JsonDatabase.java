@@ -36,7 +36,6 @@ public class JsonDatabase extends SQLiteOpenHelper {
     }
 
     public void insert(Exercise insertion) {
-
         ContentValues value = new ContentValues();
         value.put("idex", insertion.getIdex());
         value.put("title", insertion.getName());
