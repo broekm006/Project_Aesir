@@ -41,5 +41,7 @@ Removed empty lines from database after json request. > need new way to get data
 Added notification screens when input is required but not entered, made requirements for adding data (there actually needs to be data, no empty entries). testing with end-users > gather input and application bugs. And attempt to rework application to user feedback. Participated in the "hack"aton.
 
 # day 15
+Added cardio results after input + pie chart to see calories burned. Updated general designs + cleaned code. FINNALLY fixed add exercise issue. Now correctly enters the exercise from dynamic inflater fields without overwriting the values. 
 
-
+# day 16
+updated design, migitated buttons to the action bar to free up space in the activities. added comments to chunks of code.
