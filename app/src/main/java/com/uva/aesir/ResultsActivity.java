@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Size;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.github.jinatonic.confetti.CommonConfetti;
@@ -49,6 +50,9 @@ public class ResultsActivity extends AppCompatActivity {
         ViewGroup viewGroup = (ViewGroup) findViewById(R.id.confetti);
         CommonConfetti.rainingConfetti(viewGroup, new int[]{Color.BLUE})
                 .infinite();
+
+        Button confetti = findViewById(R.id.button5);
+        confetti.setEnabled(false);
     }
 
     public void generateGraph() {

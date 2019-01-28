@@ -11,31 +11,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ExerciseActivity" />
-        <activity android:name=".SpecificActivity" />
-        <activity android:name=".TimerActivity" />
-        <activity android:name=".ResultsActivity" />
-        <activity android:name=".PresetActivity" />
+        <activity android:name=".ExerciseActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".SpecificActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".TimerActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ResultsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".PresetActivity" android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".NewListActivity" />
-        <activity android:name=".Preset_detail" />
-        <activity android:name=".GetJSONActivity" />
-        <activity android:name=".CardioActivity" />
-        <activity android:name=".PresetExercise" />
-        <activity android:name=".ResultsListActivity" />
-        <activity android:name=".ResultsCardioActivity" />
-        <activity android:name=".ResultsWeightsActivity"></activity>
+        <activity android:name=".NewListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Preset_detail" android:screenOrientation="portrait"/>
+        <activity android:name=".GetJSONActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".CardioActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".PresetExercise" android:screenOrientation="portrait"/>
+        <activity android:name=".ResultsListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ResultsCardioActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ResultsWeightsActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

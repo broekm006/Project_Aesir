@@ -4,7 +4,12 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.github.jinatonic.confetti.CommonConfetti;
 
 import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
@@ -27,13 +32,11 @@ public class ResultsCardioActivity extends AppCompatActivity {
         TextView calories = findViewById(R.id.Calories_result);
         TextView caloriesMinutes = findViewById(R.id.textView7);
         TextView distance = findViewById(R.id.Distance_result);
-        TextView maxDistance = findViewById(R.id.textView8);
 
         activity.setText(String.valueOf(speed.getString(speed.getColumnIndex("activity"))));
         calories.setText(String.valueOf(calcCalories(speed.getInt(speed.getColumnIndex("speed")), speed.getString(speed.getColumnIndex("activity")), speed.getInt(speed.getColumnIndex("time")))));
-        caloriesMinutes.setText(String.valueOf(CaloriesPerMinute));
-        distance.setText(String.valueOf(speed.getInt(speed.getColumnIndex("km"))));
-        maxDistance.setText(String.valueOf(speed.getInt(speed.getColumnIndex("km"))));
+        caloriesMinutes.setText(String.valueOf(CaloriesPerMinute) + "/m");
+        distance.setText(String.valueOf(speed.getInt(speed.getColumnIndex("km"))) + " km");
 
         // create pie chart
         PieChart mPieChart = (PieChart) findViewById(R.id.piechart);
@@ -93,6 +96,16 @@ public class ResultsCardioActivity extends AppCompatActivity {
         int TotalCaloriesBurned = CaloriesPerMinute * time;
 
         return TotalCaloriesBurned;
+    }
+
+    public void onConfetti(View view) {
+        // add confetti on congratulations button to celebrate the routine
+        ViewGroup viewGroup = (ViewGroup) findViewById(R.id.Cardio_celebrate);
+        CommonConfetti.rainingConfetti(viewGroup, new int[]{Color.parseColor("#FFA500")})
+                .infinite();
+
+        Button confetti = findViewById(R.id.celebrate);
+        confetti.setEnabled(false);
     }
 
 
