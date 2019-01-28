@@ -7,17 +7,57 @@
     tools:context=".ResultsListActivity"
     android:orientation="vertical">
 
-    <Button
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Weight Stats:"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <ImageButton
         android:id="@+id/Results_weights"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="#00000000"
+        android:cropToPadding="false"
         android:onClick="onClick"
-        android:text="Weights" />
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/weights_results" />
 
-    <Button
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Cardio Stats"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <ImageButton
         android:id="@+id/Results_cardio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:background="#00000000"
+        android:cropToPadding="false"
         android:onClick="onClick"
-        android:text="Cardio" />
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/cardio_results" />
+
 </LinearLayout>

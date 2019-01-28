@@ -37,7 +37,7 @@ public class ResultsCardioActivity extends AppCompatActivity {
 
         // create pie chart
         PieChart mPieChart = (PieChart) findViewById(R.id.piechart);
-        mPieChart.addPieSlice(new PieModel("Calories Burned", calcCalories(speed.getInt(speed.getColumnIndex("speed")), speed.getString(speed.getColumnIndex("activity")), speed.getInt(speed.getColumnIndex("time"))), Color.parseColor("#CDA67F")));
+        mPieChart.addPieSlice(new PieModel("Calories Burned", calcCalories(speed.getInt(speed.getColumnIndex("speed")), speed.getString(speed.getColumnIndex("activity")), speed.getInt(speed.getColumnIndex("time"))), Color.parseColor("#f4a227")));
         mPieChart.startAnimation();
 
         speed.close();

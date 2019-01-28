@@ -27,10 +27,6 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
     String exerciseName, title;
     ProgressBar progressBar;
     private int progressStatus = 0;
-    int check = 0;
-    int check2 = 0;
-    int check3 = 0;
-    int check4 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,13 +99,31 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String txt = adapterView.getItemAtPosition(i).toString();
+        progressStatus = 4;
+        int check1 = 0;
+        int check2 = 0;
+        int check3 = 0;
+        int check4 = 0;
 
         // update process bar
-        if (!txt.equals("0")){
-            progressStatus += 1;
+        for (int check = 0; check < 4; check++) {
+            if (one.getSelectedItem().equals("0") && check1 == 0) {
+                check1 += 1;
+                progressStatus -= 1;
+            } else if (two.getSelectedItem().equals("0") && check2 == 0) {
+                check2 += 1;
+                progressStatus -= 1;
+            } else if (three.getSelectedItem().equals("0") && check3 == 0) {
+                check3 += 1;
+                progressStatus -= 1;
+            } else if (four.getSelectedItem().equals("0") && check4 == 0) {
+                check4 += 1;
+                progressStatus -= 1;
+            }
+            System.out.println(progressStatus);
             progressBar.setProgress(progressStatus);
-        }
 
+        }
         // check 0 counts > amount of 0 == progress
 //        if (!txt.equals("0") && one.getSelectedItem() == "0" && check == 0) {
 //            check += 1;
