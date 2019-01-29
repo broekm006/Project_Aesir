@@ -2,6 +2,7 @@ package com.uva.aesir;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,6 +28,7 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
     String exerciseName, title;
     ProgressBar progressBar;
     private int progressStatus = 0;
+    MediaPlayer ring;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,9 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
         four.setOnItemSelectedListener(this);
 
         cursor.close();
+
+        ring= MediaPlayer.create(PresetExercise.this, R.raw.epic);
+        ring.start();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -129,12 +134,18 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void onClickSubmit(View view) {
+        ring.stop();
         Weights weights = new Weights(Integer.parseInt(one.getSelectedItem().toString()), Integer.parseInt(two.getSelectedItem().toString()), Integer.parseInt(three.getSelectedItem().toString()), Integer.parseInt(four.getSelectedItem().toString()), exerciseName);
         database.insert(weights);
 
         Intent intent = new Intent(this, Preset_detail.class);
         intent.putExtra("title", title);
         startActivity(intent);
+    }
+
+    public void onBackPressed(){
+        ring.stop();
+        startActivity(new Intent(this, Preset_detail.class));
     }
 }
 

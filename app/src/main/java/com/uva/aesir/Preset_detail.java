@@ -30,6 +30,8 @@ public class Preset_detail extends AppCompatActivity {
         ListView listView = findViewById(R.id.detail_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
+        listView.setOnItemLongClickListener(new Preset_detail.ListViewLongClickListener());
+
 
         TextView title = findViewById(R.id.detail_title);
         title.setText(titleRetrieved);
@@ -48,6 +50,31 @@ public class Preset_detail extends AppCompatActivity {
         }
     }
 
+    private class ListViewLongClickListener implements AdapterView.OnItemLongClickListener {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
+            long position = cursor.getLong(cursor.getColumnIndex("_id"));
+
+            db.delete(position);
+
+            updateData();
+
+            cursor.close();
+            return true;
+        }
+    }
+
+    public void updateData() {
+        db = PresetDatabase.getInstance(getApplicationContext());
+        adapter = new PresetAdapterExercises(this, db.selectDiscinctExercises(titleRetrieved));
+
+        ListView listView = (ListView) findViewById(R.id.detail_list);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new ListViewClickListener());
+        listView.setOnItemLongClickListener(new ListViewLongClickListener());
+    }
+
     public void onResume() {
         super.onResume();
         Intent intent = getIntent();
@@ -59,6 +86,7 @@ public class Preset_detail extends AppCompatActivity {
         ListView listView = findViewById(R.id.detail_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
+        listView.setOnItemLongClickListener(new ListViewLongClickListener());
     }
 
     @Override
