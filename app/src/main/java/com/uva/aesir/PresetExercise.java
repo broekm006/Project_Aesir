@@ -145,7 +145,9 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
 
     public void onBackPressed(){
         ring.stop();
-        startActivity(new Intent(this, Preset_detail.class));
+        Intent intent = new Intent(this, Preset_detail.class);
+        intent.putExtra("title", title);
+        startActivity(intent);
     }
 }
 

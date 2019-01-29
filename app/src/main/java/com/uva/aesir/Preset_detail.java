@@ -32,7 +32,6 @@ public class Preset_detail extends AppCompatActivity {
         listView.setOnItemClickListener(new ListViewClickListener());
         listView.setOnItemLongClickListener(new Preset_detail.ListViewLongClickListener());
 
-
         TextView title = findViewById(R.id.detail_title);
         title.setText(titleRetrieved);
     }
