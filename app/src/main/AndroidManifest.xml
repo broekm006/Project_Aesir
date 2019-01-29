@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name=".Activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,24 +19,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ExerciseActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".SpecificActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".TimerActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ResultsActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".PresetActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.ExerciseActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.SpecificActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.TimerActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.ResultsActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.PresetActivity" android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".NewListActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".Preset_detail" android:screenOrientation="portrait"/>
-        <activity android:name=".GetJSONActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".CardioActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".PresetExercise" android:screenOrientation="portrait"/>
-        <activity android:name=".ResultsListActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ResultsCardioActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ResultsWeightsActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".Activity.NewListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.Preset_detail" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.GetJSONActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.CardioActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.PresetExercise" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.ResultsListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.ResultsCardioActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.ResultsWeightsActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

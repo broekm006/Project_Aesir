@@ -4,7 +4,7 @@
     android:id="@+id/Cardio_celebrate"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultsCardioActivity">
+    tools:context=".Activity.ResultsCardioActivity">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ResultsActivity">
+        tools:context=".Activity.ResultsActivity">
 
         <org.eazegraph.lib.charts.PieChart xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/piechart"
