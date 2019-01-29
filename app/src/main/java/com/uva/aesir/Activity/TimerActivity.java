@@ -30,6 +30,7 @@ public class TimerActivity extends AppCompatActivity {
     List<String> ListElementsArrayList;
     ArrayAdapter<String> adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +43,13 @@ public class TimerActivity extends AppCompatActivity {
         lap = (Button) findViewById(R.id.Lap);
         listview = (ListView) findViewById(R.id.lap_list);
 
+        // setup handler, arraylist & adapter
         handler = new Handler();
-
         ListElementsArrayList = new ArrayList<String>(Arrays.asList(ListElements));
-
         adapter = new ArrayAdapter<String>(TimerActivity.this, android.R.layout.simple_list_item_1, ListElementsArrayList);
-
         listview.setAdapter(adapter);
 
+        // setup click listener
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +61,7 @@ public class TimerActivity extends AppCompatActivity {
             }
         });
 
+        // setup click listener
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +72,7 @@ public class TimerActivity extends AppCompatActivity {
             }
         });
 
+        // setup click listener
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +91,7 @@ public class TimerActivity extends AppCompatActivity {
             }
         });
 
+        // setup click listener > make sure that when a new lap is timed the views scrolls smoothly to the location
         lap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +102,8 @@ public class TimerActivity extends AppCompatActivity {
         });
     }
 
+
+    // create new runnable to calculate data and update text on screen
     public Runnable runnable = new Runnable() {
         @Override
         public void run() {

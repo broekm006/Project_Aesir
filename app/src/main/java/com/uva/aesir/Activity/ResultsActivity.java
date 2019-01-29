@@ -31,21 +31,26 @@ public class ResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-        Intent intent = getIntent();
 
+        Intent intent = getIntent();
         exerciseName = intent.getStringExtra("exerciseName");
 
+        // setup db
         db = WeightsDatabase.getInstance(getApplicationContext());
+
+        // call graph function
         generateGraph();
     }
+
 
     @Override
     public void onBackPressed() {
         startActivity(new Intent(ResultsActivity.this, MainActivity.class));
     }
 
+
+    // add confetti on congratulations button to celebrate the routine
     public void onAttempt(View view) {
-        // add confetti on congratulations button to celebrate the routine
         ViewGroup viewGroup = (ViewGroup) findViewById(R.id.confetti);
         CommonConfetti.rainingConfetti(viewGroup, new int[]{Color.BLUE})
                 .infinite();
@@ -54,9 +59,15 @@ public class ResultsActivity extends AppCompatActivity {
         confetti.setEnabled(false);
     }
 
+
+    // generate graphs based on database values
     public void generateGraph() {
+
+        // create line chart
         Cursor cs = db.selectResults(exerciseName);
         cs.moveToFirst();
+
+        // check if data exists > if not set values to zero
         if (!cs.moveToFirst()) {
             a = "0";
             b = "0";
@@ -68,6 +79,8 @@ public class ResultsActivity extends AppCompatActivity {
             c = cs.getString(cs.getColumnIndex("setC"));
             d = cs.getString(cs.getColumnIndex("setD"));
         }
+
+        // enter data to the line chart
         GraphView graphView = (GraphView) findViewById(R.id.graph);
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[]{
                 new DataPoint(1, Integer.parseInt(a)),
@@ -76,38 +89,43 @@ public class ResultsActivity extends AppCompatActivity {
                 new DataPoint(4, Integer.parseInt(d))
         });
 
+        // set color + line thickness and give the line a name for the legend
         series.setColor(Color.parseColor("#00FF00"));
         series.setThickness(8);
         series.setTitle("Current");
 
+        // set y axis
         graphView.getViewport().setYAxisBoundsManual(true);
         graphView.getViewport().setMinY(0);
         graphView.getViewport().setMaxY(40);
 
+        // set x axis
         graphView.getViewport().setXAxisBoundsManual(true);
         graphView.getViewport().setMinX(1);
         graphView.getViewport().setMaxX(4);
 
+        // set line chart to scalable
         graphView.getViewport().setScalable(true);
         graphView.getViewport().setScalableY(true);
         graphView.addSeries(series);
 
-
+        // check is more data is available, if so use it for comparison
         Cursor cs1 = db.selectResults(exerciseName);
         cs1.moveToFirst();
+
         if (!cs1.moveToNext()) {
             a1 = "0";
             b1 = "0";
             c1 = "0";
             d1 = "0";
         } else {
-            //cs1.moveToNext();
             a1 = cs1.getString(cs1.getColumnIndex("setA"));
             b1 = cs1.getString(cs1.getColumnIndex("setB"));
             c1 = cs1.getString(cs1.getColumnIndex("setC"));
             d1 = cs1.getString(cs1.getColumnIndex("setD"));
         }
 
+        // enter data2 to the line chart
         LineGraphSeries<DataPoint> series2 = new LineGraphSeries<>(new DataPoint[]{
                 new DataPoint(1, Integer.parseInt(a1)),
                 new DataPoint(2, Integer.parseInt(b1)),
@@ -118,15 +136,16 @@ public class ResultsActivity extends AppCompatActivity {
         series2.setColor(Color.parseColor("#FF0000"));
         series2.setThickness(8);
         series2.setTitle("Last");
+
         graphView.addSeries(series2);
         graphView.getLegendRenderer().setVisible(true);
         graphView.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.BOTTOM);
 
+        // close cursors
         cs.close();
         cs1.close();
 
-
-        // barchart
+        // create barchart
         Cursor bar = db.selectResults(exerciseName);
         bar.moveToFirst();
 
@@ -142,6 +161,7 @@ public class ResultsActivity extends AppCompatActivity {
             getSetD = bar.getString(bar.getColumnIndex("setD"));
         }
 
+        // calculate total weights used by using the total value of the variables
         int totalWeights = Integer.parseInt(getSetA) + Integer.parseInt(getSetB) + Integer.parseInt(getSetC) + Integer.parseInt(getSetD);
 
         if (!bar.moveToNext()) {
@@ -200,6 +220,7 @@ public class ResultsActivity extends AppCompatActivity {
 
         int totalWeightsMin4 = Integer.parseInt(getSetA4) + Integer.parseInt(getSetB4) + Integer.parseInt(getSetC4) + Integer.parseInt(getSetD4);
 
+        // enter data to the bar chart
         GraphView graph = (GraphView) findViewById(R.id.bargraph);
         BarGraphSeries<DataPoint> series1 = new BarGraphSeries<>(new DataPoint[]{
                 new DataPoint(0, totalWeightsMin4),
@@ -218,8 +239,10 @@ public class ResultsActivity extends AppCompatActivity {
             }
         });
 
+        // set distance between the bars
         series1.setSpacing(5);
 
+        // add values ontop of the bars for clarity
         series1.setDrawValuesOnTop(true);
         series1.setValuesOnTopColor(Color.RED);
 

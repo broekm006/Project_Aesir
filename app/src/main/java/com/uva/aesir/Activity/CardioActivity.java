@@ -57,7 +57,7 @@ public class CardioActivity extends AppCompatActivity {
             String speed_text = speed.getText().toString().trim();
             String time_text = time.getText().toString().trim();
 
-            // check if some data is actually entered
+            // check if some data is actually entered, if not show toast message
             if (TextUtils.isEmpty(km_text) || km_text.length() == 0 || km_text.equals("") || km_text == null) {
                 String warning = "Please enter your traveled distance in whole km";
                 Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
@@ -72,7 +72,7 @@ public class CardioActivity extends AppCompatActivity {
                 toast.show();
             } else {
 
-                // insert data to database (new table Cardio)
+                // insert data to database (table Cardio)
                 Cardio cardio = new Cardio(Integer.parseInt(km.getText().toString()), Integer.parseInt(speed.getText().toString()), Integer.parseInt(time.getText().toString()), activity);
                 db.insert(cardio);
 
@@ -81,9 +81,9 @@ public class CardioActivity extends AppCompatActivity {
         }
     }
 
-    public void onButtonSelect(View view) {
 
-        // when button is clicked highlight specific button
+    // when button is clicked highlight specific button
+    public void onButtonSelect(View view) {
         switch (view.getId()) {
             case R.id.Cardio_walking:
                 walk.setImageResource(R.drawable.walkin_selected);

@@ -22,16 +22,20 @@ public class ExerciseRequest implements Response.Listener<JSONObject>, Response.
     private Callback callback;
 
 
+    // check for errors
     @Override
     public void onErrorResponse(VolleyError error) {
         callback.gotExerciseError(error.getMessage());
     }
 
+
+    // if json url is valid get data
     @Override
     public void onResponse(JSONObject response) {
         try {
             JSONArray array = response.getJSONArray("results");
 
+            // go through array and get JSONObjects based on string
             for (int i = 0; i < array.length(); i++) {
                 JSONObject specific = array.getJSONObject(i);
 
@@ -39,11 +43,14 @@ public class ExerciseRequest implements Response.Listener<JSONObject>, Response.
                 String name = Html.fromHtml(specific.getString("name")).toString();
                 String description = Html.fromHtml(specific.getString("description")).toString();
                 String categorie = Html.fromHtml(specific.getString("category")).toString();
+
+                // add objects to arraylist
                 exercises.add(new Exercise(idex, name, description, categorie));
             }
 
             String nextPage = response.getString("next");
 
+            // check if nextPage exists (json is separated over multiple pages)
             if (nextPage != "null") {
                 newPage(nextPage);
             }
@@ -65,6 +72,8 @@ public class ExerciseRequest implements Response.Listener<JSONObject>, Response.
         this.context = c;
     }
 
+
+    // if another page exists add new url to the Volley queue
     public void newPage(String url) {
         RequestQueue queue = Volley.newRequestQueue(context);
         JsonObjectRequest jsonObjectRequests = new JsonObjectRequest(url, null, this, this);

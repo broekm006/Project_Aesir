@@ -37,6 +37,8 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preset_exercise);
+
+        // setup db + adapter
         database = WeightsDatabase.getInstance(getApplicationContext());
         db = PresetDatabase.getInstance(getApplicationContext());
 
@@ -44,12 +46,14 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
         exerciseName = intent.getStringExtra("exercise_name");
         title = intent.getStringExtra("title");
 
+        // setup cursor with distinct exercises from the database
         Cursor cursor = db.selectExercises(exerciseName);
         cursor.moveToFirst();
 
         TextView txt = findViewById(R.id.entry_title);
         TextView description = findViewById(R.id.entry_description);
         ImageView image = findViewById(R.id.entry_image);
+
         progressBar = findViewById(R.id.progressBar);
         progressBar.setProgress(progressStatus);
 
@@ -66,9 +70,13 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
         three = (Spinner) findViewById(R.id.set_3);
         four = (Spinner) findViewById(R.id.set_4);
 
-        for (int i = 0; i < 40; i++) { // temp value, must eventually hold more than just 40, but gets ugly if list gets to long
+
+        // generate number 1-40 to use as weights for exercises
+        for (int i = 0; i <= 40; i++) {
             weights.add("" + i + "");
         }
+
+        // setup spinner dropdown menus with the generated numbers
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, weights);
 
         one.setAdapter(adapter);
@@ -85,15 +93,18 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
 
         cursor.close();
 
-        ring= MediaPlayer.create(PresetExercise.this, R.raw.epic);
+        // when the activity is opened play "inspirational" music
+        ring = MediaPlayer.create(PresetExercise.this, R.raw.epic);
         ring.start();
     }
 
+    // get action bar button "timer"
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.timer, menu);
         return true;
     }
 
+    // when action bar button is clicked go to timer activity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.timer:
@@ -103,6 +114,7 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
     }
 
 
+    // when spinner is selected and the value is no longer 0 update the progressbar
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String txt = adapterView.getItemAtPosition(i).toString();
@@ -131,11 +143,15 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
         progressBar.setProgress(progressStatus);
     }
 
+
+    // required for spinners to work
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+        // does nothing
     }
 
+
+    // on click stop the music that is playing and update the database with the weights used
     public void onClickSubmit(View view) {
         ring.stop();
         Weights weights = new Weights(Integer.parseInt(one.getSelectedItem().toString()), Integer.parseInt(two.getSelectedItem().toString()), Integer.parseInt(three.getSelectedItem().toString()), Integer.parseInt(four.getSelectedItem().toString()), exerciseName);
@@ -146,7 +162,9 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
         startActivity(intent);
     }
 
-    public void onBackPressed(){
+
+    // stop music from playing and go back to the previous activitys
+    public void onBackPressed() {
         ring.stop();
         Intent intent = new Intent(this, Preset_detail.class);
         intent.putExtra("title", title);

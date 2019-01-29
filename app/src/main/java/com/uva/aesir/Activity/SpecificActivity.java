@@ -40,6 +40,8 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specific);
         Intent intent = getIntent();
+
+        // setup databases
         getListNames = PresetDatabase.getInstance(getApplicationContext());
         db = ListNameDatabase.getInstance(getApplicationContext());
 
@@ -57,14 +59,18 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
                 .into(image);
     }
 
+
+    // hold value of spinner item(s) that are selected
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         txt = adapterView.getItemAtPosition(i).toString();
     }
 
+
+    // required for working of spinners
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-        // do nothing
+        // does nothing
     }
 
     @Override
@@ -72,11 +78,15 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
         startActivity(new Intent(SpecificActivity.this, ExerciseActivity.class));
     }
 
+
+    // get action bar button "add new list"
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_new_list, menu);
         return true;
     }
 
+
+    // on button click add new spinner + button to add the exercise to a existing list
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.new_list:
@@ -101,6 +111,8 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
         return (super.onOptionsItemSelected(item));
     }
 
+
+    // on click get data from spinner and add this to the database. Also show toast message for clarification
     public void onOkClick(View view) {
         Preset connectToList = new Preset(txt, getExerciseName);
         getListNames.insert(connectToList);
@@ -114,6 +126,8 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
         explain.setVisibility(View.GONE);
     }
 
+
+    // get a list of title (names) to fill the spinner dropdowns
     public List<String> getNameList() {
         List<String> nameList = new ArrayList<String>();
 

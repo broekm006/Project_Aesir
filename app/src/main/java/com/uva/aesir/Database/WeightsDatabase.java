@@ -17,6 +17,7 @@ public class WeightsDatabase extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
+
     public static WeightsDatabase getInstance(Context context) {
         if (instance == null) {
             return instance = new WeightsDatabase(context, "com.uva.aesir", null, 1);
@@ -25,14 +26,20 @@ public class WeightsDatabase extends SQLiteOpenHelper {
         }
     }
 
+
+    // get all information from the weights table
     public Cursor selectAll() {
         return getWritableDatabase().rawQuery(("SELECT * FROM weights GROUP BY exercise"), null);
     }
 
+
+    // get all information from the weights table in descending order
     public Cursor selectResults(String exercise) {
         return getWritableDatabase().rawQuery(("SELECT * FROM weights WHERE exercise = '" + exercise + "' ORDER BY _id DESC"), null);
     }
 
+
+    // insert new value in the weights table
     public void insert(Weights insertion) {
         ContentValues value = new ContentValues();
         value.put("exercise", insertion.getExercise());
@@ -44,11 +51,8 @@ public class WeightsDatabase extends SQLiteOpenHelper {
         getWritableDatabase().insert("weights", null, value);
     }
 
-    public void deleteCardio(long id) {
-        sqLiteDatabase = getWritableDatabase();
-        sqLiteDatabase.execSQL("delete from weights where _id ='" + id + "'");
-    }
 
+    // create database with all the tables to avoid missing data / tables
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table exercises (_id INTEGER PRIMARY KEY, idex TEXT, title TEXT, description TEXT, category TEXT)");

@@ -23,20 +23,24 @@ public class PresetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preset);
 
+        // setup db + adapter
         db = ListNameDatabase.getInstance(getApplicationContext());
         adapter = new PresetAdapter(this, db.selectAll());
 
+        // setup listview for adapter + click listeners
         ListView listView = (ListView) findViewById(R.id.preset_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
         listView.setOnItemLongClickListener(new ListViewLongClickListener());
     }
 
+    // get action menu button "add new list"
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_new_list, menu);
         return true;
     }
 
+    // on action bar button click go to new list activity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.new_list:
@@ -45,7 +49,7 @@ public class PresetActivity extends AppCompatActivity {
         return (super.onOptionsItemSelected(item));
     }
 
-
+    // on click get selected data for the next activity
     private class ListViewClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -60,6 +64,7 @@ public class PresetActivity extends AppCompatActivity {
         }
     }
 
+    // on long click delete selected data
     private class ListViewLongClickListener implements AdapterView.OnItemLongClickListener {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -86,6 +91,7 @@ public class PresetActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new ListViewLongClickListener());
     }
 
+    // recreate the data
     public void onResume() {
         super.onResume();
         db = ListNameDatabase.getInstance(getApplicationContext());

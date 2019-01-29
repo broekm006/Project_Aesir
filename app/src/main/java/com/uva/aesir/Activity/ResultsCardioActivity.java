@@ -20,11 +20,13 @@ public class ResultsCardioActivity extends AppCompatActivity {
     int METS, CaloriesPerMinute = 0;
     CardioDatabase db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_cardio);
 
+        // setup database
         db = CardioDatabase.getInstance(getApplicationContext());
         Cursor speed = db.selectAll();
         speed.moveToFirst();
@@ -47,6 +49,8 @@ public class ResultsCardioActivity extends AppCompatActivity {
         speed.close();
     }
 
+
+    // calculate calories burned based on "METS" & SPEED
     public int calcCalories(int speed, String activity, int time) {
         if (activity.equals("Walking")) {
             if (speed <= 3) {
@@ -99,8 +103,9 @@ public class ResultsCardioActivity extends AppCompatActivity {
         return TotalCaloriesBurned;
     }
 
+
+    // add confetti on congratulations button to celebrate the routine
     public void onConfetti(View view) {
-        // add confetti on congratulations button to celebrate the routine
         ViewGroup viewGroup = (ViewGroup) findViewById(R.id.Cardio_celebrate);
         CommonConfetti.rainingConfetti(viewGroup, new int[]{Color.parseColor("#FFA500")})
                 .infinite();
@@ -108,6 +113,4 @@ public class ResultsCardioActivity extends AppCompatActivity {
         Button confetti = findViewById(R.id.celebrate);
         confetti.setEnabled(false);
     }
-
-
 }

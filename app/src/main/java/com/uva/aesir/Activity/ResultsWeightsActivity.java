@@ -21,9 +21,11 @@ public class ResultsWeightsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_weights);
 
+        // setup database + adapter
         db = WeightsDatabase.getInstance(getApplicationContext());
         adapter = new ResultsWeightsAdapter(this, db.selectAll());
 
+        // setup listview with adapter & click listener
         ListView listView = findViewById(R.id.result_weight_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
@@ -34,6 +36,8 @@ public class ResultsWeightsActivity extends AppCompatActivity {
         startActivity(new Intent(this, ResultsListActivity.class));
     }
 
+
+    // on click get selected data for the next activity
     private class ListViewClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

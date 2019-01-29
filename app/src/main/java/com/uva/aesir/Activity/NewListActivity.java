@@ -33,52 +33,63 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
     private LinearLayout parentLinearLayout;
     JsonDatabase exercise_listy;
     PresetDatabase db;
-    ArrayList attempt400 = new ArrayList();
+    ArrayList listOfExercises = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_list);
+
         exercise_listy = JsonDatabase.getInstance(getApplicationContext());
         db = PresetDatabase.getInstance(getApplicationContext());
 
-        // add dynamic
         parentLinearLayout = (LinearLayout) findViewById(R.id.new_list_linear);
-
         btn = (Button) findViewById(R.id.Submit_newlist);
     }
 
+
+    // hold value of spinner item(s) that are selected
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         txt = adapterView.getItemAtPosition(i).toString();
     }
 
+
+    // required for working of spinners
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-        // do nothing
+        // does nothing
     }
 
+
+    // submit data > get data from spinners and add to database
     public void addEntry(View view) {
         EditText title = findViewById(R.id.newlist_title);
-
         String title_txt = title.getText().toString().trim();
+
+        // check to see if title is empty
         if (TextUtils.isEmpty(title_txt) || title_txt == null || title_txt.equals("") || title_txt.length() == 0) {
             String warning = "Please give your workout list a name :)";
             Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
             toast.show();
         } else {
+
+            // get values from spinners based on amount of child layouts created
             for (int w = 0; w < parentLinearLayout.getChildCount(); ++w) {
-                Spinner victory = findViewById(w);
-                attempt400.add(victory.getSelectedItem());
+                Spinner spinner = findViewById(w);
+                listOfExercises.add(spinner.getSelectedItem());
             }
 
-            if (attempt400.size() == 0) {
+            // if no exercise is added show error message
+            if (listOfExercises.size() == 0) {
                 String warning = "Please add at least one exercise to the list:)";
                 Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
                 toast.show();
             } else {
-                for (int i = 0; i < attempt400.size(); i++) {
-                    Preset new_preset = new Preset(title.getText().toString(), attempt400.get(i).toString());
+
+                // add new exercises to the database
+                for (int i = 0; i < listOfExercises.size(); i++) {
+                    Preset new_preset = new Preset(title.getText().toString(), listOfExercises.get(i).toString());
                     PresetDatabase db = PresetDatabase.getInstance(this);
                     db.insert(new_preset);
                 }
@@ -92,6 +103,8 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
 
     }
 
+
+    // get a list of exercise (names) to fill the spinner dropdowns
     public List<String> getNameExercise() {
         List<String> nameExercise = new ArrayList<String>();
 
@@ -110,13 +123,18 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         return nameExercise;
     }
 
+
+    // add new dynamic field on button click
     public void addNewField(View v) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View rowView = inflater.inflate(R.layout.new_list_entry, null, false);
 
+        // set hardcoded id so data can be collected based on the id(int)
         exercise = (Spinner) rowView.findViewById(R.id.newlist_exercise2);
         exercise.setId(INTER);
         INTER += 1;
+
+        // set adapter with the list of exercises
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, getNameExercise());
         exercise.setAdapter(adapter);
         exercise.setOnItemSelectedListener(this);
@@ -124,6 +142,8 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount() - 1);
     }
 
+
+    // delete dynamically added layout views
     public void onDeleteclick(View v) {
         parentLinearLayout.removeView((View) v.getParent());
         System.out.println("test" + v.getParent());

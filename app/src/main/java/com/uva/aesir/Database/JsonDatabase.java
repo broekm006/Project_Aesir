@@ -14,9 +14,11 @@ public class JsonDatabase extends SQLiteOpenHelper {
     private static JsonDatabase instance;
     SQLiteDatabase sqLiteDatabase;
 
+
     public JsonDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
+
 
     public static JsonDatabase getInstance(Context context) {
         if (instance == null) {
@@ -26,13 +28,16 @@ public class JsonDatabase extends SQLiteOpenHelper {
         }
     }
 
+
     public Cursor selectAll() {
         return getWritableDatabase().rawQuery(("SELECT * FROM exercises LEFT JOIN exerciseImgs ON exercises.idex = exerciseImgs.idex"), null);
     }
 
+
     public Cursor selectName() {
         return getWritableDatabase().rawQuery(("SELECT title FROM exercises"), null);
     }
+
 
     public Cursor selectImg(String id) {
         return getWritableDatabase().rawQuery(("SELECT imgUrl FROM exerciseImgs WHERE idex = '" + id + "'"), null);

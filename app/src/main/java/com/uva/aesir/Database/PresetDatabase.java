@@ -14,10 +14,12 @@ public class PresetDatabase extends SQLiteOpenHelper {
     private static PresetDatabase instance;
     SQLiteDatabase sqLiteDatabase;
 
+
     public PresetDatabase(@Nullable Context context, @Nullable String name,
                           @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
+
 
     public static PresetDatabase getInstance(Context context) {
         if (instance == null) {
@@ -27,18 +29,20 @@ public class PresetDatabase extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor selectAll() {
-        return getWritableDatabase().rawQuery(("SELECT DISTINCT title FROM presets"), null);
-    }
 
+    // select everything from presets in ascending order
     public Cursor selectDiscinctExercises(String name) {
         return getWritableDatabase().rawQuery(("SELECT * FROM presets WHERE title = '" + name + "' ORDER BY exercise_name ASC "), null);
     }
 
+
+    // select everything from exercises & exerciseImgs to connect the exercise and images
     public Cursor selectExercises(String exerciseName) {
         return getWritableDatabase().rawQuery(("SELECT * FROM exercises LEFT JOIN exerciseImgs ON exercises.idex = exerciseImgs.idex WHERE title = '" + exerciseName + "'"), null);
     }
 
+
+    // insert data into the presets table
     public void insert(Preset insertion) {
         ContentValues value = new ContentValues();
         value.put("Exercise_name", insertion.getExercise_name());
@@ -47,17 +51,22 @@ public class PresetDatabase extends SQLiteOpenHelper {
         getWritableDatabase().insert("presets", null, value);
     }
 
+
+    // insert title into the listName table
     public void insertTitle(ListName insertion) {
         ContentValues value = new ContentValues();
         value.put("title", insertion.getListName());
         getWritableDatabase().insert("listName", null, value);
     }
 
+    // delete value from the table presets based on the id
     public void delete(long id) {
         sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.execSQL("delete from presets where _id='" + id + "'");
     }
 
+
+    // create database with all the tables to avoid missing data / tables
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table presets (_id INTEGER PRIMARY KEY, exercise_name TEXT, title TEXT, numberOfTimes TEXT)");

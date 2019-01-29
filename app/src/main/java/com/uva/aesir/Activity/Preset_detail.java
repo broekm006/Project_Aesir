@@ -26,9 +26,11 @@ public class Preset_detail extends AppCompatActivity {
         Intent intent = getIntent();
         titleRetrieved = (String) intent.getSerializableExtra("title");
 
+        // setup db + adapter
         db = PresetDatabase.getInstance(getApplicationContext());
         adapter = new PresetAdapterExercises(this, db.selectDiscinctExercises(titleRetrieved));
 
+        // setup listview with adapter + click listeners
         ListView listView = findViewById(R.id.detail_list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
@@ -38,6 +40,8 @@ public class Preset_detail extends AppCompatActivity {
         title.setText(titleRetrieved);
     }
 
+
+    // on click get selected data for the next activity
     private class ListViewClickListener implements AdapterView.OnItemClickListener {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Cursor one = (Cursor) adapterView.getItemAtPosition(i);
@@ -51,6 +55,8 @@ public class Preset_detail extends AppCompatActivity {
         }
     }
 
+
+    // on long click delete selected data
     private class ListViewLongClickListener implements AdapterView.OnItemLongClickListener {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -66,6 +72,8 @@ public class Preset_detail extends AppCompatActivity {
         }
     }
 
+
+    // refresh screen without the deleted value
     public void updateData() {
         db = PresetDatabase.getInstance(getApplicationContext());
         adapter = new PresetAdapterExercises(this, db.selectDiscinctExercises(titleRetrieved));
@@ -76,6 +84,8 @@ public class Preset_detail extends AppCompatActivity {
         listView.setOnItemLongClickListener(new ListViewLongClickListener());
     }
 
+
+    // on resume rebuild layout with correct data
     public void onResume() {
         super.onResume();
         Intent intent = getIntent();

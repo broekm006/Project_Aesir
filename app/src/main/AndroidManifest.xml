@@ -31,7 +31,6 @@
 
         <activity android:name=".Activity.NewListActivity" android:screenOrientation="portrait"/>
         <activity android:name=".Activity.Preset_detail" android:screenOrientation="portrait"/>
-        <activity android:name=".Activity.GetJSONActivity" android:screenOrientation="portrait"/>
         <activity android:name=".Activity.CardioActivity" android:screenOrientation="portrait"/>
         <activity android:name=".Activity.PresetExercise" android:screenOrientation="portrait"/>
         <activity android:name=".Activity.ResultsListActivity" android:screenOrientation="portrait"/>

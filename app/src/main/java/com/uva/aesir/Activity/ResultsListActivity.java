@@ -20,6 +20,8 @@ public class ResultsListActivity extends AppCompatActivity {
         startActivity(new Intent(ResultsListActivity.this, MainActivity.class));
     }
 
+
+    // on button click go to the corresponding activity
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.Results_weights:
@@ -27,9 +29,6 @@ public class ResultsListActivity extends AppCompatActivity {
                 break;
             case R.id.Results_cardio:
                 startActivity(new Intent(this, ResultsCardioActivity.class));
-                break;
-            default:
-                startActivity(new Intent(this, ResultsActivity.class));
                 break;
         }
     }
