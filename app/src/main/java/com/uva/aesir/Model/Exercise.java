@@ -26,10 +26,6 @@ public class Exercise {
         return categorie;
     }
 
-    public void setIdex(String idex) {
-        this.idex = idex;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -37,9 +33,4 @@ public class Exercise {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
-    }
-
 }

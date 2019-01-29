@@ -27,14 +27,6 @@ public class Cardio {
         return activity;
     }
 
-    public void setKm(int km) {
-        this.km = km;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
     public void setTime(int time) {
         this.time = time;
     }

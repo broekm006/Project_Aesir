@@ -20,9 +20,11 @@ public class CardioDatabase extends SQLiteOpenHelper {
     private static CardioDatabase instance;
     SQLiteDatabase sqLiteDatabase;
 
+
     public CardioDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
+
 
     public static CardioDatabase getInstance(Context context) {
         if (instance == null) {
@@ -32,10 +34,14 @@ public class CardioDatabase extends SQLiteOpenHelper {
         }
     }
 
+
+    // select everything from the cardio table
     public Cursor selectAll() {
         return getWritableDatabase().rawQuery(("SELECT * FROM cardio ORDER BY _id DESC"), null);
     }
 
+
+    // insert data into the cardio table
     public void insert(Cardio insertion) {
         ContentValues value = new ContentValues();
         value.put("km", insertion.getKm());
@@ -46,11 +52,8 @@ public class CardioDatabase extends SQLiteOpenHelper {
         getWritableDatabase().insert("cardio", null, value);
     }
 
-    public void deleteCardio(long id) {
-        sqLiteDatabase = getWritableDatabase();
-        sqLiteDatabase.execSQL("delete from cardio where _id ='" + id + "'");
-    }
 
+    // create database with all the tables to avoid missing data / tables
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table exercises (_id INTEGER PRIMARY KEY, idex TEXT, title TEXT, description TEXT, category TEXT)");

@@ -15,12 +15,4 @@ public class ExerciseImg {
     public String getImgUrl() {
         return imgUrl;
     }
-
-    public void setIdex(String idex) {
-        this.idex = idex;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
 }

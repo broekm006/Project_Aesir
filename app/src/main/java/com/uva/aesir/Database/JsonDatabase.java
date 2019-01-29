@@ -39,10 +39,11 @@ public class JsonDatabase extends SQLiteOpenHelper {
     }
 
 
-    public Cursor selectImg(String id) {
-        return getWritableDatabase().rawQuery(("SELECT imgUrl FROM exerciseImgs WHERE idex = '" + id + "'"), null);
-    }
+//    public Cursor selectImg(String id) {
+//        return getWritableDatabase().rawQuery(("SELECT imgUrl FROM exerciseImgs WHERE idex = '" + id + "'"), null);
+//    }
 
+    // insert data into the exercises table
     public void insert(Exercise insertion) {
         ContentValues value = new ContentValues();
         value.put("idex", insertion.getIdex());
@@ -53,8 +54,8 @@ public class JsonDatabase extends SQLiteOpenHelper {
         Cursor cursor = null;
         cursor = getWritableDatabase().rawQuery(("SELECT idex FROM exercises WHERE idex =" + insertion.getIdex()), null);
 
+        // check if actual data exists
         if (cursor.getCount() > 0) {
-
         } else {
             getWritableDatabase().insert("exercises", null, value);
         }
@@ -62,6 +63,8 @@ public class JsonDatabase extends SQLiteOpenHelper {
         cursor.close();
     }
 
+
+    // insert image url(s) into exerciseImgs table
     public void insertImg(ExerciseImg insertion) {
         ContentValues value = new ContentValues();
         value.put("idex", insertion.getIdex());
@@ -70,8 +73,8 @@ public class JsonDatabase extends SQLiteOpenHelper {
         Cursor cursor = null;
         cursor = getWritableDatabase().rawQuery("SELECT * FROM exerciseImgs WHERE idex='" + insertion.getIdex() + "'", null);
 
+        // check if actual data excists
         if (cursor.getCount() > 0) {
-
         } else {
             getWritableDatabase().insert("exerciseImgs", null, value);
         }
@@ -79,16 +82,14 @@ public class JsonDatabase extends SQLiteOpenHelper {
         cursor.close();
     }
 
-    public void deleteExercise(long id) {
-        sqLiteDatabase = getWritableDatabase();
-        sqLiteDatabase.execSQL("delete from exercises where _id ='" + id + "'");
-    }
 
+    // if there are exercises without name delete them from the exercises table
     public void deleteEmptyExercises() {
         sqLiteDatabase = getWritableDatabase();
         sqLiteDatabase.execSQL("delete from exercises where title = ''");
     }
 
+    // create database with all the tables to avoid missing data / tables
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table exercises (_id INTEGER PRIMARY KEY, idex TEXT, title TEXT, description TEXT, category TEXT)");

@@ -32,22 +32,6 @@ public class Weights {
         return exercise;
     }
 
-    public void setSetA(int setA) {
-        this.setA = setA;
-    }
-
-    public void setSetB(int setB) {
-        this.setB = setB;
-    }
-
-    public void setSetC(int setC) {
-        this.setC = setC;
-    }
-
-    public void setSetD(int setD) {
-        this.setD = setD;
-    }
-
     public void setExercise(String exercise) {
         this.exercise = exercise;
     }
