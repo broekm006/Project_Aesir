@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
     ListNameDatabase db;
     Spinner spin;
     Button btnListName;
+    TextView explain;
 
 
     @Override
@@ -81,10 +83,17 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
                 btnListName = findViewById(R.id.button_get_list_name);
                 btnListName.setVisibility(View.VISIBLE);
 
+                explain = findViewById(R.id.textView12);
+                explain.setVisibility(View.VISIBLE);
+
                 ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, getNameList());
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spin.setAdapter(adapter);
                 spin.setOnItemSelectedListener(this);
+
+                // force screen to new spinner
+                ScrollView scroller = (ScrollView) this.findViewById(R.id.scroller);
+                scroller.fullScroll(ScrollView.FOCUS_DOWN);
         }
         return (super.onOptionsItemSelected(item));
     }
@@ -99,6 +108,7 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
 
         spin.setVisibility(View.GONE);
         btnListName.setVisibility(View.GONE);
+        explain.setVisibility(View.GONE);
     }
 
     public List<String> getNameList() {

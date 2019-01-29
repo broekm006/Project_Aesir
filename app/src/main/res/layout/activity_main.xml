@@ -19,62 +19,131 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:text="Exercises"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:text="Cardio"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="#00000000"
-            android:onClick="OnButtonClick"
-            app:srcCompat="@drawable/dumbell"
             android:adjustViewBounds="true"
+            android:background="#00000000"
             android:cropToPadding="false"
-            android:scaleType="fitXY"/>
+            android:onClick="OnButtonClick"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/dumbell" />
 
         <ImageButton
             android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="#00000000"
-            android:onClick="OnButtonClickCardio"
-            app:srcCompat="@drawable/threadmill"
             android:adjustViewBounds="true"
+            android:background="#00000000"
             android:cropToPadding="false"
-            android:scaleType="fitXY"/>
+            android:onClick="OnButtonClickCardio"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/threadmill" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:text="Preset"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:text="Stats"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/imageButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:cropToPadding="false"
             android:background="#00000000"
+            android:cropToPadding="false"
             android:onClick="onButtonClickPresets"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/liste" />
 
         <ImageButton
             android:id="@+id/imageButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:onClick="onButtonClickResults"
-            app:srcCompat="@drawable/report_card"
-            android:background="#00000000"
             android:adjustViewBounds="true"
+            android:background="#00000000"
             android:cropToPadding="false"
-            android:scaleType="fitXY"/>
+            android:onClick="onButtonClickResults"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/report_card" />
 
     </LinearLayout>
 

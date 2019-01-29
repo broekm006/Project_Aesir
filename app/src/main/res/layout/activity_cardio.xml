@@ -77,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
             android:gravity="center"
             android:text="Enter km:" />
 
@@ -102,6 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
             android:gravity="center"
             android:text="Enter time: (minutes)" />
 
@@ -128,6 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/aclonica"
             android:gravity="center"
             android:text="Enter speed: (km/h)" />
 
@@ -144,6 +147,9 @@
         android:id="@+id/Cardio_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:onClick="onSubmit"
         android:text="Submit" />
 

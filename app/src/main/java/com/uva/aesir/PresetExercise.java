@@ -91,7 +91,6 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
             case R.id.timer:
                 startActivity(new Intent(this, TimerActivity.class));
         }
-
         return (super.onOptionsItemSelected(item));
     }
 
@@ -120,26 +119,8 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
                 check4 += 1;
                 progressStatus -= 1;
             }
-            System.out.println(progressStatus);
-            progressBar.setProgress(progressStatus);
-
         }
-        // check 0 counts > amount of 0 == progress
-//        if (!txt.equals("0") && one.getSelectedItem() == "0" && check == 0) {
-//            check += 1;
-//            progressStatus += 1;
-//        } else if (!txt.equals("0") && two.getSelectedItem() != "0" && check2 == 0) {
-//            check2 += 1;
-//            progressStatus += 1;
-//        } else if (!txt.equals("0") && three.getSelectedItem() != "0" && check3 == 0) {
-//            check3 += 1;
-//            progressStatus += 1;
-//        } else if (!txt.equals("0") && four.getSelectedItem() != "0" && check4 == 0) {
-//            check4 += 1;
-//            progressStatus += 1;
-//        }
         progressBar.setProgress(progressStatus);
-
     }
 
     @Override
