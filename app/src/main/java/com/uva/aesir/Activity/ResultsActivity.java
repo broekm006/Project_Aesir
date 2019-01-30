@@ -240,11 +240,13 @@ public class ResultsActivity extends AppCompatActivity {
         });
 
         // set distance between the bars
-        series1.setSpacing(5);
+        series1.setSpacing(20);
 
         // add values ontop of the bars for clarity
         series1.setDrawValuesOnTop(true);
         series1.setValuesOnTopColor(Color.RED);
+
+
 
         bar.close();
     }

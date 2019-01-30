@@ -1,10 +1,10 @@
-/*
+/***
  ** Marc van den Broek
  ** 10269602
  **
  ** This file is used for the Cardio screen. Here it is possible to select an activity, enter
  ** the data (km, speed and time) and store this in the database for later use.
- **/
+ ***/
 
 package com.uva.aesir.Activity;
 
