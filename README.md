@@ -38,10 +38,11 @@ This application allow a user to check new exercises, make his/her own schedule 
 ***
 
 # License
-Copyright(C) 2019 Marc van den Broek
+Copyright(C) 2019 Marc van den Broek.
 
-Licensed under  
+Licensed under GPL-3.0.
+```
                      GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
-
+```
  You may not use this file except in compliance with the License.
