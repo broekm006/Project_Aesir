@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to fill a listview with the correct data / style
+ **
+ ***/
+
 package com.uva.aesir.Adapter;
 
 import android.content.Context;
@@ -12,6 +20,7 @@ public class PresetAdapterExercises extends ResourceCursorAdapter {
     public PresetAdapterExercises(Context context, Cursor cursor) {
         super(context, R.layout.preset_entry, cursor);
     }
+
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {

@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to fill a listview with the correct data / style
+ **
+ ***/
+
 package com.uva.aesir.Adapter;
 
 import android.content.Context;
@@ -17,10 +25,12 @@ import java.util.ArrayList;
 public class ExerciseAdapter extends ArrayAdapter<Exercise> {
     private ArrayList<Exercise> exercise;
 
+
     public ExerciseAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Exercise> objects) {
         super(context, resource, objects);
         this.exercise = objects;
     }
+
 
     @NonNull
     @Override

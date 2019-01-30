@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to display 2 graphs that show progress vs previous attempts
+ **
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.content.Intent;
@@ -26,6 +34,7 @@ public class ResultsActivity extends AppCompatActivity {
     String getSetA, getSetB, getSetC, getSetD, getSetA1, getSetB1, getSetC1, getSetD1, getSetA2,
             getSetB2, getSetC2, getSetD2, getSetA3, getSetB3, getSetC3, getSetD3, getSetA4,
             getSetB4, getSetC4, getSetD4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

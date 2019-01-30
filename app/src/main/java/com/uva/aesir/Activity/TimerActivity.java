@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to allow the user to time their workouts / have a timer to work with.
+ **
+ ***/
+
 package com.uva.aesir.Activity;
 
 // "inspiratie" >> https://www.android-examples.com/android-create-stopwatch-example-tutorial-in-android-studio/
@@ -19,7 +27,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TimerActivity extends AppCompatActivity {
-
     TextView timer;
     ListView listview;
     Handler handler;

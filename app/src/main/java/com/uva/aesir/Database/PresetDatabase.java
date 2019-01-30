@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to handle database interactions such as gathering data and inserting data.
+ **
+ ***/
+
 package com.uva.aesir.Database;
 
 import android.content.ContentValues;
@@ -59,6 +67,7 @@ public class PresetDatabase extends SQLiteOpenHelper {
         getWritableDatabase().insert("listName", null, value);
     }
 
+
     // delete value from the table presets based on the id
     public void delete(long id) {
         sqLiteDatabase = getWritableDatabase();
@@ -76,6 +85,7 @@ public class PresetDatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table cardio (_id INTEGER PRIMARY KEY, km INT, speed INT, time INT, activity TEXT)");
         sqLiteDatabase.execSQL("create table weights (_id INTEGER PRIMARY KEY, exercise TEXT, setA TEXT, setB TEXT, setC TEXT, setD TEXT)");
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used as a navigation pane. It just shows 2 options to click on.
+ **
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.content.Intent;

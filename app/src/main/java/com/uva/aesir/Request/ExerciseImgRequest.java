@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to get the json data (imgurls) from an api (wger.de).
+ **
+ ***/
+
 package com.uva.aesir.Request;
 
 import android.content.Context;
@@ -20,10 +28,12 @@ public class ExerciseImgRequest implements Response.Listener<JSONObject>, Respon
     public ArrayList<ExerciseImg> imgUrls = new ArrayList<>();
     public Callback callback;
 
+
     @Override
     public void onErrorResponse(VolleyError error) {
         callback.gotExerciseImgError(error.getMessage());
     }
+
 
     @Override
     public void onResponse(JSONObject response) {
@@ -53,15 +63,18 @@ public class ExerciseImgRequest implements Response.Listener<JSONObject>, Respon
         callback.gotExerciseImg(imgUrls);
     }
 
+
     public interface Callback {
         void gotExerciseImg(ArrayList<ExerciseImg> exerciseImgs);
 
         void gotExerciseImgError(String message);
     }
 
+
     public ExerciseImgRequest(Context c) {
         this.context = c;
     }
+
 
     // insert new url when more information is available and add request to the queue
     public void newPage(String url) {
@@ -69,6 +82,7 @@ public class ExerciseImgRequest implements Response.Listener<JSONObject>, Respon
         JsonObjectRequest jsonObjectRequests = new JsonObjectRequest(url, null, this, this);
         queue.add(jsonObjectRequests);
     }
+
 
     // initial url with JSON volley request
     public void getExerciseImg(Callback activity) {
@@ -79,5 +93,4 @@ public class ExerciseImgRequest implements Response.Listener<JSONObject>, Respon
 
         callback = activity;
     }
-
 }

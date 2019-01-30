@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to get the name of the exercise for which the results need to be loaded.
+ **
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.content.Intent;
@@ -16,6 +24,7 @@ public class ResultsWeightsActivity extends AppCompatActivity {
     WeightsDatabase db;
     ResultsWeightsAdapter adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +39,7 @@ public class ResultsWeightsActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new ListViewClickListener());
     }
+
 
     @Override
     public void onBackPressed() {
@@ -50,6 +60,4 @@ public class ResultsWeightsActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
-
 }

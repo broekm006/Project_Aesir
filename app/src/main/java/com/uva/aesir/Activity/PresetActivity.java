@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is to display all existing lists and allow the user to create a new one
+ **
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.content.Intent;
@@ -18,6 +26,7 @@ public class PresetActivity extends AppCompatActivity {
     ListNameDatabase db;
     PresetAdapter adapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +43,13 @@ public class PresetActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new ListViewLongClickListener());
     }
 
+
     // get action menu button "add new list"
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add_new_list, menu);
         return true;
     }
+
 
     // on action bar button click go to new list activity
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -48,6 +59,7 @@ public class PresetActivity extends AppCompatActivity {
         }
         return (super.onOptionsItemSelected(item));
     }
+
 
     // on click get selected data for the next activity
     private class ListViewClickListener implements AdapterView.OnItemClickListener {
@@ -63,6 +75,7 @@ public class PresetActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
 
     // on long click delete selected data
     private class ListViewLongClickListener implements AdapterView.OnItemLongClickListener {
@@ -80,6 +93,7 @@ public class PresetActivity extends AppCompatActivity {
         }
     }
 
+
     // swap cursor does not work as intented so work around is recreating the data
     public void updateData() {
         db = ListNameDatabase.getInstance(getApplicationContext());
@@ -90,6 +104,7 @@ public class PresetActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new ListViewClickListener());
         listView.setOnItemLongClickListener(new ListViewLongClickListener());
     }
+
 
     // recreate the data
     public void onResume() {
@@ -102,6 +117,7 @@ public class PresetActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new ListViewClickListener());
         listView.setOnItemLongClickListener(new ListViewLongClickListener());
     }
+
 
     @Override
     public void onBackPressed() {

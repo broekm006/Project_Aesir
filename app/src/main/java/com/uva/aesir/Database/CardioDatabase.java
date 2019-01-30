@@ -1,9 +1,10 @@
-/*
+/***
  ** Marc van den Broek
  ** 10269602
  **
- ** This file is used to create a new database + tables and have all the major db methods.
- **/
+ ** This file is used to handle database interactions such as gathering data and inserting data.
+ **
+ ***/
 
 package com.uva.aesir.Database;
 
@@ -63,6 +64,7 @@ public class CardioDatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table cardio (_id INTEGER PRIMARY KEY, km INT, speed INT, time INT, activity TEXT)");
         sqLiteDatabase.execSQL("create table weights (_id INTEGER PRIMARY KEY, exercise TEXT, setA TEXT, setB TEXT, setC TEXT, setD TEXT)");
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

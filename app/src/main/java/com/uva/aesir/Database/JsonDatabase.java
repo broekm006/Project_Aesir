@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to handle database interactions such as gathering data and inserting data.
+ **
+ ***/
+
 package com.uva.aesir.Database;
 
 import android.content.ContentValues;
@@ -38,10 +46,6 @@ public class JsonDatabase extends SQLiteOpenHelper {
         return getWritableDatabase().rawQuery(("SELECT title FROM exercises"), null);
     }
 
-
-//    public Cursor selectImg(String id) {
-//        return getWritableDatabase().rawQuery(("SELECT imgUrl FROM exerciseImgs WHERE idex = '" + id + "'"), null);
-//    }
 
     // insert data into the exercises table
     public void insert(Exercise insertion) {
@@ -89,6 +93,7 @@ public class JsonDatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("delete from exercises where title = ''");
     }
 
+
     // create database with all the tables to avoid missing data / tables
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -99,6 +104,7 @@ public class JsonDatabase extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table cardio (_id INTEGER PRIMARY KEY, km INT, speed INT, time INT, activity TEXT)");
         sqLiteDatabase.execSQL("create table weights (_id INTEGER PRIMARY KEY, exercise TEXT, setA TEXT, setB TEXT, setC TEXT, setD TEXT)");
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

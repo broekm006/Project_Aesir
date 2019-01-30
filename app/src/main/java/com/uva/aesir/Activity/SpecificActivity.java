@@ -1,3 +1,12 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to show the name, description and image (if available) about an exercise.
+ ** Beside the information it is also possible to the exercise to an existing list.
+ **
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.content.Intent;
@@ -72,6 +81,7 @@ public class SpecificActivity extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> adapterView) {
         // does nothing
     }
+
 
     @Override
     public void onBackPressed() {

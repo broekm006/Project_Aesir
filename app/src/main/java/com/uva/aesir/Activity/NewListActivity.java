@@ -1,3 +1,12 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to create a new list (preset) here a dynamic field is added every time a button
+ ** gets pressed and the data is stored through spinners in a arraylist into the database.
+ **
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.content.Context;

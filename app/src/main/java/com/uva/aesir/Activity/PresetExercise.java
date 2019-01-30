@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to display how te exercise works and allow the user to enter weights used to
+ ** store in the database for progression.
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.content.Intent;
@@ -32,6 +40,7 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
     ProgressBar progressBar;
     private int progressStatus = 0;
     MediaPlayer ring;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,11 +107,13 @@ public class PresetExercise extends AppCompatActivity implements AdapterView.OnI
         ring.start();
     }
 
+
     // get action bar button "timer"
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.timer, menu);
         return true;
     }
+
 
     // when action bar button is clicked go to timer activity
     public boolean onOptionsItemSelected(MenuItem item) {

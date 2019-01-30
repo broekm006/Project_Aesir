@@ -1,3 +1,12 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is the main menu for the application. From here you can update the db with the latest
+ ** exercises and click the navigation buttons to navigate the app.
+ **
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.content.DialogInterface;

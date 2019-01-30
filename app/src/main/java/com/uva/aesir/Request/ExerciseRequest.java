@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to get the json data (id, name, description, category) from an api (wger.de).
+ **
+ ***/
+
 package com.uva.aesir.Request;
 
 import android.content.Context;
@@ -79,6 +87,7 @@ public class ExerciseRequest implements Response.Listener<JSONObject>, Response.
         JsonObjectRequest jsonObjectRequests = new JsonObjectRequest(url, null, this, this);
         queue.add(jsonObjectRequests);
     }
+
 
     public void getExercise(Callback activity) {
         RequestQueue queue = Volley.newRequestQueue(context);

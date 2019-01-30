@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to handle database interactions such as gathering data and inserting data.
+ **
+ ***/
+
 package com.uva.aesir.Database;
 
 import android.content.ContentValues;

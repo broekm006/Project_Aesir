@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to display a pie chart that shows that amount of calories burned. Also this
+ ** file calculates the amount of calories burned every minute / total.
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.database.Cursor;

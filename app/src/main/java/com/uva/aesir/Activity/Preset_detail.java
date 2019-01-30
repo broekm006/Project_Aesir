@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to display all the exercises that are in a given list/preset.
+ **
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.content.Intent;

@@ -1,3 +1,11 @@
+/***
+ ** Marc van den Broek
+ ** 10269602
+ **
+ ** This file is used to display a list of exercises gathered from the database
+ **
+ ***/
+
 package com.uva.aesir.Activity;
 
 import android.content.Intent;
@@ -12,10 +20,10 @@ import com.uva.aesir.Adapter.ExerciseAdapterdb;
 import com.uva.aesir.Database.JsonDatabase;
 import com.uva.aesir.R;
 
-
 public class ExerciseActivity extends AppCompatActivity {
     JsonDatabase db;
     ExerciseAdapterdb adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +40,11 @@ public class ExerciseActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new ListViewClickListener());
     }
 
+
     public void OnButtonClick(View view) {
         startActivity(new Intent(this, SpecificActivity.class));
     }
+
 
     private class ListViewClickListener implements AdapterView.OnItemClickListener {
         @Override
@@ -52,14 +62,11 @@ public class ExerciseActivity extends AppCompatActivity {
         }
     }
 
-    public void updateData() {
-        Cursor second = db.selectAll();
-        adapter.swapCursor(second);
-    }
 
     public void onResume() {
         super.onResume();
     }
+
 
     @Override
     public void onBackPressed() {
