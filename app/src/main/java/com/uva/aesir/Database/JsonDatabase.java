@@ -38,7 +38,8 @@ public class JsonDatabase extends SQLiteOpenHelper {
 
 
     public Cursor selectAll() {
-        return getWritableDatabase().rawQuery(("SELECT * FROM exercises LEFT JOIN exerciseImgs ON exercises.idex = exerciseImgs.idex"), null);
+        return getWritableDatabase().rawQuery(("SELECT * FROM exercises LEFT JOIN exerciseImgs ON " +
+                "exercises.idex = exerciseImgs.idex"), null);
     }
 
 

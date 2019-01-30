@@ -34,13 +34,13 @@ import com.uva.aesir.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener { //implements AdapterView.OnItemSelectedListener
+public class NewListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String txt;
     Button btn;
     Spinner exercise;
     int INTER = 0;
     private LinearLayout parentLinearLayout;
-    JsonDatabase exercise_listy;
+    JsonDatabase exerciseListy;
     PresetDatabase db;
     ArrayList listOfExercises = new ArrayList();
 
@@ -49,7 +49,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_list);
 
-        exercise_listy = JsonDatabase.getInstance(getApplicationContext());
+        exerciseListy = JsonDatabase.getInstance(getApplicationContext());
         db = PresetDatabase.getInstance(getApplicationContext());
 
         parentLinearLayout = (LinearLayout) findViewById(R.id.new_list_linear);
@@ -117,8 +117,8 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
     public List<String> getNameExercise() {
         List<String> nameExercise = new ArrayList<String>();
 
-        exercise_listy.getReadableDatabase();
-        Cursor cursor = exercise_listy.selectName();
+        exerciseListy.getReadableDatabase();
+        Cursor cursor = exerciseListy.selectName();
 
         if (cursor.moveToFirst()) {
             do {
@@ -127,7 +127,7 @@ public class NewListActivity extends AppCompatActivity implements AdapterView.On
         }
 
         cursor.close();
-        exercise_listy.close();
+        exerciseListy.close();
 
         return nameExercise;
     }

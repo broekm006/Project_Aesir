@@ -9,7 +9,7 @@
     >
 
     <TextView
-        android:id="@+id/Timer"
+        android:id="@+id/timer_screen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
@@ -25,7 +25,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/Start"
+            android:id="@+id/start_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -34,7 +34,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/Pause"
+            android:id="@+id/pause_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -43,7 +43,7 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/Reset"
+            android:id="@+id/reset_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -53,7 +53,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/Lap"
+        android:id="@+id/lap_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"

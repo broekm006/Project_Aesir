@@ -40,20 +40,22 @@ public class PresetDatabase extends SQLiteOpenHelper {
 
     // select everything from presets in ascending order
     public Cursor selectDiscinctExercises(String name) {
-        return getWritableDatabase().rawQuery(("SELECT * FROM presets WHERE title = '" + name + "' ORDER BY exercise_name ASC "), null);
+        return getWritableDatabase().rawQuery(("SELECT * FROM presets WHERE title = '" + name + "' " +
+                "ORDER BY exercise_name ASC "), null);
     }
 
 
     // select everything from exercises & exerciseImgs to connect the exercise and images
     public Cursor selectExercises(String exerciseName) {
-        return getWritableDatabase().rawQuery(("SELECT * FROM exercises LEFT JOIN exerciseImgs ON exercises.idex = exerciseImgs.idex WHERE title = '" + exerciseName + "'"), null);
+        return getWritableDatabase().rawQuery(("SELECT * FROM exercises LEFT JOIN exerciseImgs ON " +
+                "exercises.idex = exerciseImgs.idex WHERE title = '" + exerciseName + "'"), null);
     }
 
 
     // insert data into the presets table
     public void insert(Preset insertion) {
         ContentValues value = new ContentValues();
-        value.put("Exercise_name", insertion.getExercise_name());
+        value.put("Exercise_name", insertion.getExerciseName());
         value.put("title", insertion.getListName());
         //value.put("numberOfTimes", insertion.getNumberOfTimes());
         getWritableDatabase().insert("presets", null, value);

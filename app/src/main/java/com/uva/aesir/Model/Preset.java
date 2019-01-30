@@ -9,15 +9,15 @@
 package com.uva.aesir.Model;
 
 public class Preset {
-    private String listName, exercise_name;
+    private String listName, exerciseName;
 
-    public Preset(String listName, String exercise_name) {
+    public Preset(String listName, String exerciseName) {
         this.listName = listName;
-        this.exercise_name = exercise_name;
+        this.exerciseName = exerciseName;
     }
 
-    public String getExercise_name() {
-        return exercise_name;
+    public String getExerciseName() {
+        return exerciseName;
     }
 
     public String getListName() {

@@ -32,10 +32,10 @@ public class ResultsListActivity extends AppCompatActivity {
     // on button click go to the corresponding activity
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.Results_weights:
+            case R.id.results_weights:
                 startActivity(new Intent(this, ResultsWeightsActivity.class));
                 break;
-            case R.id.Results_cardio:
+            case R.id.results_cardio:
                 startActivity(new Intent(this, ResultsCardioActivity.class));
                 break;
         }

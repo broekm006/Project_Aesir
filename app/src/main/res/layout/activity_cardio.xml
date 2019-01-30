@@ -25,7 +25,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/Cardio_walking"
+            android:id="@+id/cardio_walking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -38,7 +38,7 @@
             tools:onClick="onButtonSelect" />
 
         <ImageButton
-            android:id="@+id/Cardio_running"
+            android:id="@+id/cardio_running"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -51,7 +51,7 @@
             tools:onClick="onButtonSelect" />
 
         <ImageButton
-            android:id="@+id/Cardio_cycling"
+            android:id="@+id/cardio_cycling"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

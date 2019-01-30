@@ -25,7 +25,7 @@ import org.eazegraph.lib.charts.PieChart;
 import org.eazegraph.lib.models.PieModel;
 
 public class ResultsCardioActivity extends AppCompatActivity {
-    int METS, CaloriesPerMinute = 0;
+    int METS, caloriesPerMinute = 0;
     CardioDatabase db;
 
 
@@ -40,18 +40,20 @@ public class ResultsCardioActivity extends AppCompatActivity {
         speed.moveToFirst();
 
         TextView activity = findViewById(R.id.activity_title);
-        TextView calories = findViewById(R.id.Calories_result);
-        TextView caloriesMinutes = findViewById(R.id.textView7);
-        TextView distance = findViewById(R.id.Distance_result);
+        TextView calories = findViewById(R.id.calories_result);
+        TextView caloriesMinutes = findViewById(R.id.calories_minute);
+        TextView distance = findViewById(R.id.distance_result);
 
         activity.setText(String.valueOf(speed.getString(speed.getColumnIndex("activity"))));
-        calories.setText(String.valueOf(calcCalories(speed.getInt(speed.getColumnIndex("speed")), speed.getString(speed.getColumnIndex("activity")), speed.getInt(speed.getColumnIndex("time")))));
-        caloriesMinutes.setText(String.valueOf(CaloriesPerMinute) + "/m");
+        calories.setText(String.valueOf(calcCalories(speed.getInt(speed.getColumnIndex("speed")),
+                speed.getString(speed.getColumnIndex("activity")), speed.getInt(speed.getColumnIndex("time")))));
+        caloriesMinutes.setText(String.valueOf(caloriesPerMinute) + "/m");
         distance.setText(String.valueOf(speed.getInt(speed.getColumnIndex("km"))) + " km");
 
         // create pie chart
         PieChart mPieChart = (PieChart) findViewById(R.id.piechart);
-        mPieChart.addPieSlice(new PieModel("Calories Burned", calcCalories(speed.getInt(speed.getColumnIndex("speed")), speed.getString(speed.getColumnIndex("activity")), speed.getInt(speed.getColumnIndex("time"))), Color.parseColor("#f4a227")));
+        mPieChart.addPieSlice(new PieModel("Calories Burned", calcCalories(speed.getInt(speed.getColumnIndex("speed")),
+                speed.getString(speed.getColumnIndex("activity")), speed.getInt(speed.getColumnIndex("time"))), Color.parseColor("#f4a227")));
         mPieChart.startAnimation();
 
         speed.close();
@@ -104,11 +106,11 @@ public class ResultsCardioActivity extends AppCompatActivity {
             }
         }
 
-        int CaloriesPerHour = METS * 70;
-        CaloriesPerMinute = CaloriesPerHour / 60;
-        int TotalCaloriesBurned = CaloriesPerMinute * time;
+        int caloriesPerHour = METS * 70;
+        caloriesPerMinute = caloriesPerHour / 60;
+        int totalCaloriesBurned = caloriesPerMinute * time;
 
-        return TotalCaloriesBurned;
+        return totalCaloriesBurned;
     }
 
 

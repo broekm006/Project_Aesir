@@ -34,9 +34,9 @@ public class CardioActivity extends AppCompatActivity {
 
         db = CardioDatabase.getInstance(getApplicationContext());
 
-        walk = findViewById(R.id.Cardio_walking);
-        run = findViewById(R.id.Cardio_running);
-        cycle = findViewById(R.id.Cardio_cycling);
+        walk = findViewById(R.id.cardio_walking);
+        run = findViewById(R.id.cardio_running);
+        cycle = findViewById(R.id.cardio_cycling);
     }
 
     public void onSubmit(View view) {
@@ -53,27 +53,28 @@ public class CardioActivity extends AppCompatActivity {
             EditText speed = findViewById(R.id.Cardio_edit_speed);
             EditText time = findViewById(R.id.Cardio_edit_time);
 
-            String km_text = km.getText().toString().trim();
-            String speed_text = speed.getText().toString().trim();
-            String time_text = time.getText().toString().trim();
+            String kmText = km.getText().toString().trim();
+            String speedText = speed.getText().toString().trim();
+            String timeText = time.getText().toString().trim();
 
             // check if some data is actually entered, if not show toast message
-            if (TextUtils.isEmpty(km_text) || km_text.length() == 0 || km_text.equals("") || km_text == null) {
+            if (TextUtils.isEmpty(kmText) || kmText.length() == 0 || kmText.equals("") || kmText == null) {
                 String warning = "Please enter your traveled distance in whole km";
                 Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
                 toast.show();
-            } else if (TextUtils.isEmpty(time_text) || time_text.length() == 0 || time_text.equals("") || time_text == null) {
+            } else if (TextUtils.isEmpty(timeText) || timeText.length() == 0 || timeText.equals("") || timeText == null) {
                 String warning = "Please enter the time you spend on the activity in minutes";
                 Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
                 toast.show();
-            } else if (TextUtils.isEmpty(speed_text) || speed_text.length() == 0 || speed_text.equals("") || speed_text == null) {
+            } else if (TextUtils.isEmpty(speedText) || speedText.length() == 0 || speedText.equals("") || speedText == null) {
                 String warning = "Please enter your average speed in whole km";
                 Toast toast = Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_LONG);
                 toast.show();
             } else {
 
                 // insert data to database (table Cardio)
-                Cardio cardio = new Cardio(Integer.parseInt(km.getText().toString()), Integer.parseInt(speed.getText().toString()), Integer.parseInt(time.getText().toString()), activity);
+                Cardio cardio = new Cardio(Integer.parseInt(km.getText().toString()), Integer.parseInt(speed.getText().toString()),
+                        Integer.parseInt(time.getText().toString()), activity);
                 db.insert(cardio);
 
                 startActivity(new Intent(CardioActivity.this, MainActivity.class));
@@ -85,7 +86,7 @@ public class CardioActivity extends AppCompatActivity {
     // when button is clicked highlight specific button
     public void onButtonSelect(View view) {
         switch (view.getId()) {
-            case R.id.Cardio_walking:
+            case R.id.cardio_walking:
                 walk.setImageResource(R.drawable.walkin_selected);
                 run.setImageResource(R.drawable.runnin);
                 cycle.setImageResource(R.drawable.cycling);
@@ -93,7 +94,7 @@ public class CardioActivity extends AppCompatActivity {
                 activity = "Walking";
                 break;
 
-            case R.id.Cardio_running:
+            case R.id.cardio_running:
                 walk.setImageResource(R.drawable.walkin);
                 run.setImageResource(R.drawable.runnin_selected);
                 cycle.setImageResource(R.drawable.cycling);
@@ -101,7 +102,7 @@ public class CardioActivity extends AppCompatActivity {
                 activity = "Running";
                 break;
 
-            case R.id.Cardio_cycling:
+            case R.id.cardio_cycling:
                 walk.setImageResource(R.drawable.walkin);
                 run.setImageResource(R.drawable.runnin);
                 cycle.setImageResource(R.drawable.cycling_selected);

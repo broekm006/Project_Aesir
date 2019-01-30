@@ -171,7 +171,8 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         // calculate total weights used by using the total value of the variables
-        int totalWeights = Integer.parseInt(getSetA) + Integer.parseInt(getSetB) + Integer.parseInt(getSetC) + Integer.parseInt(getSetD);
+        int totalWeights = Integer.parseInt(getSetA) + Integer.parseInt(getSetB) + Integer.parseInt(getSetC)
+                + Integer.parseInt(getSetD);
 
         if (!bar.moveToNext()) {
             getSetA1 = "0";
@@ -185,7 +186,8 @@ public class ResultsActivity extends AppCompatActivity {
             getSetD1 = bar.getString(bar.getColumnIndex("setD"));
         }
 
-        int totalWeightsMin1 = Integer.parseInt(getSetA1) + Integer.parseInt(getSetB1) + Integer.parseInt(getSetC1) + Integer.parseInt(getSetD1);
+        int totalWeightsMin1 = Integer.parseInt(getSetA1) + Integer.parseInt(getSetB1) + Integer.parseInt(getSetC1)
+                + Integer.parseInt(getSetD1);
 
         if (!bar.moveToNext()) {
             getSetA2 = "0";
@@ -199,7 +201,8 @@ public class ResultsActivity extends AppCompatActivity {
             getSetD2 = bar.getString(bar.getColumnIndex("setD"));
         }
 
-        int totalWeightsMin2 = Integer.parseInt(getSetA2) + Integer.parseInt(getSetB2) + Integer.parseInt(getSetC2) + Integer.parseInt(getSetD2);
+        int totalWeightsMin2 = Integer.parseInt(getSetA2) + Integer.parseInt(getSetB2) + Integer.parseInt(getSetC2)
+                + Integer.parseInt(getSetD2);
 
         if (!bar.moveToNext()) {
             getSetA3 = "0";
@@ -213,7 +216,8 @@ public class ResultsActivity extends AppCompatActivity {
             getSetD3 = bar.getString(bar.getColumnIndex("setD"));
         }
 
-        int totalWeightsMin3 = Integer.parseInt(getSetA3) + Integer.parseInt(getSetB3) + Integer.parseInt(getSetC3) + Integer.parseInt(getSetD3);
+        int totalWeightsMin3 = Integer.parseInt(getSetA3) + Integer.parseInt(getSetB3) + Integer.parseInt(getSetC3)
+                + Integer.parseInt(getSetD3);
 
         if (!bar.moveToNext()) {
             getSetA4 = "0";
@@ -227,7 +231,8 @@ public class ResultsActivity extends AppCompatActivity {
             getSetD4 = bar.getString(bar.getColumnIndex("setD"));
         }
 
-        int totalWeightsMin4 = Integer.parseInt(getSetA4) + Integer.parseInt(getSetB4) + Integer.parseInt(getSetC4) + Integer.parseInt(getSetD4);
+        int totalWeightsMin4 = Integer.parseInt(getSetA4) + Integer.parseInt(getSetB4) + Integer.parseInt(getSetC4)
+                + Integer.parseInt(getSetD4);
 
         // enter data to the bar chart
         GraphView graph = (GraphView) findViewById(R.id.bargraph);
@@ -254,7 +259,6 @@ public class ResultsActivity extends AppCompatActivity {
         // add values ontop of the bars for clarity
         series1.setDrawValuesOnTop(true);
         series1.setValuesOnTopColor(Color.RED);
-
 
 
         bar.close();

@@ -8,7 +8,7 @@
 
 package com.uva.aesir.Activity;
 
-// "inspiratie" >> https://www.android-examples.com/android-create-stopwatch-example-tutorial-in-android-studio/
+// "inspiration" >> https://www.android-examples.com/android-create-stopwatch-example-tutorial-in-android-studio/
 
 import android.os.Handler;
 import android.os.SystemClock;
@@ -31,10 +31,10 @@ public class TimerActivity extends AppCompatActivity {
     ListView listview;
     Handler handler;
     Button start, pause, reset, lap;
-    long MillisecondTime, StartTime, TimeBuffer, UpdateTime = 0L;
-    int Seconds, Minutes, Milliseconds;
-    String[] ListElements = new String[]{};
-    List<String> ListElementsArrayList;
+    long millisecondTime, startTime, timeBuffer, updateTime = 0L;
+    int seconds, minutes, milliseconds;
+    String[] listElements = new String[]{};
+    List<String> listElementsArrayList;
     ArrayAdapter<String> adapter;
 
 
@@ -43,24 +43,24 @@ public class TimerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
-        timer = (TextView) findViewById(R.id.Timer);
-        start = (Button) findViewById(R.id.Start);
-        pause = (Button) findViewById(R.id.Pause);
-        reset = (Button) findViewById(R.id.Reset);
-        lap = (Button) findViewById(R.id.Lap);
+        timer = (TextView) findViewById(R.id.timer_screen);
+        start = (Button) findViewById(R.id.start_button);
+        pause = (Button) findViewById(R.id.pause_button);
+        reset = (Button) findViewById(R.id.reset_button);
+        lap = (Button) findViewById(R.id.lap_button);
         listview = (ListView) findViewById(R.id.lap_list);
 
         // setup handler, arraylist & adapter
         handler = new Handler();
-        ListElementsArrayList = new ArrayList<String>(Arrays.asList(ListElements));
-        adapter = new ArrayAdapter<String>(TimerActivity.this, android.R.layout.simple_list_item_1, ListElementsArrayList);
+        listElementsArrayList = new ArrayList<String>(Arrays.asList(listElements));
+        adapter = new ArrayAdapter<String>(TimerActivity.this, android.R.layout.simple_list_item_1, listElementsArrayList);
         listview.setAdapter(adapter);
 
         // setup click listener
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StartTime = SystemClock.uptimeMillis();
+                startTime = SystemClock.uptimeMillis();
                 handler.postDelayed(runnable, 0);
 
                 start.setEnabled(false);
@@ -72,7 +72,7 @@ public class TimerActivity extends AppCompatActivity {
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TimeBuffer += MillisecondTime;
+                timeBuffer += millisecondTime;
                 handler.removeCallbacks(runnable);
                 reset.setEnabled(true);
                 start.setEnabled(true);
@@ -83,17 +83,17 @@ public class TimerActivity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MillisecondTime = 0L;
-                StartTime = 0L;
-                TimeBuffer = 0L;
-                UpdateTime = 0L;
-                Seconds = 0;
-                Minutes = 0;
-                Milliseconds = 0;
+                millisecondTime = 0L;
+                startTime = 0L;
+                timeBuffer = 0L;
+                updateTime = 0L;
+                seconds = 0;
+                minutes = 0;
+                milliseconds = 0;
 
                 timer.setText("00:00:00");
 
-                ListElementsArrayList.clear();
+                listElementsArrayList.clear();
                 adapter.notifyDataSetChanged();
             }
         });
@@ -102,7 +102,7 @@ public class TimerActivity extends AppCompatActivity {
         lap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ListElementsArrayList.add(0, timer.getText().toString());
+                listElementsArrayList.add(0, timer.getText().toString());
                 adapter.notifyDataSetChanged();
                 listview.smoothScrollToPosition(0);
             }
@@ -114,13 +114,13 @@ public class TimerActivity extends AppCompatActivity {
     public Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            MillisecondTime = SystemClock.uptimeMillis() - StartTime;
-            UpdateTime = TimeBuffer + MillisecondTime;
-            Seconds = (int) (UpdateTime / 1000);
-            Minutes = Seconds / 60;
-            Seconds = Seconds % 60;
-            Milliseconds = (int) (UpdateTime % 1000);
-            timer.setText("" + Minutes + ":" + String.format("%02d", Seconds) + ":" + String.format("%03d", Milliseconds));
+            millisecondTime = SystemClock.uptimeMillis() - startTime;
+            updateTime = timeBuffer + millisecondTime;
+            seconds = (int) (updateTime / 1000);
+            minutes = seconds / 60;
+            seconds = seconds % 60;
+            milliseconds = (int) (updateTime % 1000);
+            timer.setText("" + minutes + ":" + String.format("%02d", seconds) + ":" + String.format("%03d", milliseconds));
 
             handler.postDelayed(this, 0);
         }
