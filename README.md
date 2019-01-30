@@ -1,46 +1,48 @@
 # Project_Aesir (Final project)
 Marc van den Broek 12469602
 
-This is a assignment for the minor "programmeren" from the UvA. This is a proposal for the final project. 
-
-***
-
-"Companion app" > Fitness
-
-__Problem statement:__
-Everyday people go fitness at their local gym, and lift weight / run for miles to improve, but no gym has a way to show the progress is being made. Because the current fitness apps dont support this function and are lacking in allot of departments. It is time to make an application that can show progress and allow you to enter your own data. Target Audiance: People that fitness and want a way to see their progress.
-
-***
-
-__Description:__
-An application that gives insight to the daily/weekly routine that is fitness. In this application you can find all the details for which exercises are available, enter your own sets/reps and weights, create your own routine and check the results of the hard work.
-
-
-__Main Features__  
+This is a assignment for the minor "programmeren" from the UvA. This is the final android project.  
   
-__Start Screen:__
-Show multiple options with with the user can interact like:
-- Weights
-- Cardio
-- Pre-defined sets
-- Results
-- probably more to come during development (food/water intake, activity tracker if i can combine it with somehting IoT, build-in timer)
+This application allow a user to check new exercises, make his/her own schedule / list to work from. Calculate callories burned during cardio activities and hold a progression screen which checks the amount of weight used during each set.
 
-__Weights:__
-Allow the user to select which exercise they did, how many reps, how many sets and what weights were used.
+***
+# Visual
+<img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/main.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/exercises.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/specific.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/cardio.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/cardio%20results.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/stats.png" height="20%" width="23%"/>
 
-__Cardio:__
-Allow the user to select which exercise they did, enter distance ran, (callories burned), time it took.
 
-__Pre-Defined Sets:__
-Allow the user to make their own set of exercises to complete or choose pre-defined set
-
-__Results:__
-Shows the results of training in one or more graphs 
 ***
 
-__Solution:__
-Create an application that gives insight into his/her daily or weekly routine, show results and do it in a clean and simple fashion.
+# Reference(s)
+### Android charts:
+* MPAndroidChart: https://github.com/PhilJay/MPAndroidChart > Apache License 2.0
+* GraphView: https://github.com/jjoe64/GraphView > Apache License 2.0
+  
+### Confetti:
+* Confetti: https://github.com/jinatonic/confetti > Apache License 2.0
+  
+### Images:
+* Menu button exercises: https://www.vectorstock.com/royalty-free-vector/heavy-dumbbell-in-hand-cartoon-gym-bodybuilding-vector-13671760
+* Menu button cardio : https://www.vectorstock.com/royalty-free-vector/treadmill-cartoon-icon-vector-7377052
+* Menu button preset(s): https://www.stockio.com/free-icon/geronimo-to-do-list
+* Menu button stats: https://www.brandeps.com/icon/S/Stats-01
+* Cardio walking: https://iconsplace.com/black-icons/walking-icon/
+* Cardio Running: https://www.flaticon.com/free-icon/running_233146
+* Cardio Cycling: https://www.flaticon.com/free-icon/bicycle-rider_71422
+  
+### Music:
+* Jellyfish Jam: https://www.youtube.com/watch?v=oWqAf4eex14&t=7s > APM Music - Sonoton Recorded Music Library - Sonoton Music
+  
+### API:
+* Workout Manager: https://wger.de/api/v2/ > Affero GNU General Public License (AGPL) Version 3+
+  
+***
 
+# License
+Copyright(C) 2019 Marc van den Broek.
 
-![Alt text](https://github.com/broekm006/Project_Aesir/blob/master/doc/fitness_app.png)
+Licensed under GPL-3.0.
+```
+                     GNU GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
+```
+ You may not use this file except in compliance with the License.
