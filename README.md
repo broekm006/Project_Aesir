@@ -6,7 +6,7 @@ This is a assignment for the minor "programmeren" from the UvA. This is the fina
 This application allow a user to check new exercises, make his/her own schedule / list to work from. Calculate callories burned during cardio activities and hold a progression screen which checks the amount of weight used during each set.
 
 ***
-
+# Visual
 <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/main.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/exercises.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/specific.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/cardio.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/cardio%20results.png" height="20%" width="23%"/>
 
 
@@ -33,7 +33,7 @@ This application allow a user to check new exercises, make his/her own schedule 
 * Jellyfish Jam: https://www.youtube.com/watch?v=oWqAf4eex14&t=7s > APM Music - Sonoton Recorded Music Library - Sonoton Music
   
 ### API:
-* wger.de/api/v2/ > Affero GNU General Public License (AGPL) Version 3+
+* Workout Manager: https://wger.de/api/v2/ > Affero GNU General Public License (AGPL) Version 3+
   
 ***
 
