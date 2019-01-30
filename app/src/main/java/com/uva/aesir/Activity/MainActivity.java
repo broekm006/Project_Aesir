@@ -1,6 +1,8 @@
 package com.uva.aesir.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -58,6 +60,24 @@ public class MainActivity extends AppCompatActivity implements ExerciseRequest.C
                 y.getExerciseImg(this);
 
                 db = JsonDatabase.getInstance(getApplicationContext());
+
+            case R.id.info:
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                String part1 = "To see what activities are available click on Exercises.";
+                String part2 = "To enter data to calculate cardio workouts go to Cardio.";
+                String part3 = "To make your own workout list, and start working out click on Preset";
+                String part4 = "To get an overview of your progress click on Stats. Here you will see both weight lifting and cardio";
+
+                builder.setCancelable(true);
+                builder.setTitle("How to:");
+                builder.setMessage(part1 + "\n\n" + part2 + "\n\n" + part3 + "\n\n" + part4);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                builder.show();
         }
 
         return (super.onOptionsItemSelected(item));
@@ -129,7 +149,10 @@ public class MainActivity extends AppCompatActivity implements ExerciseRequest.C
 
 
     // when back is pressed exit the application
-    public void onBackPressed() {
-        finish();
+    public void onBackPressed(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 }

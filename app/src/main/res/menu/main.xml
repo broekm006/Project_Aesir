@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".Activity.MainActivity">
 
     <item
+        android:id="@+id/info"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="update"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/update"
         android:icon="@drawable/ic_action_name"
         android:title="update"
