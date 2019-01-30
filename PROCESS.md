@@ -45,3 +45,9 @@ Added cardio results after input + pie chart to see calories burned. Updated gen
 
 # day 16
 updated design, migitated buttons to the action bar to free up space in the activities. added comments to chunks of code.
+
+# day 17
+working on new design, looking at better fonts to read description fields, adding comments to all major activities and requests, looking new images to better show a better flow through the application.
+
+# day 18
+Work on finalizing the applcation. Add comment headers to all files and integrate new main menu
