@@ -7,7 +7,7 @@ This application allow a user to check new exercises, make his/her own schedule 
 
 ***
 # Visual
-<img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/main.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/exercises.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/specific.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/cardio.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/cardio%20results.png" height="20%" width="23%"/>
+<img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/main.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/exercises.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/specific.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/cardio.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/cardio%20results.png" height="20%" width="23%"/> <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/stats.png" height="20%" width="23%"/>
 
 
 ***
