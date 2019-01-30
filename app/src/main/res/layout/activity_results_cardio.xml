@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
                     android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/aclonica"
+                    android:fontFamily="@font/montserrat"
                     android:text="Activity"
                     android:textSize="14sp" />
 
@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/aclonica"
+                    android:fontFamily="@font/montserrat"
                     android:gravity="center"
                     android:text="Activity"
                     android:textSize="14sp" />
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
                     android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/aclonica"
+                    android:fontFamily="@font/montserrat"
                     android:text="Calories burned per minute"
                     android:textSize="14sp" />
 
@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/aclonica"
+                    android:fontFamily="@font/montserrat"
                     android:gravity="center"
                     android:text="TextView"
                     android:textSize="14sp" />
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
                     android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/aclonica"
+                    android:fontFamily="@font/montserrat"
                     android:text="Calories burned total"
                     android:textSize="14sp" />
 
@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/aclonica"
+                    android:fontFamily="@font/montserrat"
                     android:gravity="center"
                     android:text="TextView"
                     android:textAlignment="center"
@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
                     android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/aclonica"
+                    android:fontFamily="@font/montserrat"
                     android:text="Distance"
                     android:textSize="14sp" />
 
@@ -135,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_column="2"
                     android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/aclonica"
+                    android:fontFamily="@font/montserrat"
                     android:gravity="center"
                     android:text="TextView"
                     android:textAlignment="center"
@@ -154,6 +154,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"
+            android:fontFamily="@font/montserrat"
             android:onClick="onConfetti"
             android:text="Celebrate" />
 

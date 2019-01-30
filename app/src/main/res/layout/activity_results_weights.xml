@@ -11,10 +11,11 @@
         android:id="@+id/result_weight_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/aclonica"
+        android:fontFamily="@font/montserrat"
         android:text="For which exercice do you wish to view your progress?"
         android:textAlignment="center"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/result_weight_list"

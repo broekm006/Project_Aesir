@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:fontFamily="@font/martel"
+            android:fontFamily="@font/montserrat"
             android:text="Exercises"
             android:textSize="30sp" />
     </LinearLayout>
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:fontFamily="@font/martel"
+            android:fontFamily="@font/montserrat"
             android:text="Cardio"
             android:textSize="30sp" />
     </LinearLayout>
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:fontFamily="@font/martel"
+            android:fontFamily="@font/montserrat"
             android:text="Presets"
             android:textSize="30sp" />
     </LinearLayout>
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:fontFamily="@font/martel"
+            android:fontFamily="@font/montserrat"
             android:text="Stats"
             android:textSize="30sp" />
     </LinearLayout>

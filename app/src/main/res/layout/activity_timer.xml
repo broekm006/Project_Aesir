@@ -12,9 +12,10 @@
         android:id="@+id/Timer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:text="00:00:00"
         android:textAlignment="center"
-        android:textSize="80sp" />
+        android:textSize="70sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
             android:text="Start"
             android:textSize="24sp" />
 
@@ -36,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
             android:text="Pause"
             android:textSize="24sp" />
 
@@ -44,6 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
             android:text="Reset"
             android:textSize="24sp" />
     </LinearLayout>
@@ -52,6 +56,7 @@
         android:id="@+id/Lap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:text="Lap Time"
         android:textSize="24sp" />
 

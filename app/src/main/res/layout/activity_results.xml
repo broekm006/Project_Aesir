@@ -19,10 +19,11 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/aclonica"
+            android:fontFamily="@font/montserrat"
             android:text="Current vs last attempt"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/graph"
@@ -36,10 +37,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/aclonica"
+            android:fontFamily="@font/montserrat"
             android:text="Previous attempts (total weight)"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <com.jjoe64.graphview.GraphView
             android:id="@+id/bargraph"
@@ -55,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:fontFamily="@font/montserrat"
             android:onClick="onAttempt"
             android:text="Celebrate" />
 

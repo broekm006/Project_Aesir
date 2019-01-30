@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:fontFamily="@font/aclonica"
+            android:fontFamily="@font/montserrat"
             android:text="title"
             android:textAlignment="center"
             android:textSize="18sp"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:fontFamily="@font/aclonica"
+            android:fontFamily="@font/montserrat"
             android:text="description"
             android:textAlignment="center" />
 
@@ -62,7 +62,7 @@
                 android:id="@+id/sets"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aclonica"
+                android:fontFamily="@font/montserrat"
                 android:gravity="center"
                 android:text="SETS"
                 app:layout_gravity="center" />
@@ -71,7 +71,7 @@
                 android:id="@+id/set_name1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aclonica"
+                android:fontFamily="@font/montserrat"
                 android:gravity="center"
                 android:text="1"
                 app:layout_gravity="center" />
@@ -80,7 +80,7 @@
                 android:id="@+id/set_name2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aclonica"
+                android:fontFamily="@font/montserrat"
                 android:gravity="center"
                 android:text="2"
                 app:layout_gravity="center" />
@@ -89,7 +89,7 @@
                 android:id="@+id/set_name3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aclonica"
+                android:fontFamily="@font/montserrat"
                 android:gravity="center"
                 android:text="3"
                 app:layout_gravity="center" />
@@ -98,7 +98,7 @@
                 android:id="@+id/set_name4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aclonica"
+                android:fontFamily="@font/montserrat"
                 android:gravity="center"
                 android:text="4"
                 app:layout_gravity="center" />
@@ -107,7 +107,7 @@
                 android:id="@+id/kg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aclonica"
+                android:fontFamily="@font/montserrat"
                 android:gravity="center"
                 android:text="Enter Weights"
                 app:layout_gravity="center" />
@@ -146,6 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:fontFamily="@font/montserrat"
             android:onClick="onClickSubmit"
             android:text="Submit Data" />
 
