@@ -50,4 +50,4 @@ updated design, migitated buttons to the action bar to free up space in the acti
 working on new design, looking at better fonts to read description fields, adding comments to all major activities and requests, looking new images to better show a better flow through the application.
 
 # day 18
-Work on finalizing the applcation. Add comment headers to all files and integrate new main menu
+Work on finalizing the applcation. Add comment headers to all files and integrate new main menu, updated variables to match style guide, updated files to reduce length of certain lines to make sure they fit on the page, created screenshots for the git read me, updated the README.md to reflect final changes to the program
