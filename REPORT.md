@@ -81,5 +81,7 @@ Through filtering a few of the pointless exercises are removed from the list, bu
 
 The last real challenge i ran into was adding dynamic fields to create a new list. I used inflater layouts for this because i thought this worked smoothly, but since day 5 it seemed that storing the data that is stored in the spinner created by an inflater layout is not as simple as it seemed online. The same id/name was given to each new entry causing every request to give back the same thing. I tried several things such as storing data in a list (which causes multiple of the same), directly retrieving data (which gave the same every time), manipulating the selectedField when data was entered (This resulted in multiple of the first value) and some other actions. Through help from multiple TA’s and Stack Overflow i was able to uniquely give each new entry an ID so i could loop back over them when the submit button was clicked.
 
+In the end i am happy with the result, but to make this application truly work i either need a better api or manually create all the data to make sure everything is useable. The activities itself i would like to update with new features and improve existing ones, but thats for the future.
+
 # Acknowledgements
-Stackoverflow OP
+Special thanks to Stackoverflow :) and the TA's.
