@@ -11,6 +11,8 @@ This application allow a user to check new exercises, make his/her own schedule 
 
 
 ***
+# Video Demo
+For a video walkthough through the Aesir application see: https://youtu.be/npESzqjiRdQ
 
 # Reference(s)
 ### Android charts:
