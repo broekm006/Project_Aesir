@@ -8,7 +8,7 @@ This application allow a user to check new exercises, make his/her own schedule 
 <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/specific.png" height="40%" width="25%"/>
 
 # High level overview (Navigation)
-<img src="" height="100%" width="100%"/>
+<img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/Navigation.jpg" height="100%" width="100%"/>
 
 # Class Diagram
 <img src="https://github.com/broekm006/Project_Aesir/blob/master/doc/Class_Diagram_FINAL.jpg" height="100%" width="100%"/>
